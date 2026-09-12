@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ECOPM Sitecheck — Điều hành</title>
+<style>*{margin:0;padding:0}img{max-width:100%}[hidden]{display:none!important}
+:root{
+  --bg:#FFFFFF; --card:#FFFFFF; --ink:#141a1f; --ink-soft:#3f4a52; --muted:#6b7580;
+  --line:#e6e9ec; --line-strong:#d3d8dc; --accent:#0f7b52; --accent-soft:#e8f3ed;
+  --flag:#b42318; --flag-soft:#fbeceb; --warn:#8a5a00; --warn-soft:#fbf3e2;
+  --ok:#0f7b52;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{background:#FFFFFF;color:var(--ink);margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Noto Sans",sans-serif;
+  font-size:15px;line-height:1.5;}
+.wrap{max-width:1080px;margin:0 auto;padding:28px 20px 64px;}
+h1{font-size:23px;font-weight:700;letter-spacing:-.01em;margin:0 0 2px;}
+h2{font-size:17px;font-weight:650;margin:34px 0 12px;letter-spacing:-.005em;}
+h3{font-size:14px;font-weight:650;margin:0 0 8px;color:var(--ink-soft);}
+p{margin:8px 0;color:var(--ink-soft);}
+.sub{color:var(--muted);font-size:13px;margin:0;}
+.tag{display:inline-block;font-size:11.5px;font-weight:600;padding:2px 8px;border-radius:999px;
+  border:1px solid var(--line-strong);color:var(--muted);background:#fff;vertical-align:middle;}
+.tag.acc{color:var(--accent);border-color:var(--accent);background:var(--accent-soft);}
+.tag.flag{color:var(--flag);border-color:#e3b7b2;background:var(--flag-soft);}
+.tag.warn{color:var(--warn);border-color:#e6cf9a;background:var(--warn-soft);}
+.num{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1;}
+header.top{border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:8px;}
+.meta{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:10px;font-size:12.5px;color:var(--muted);}
+.meta span{white-space:nowrap;}
+nav.tabs{display:flex;flex-wrap:wrap;gap:2px;border-bottom:1px solid var(--line);margin:18px 0 22px;}
+nav.tabs button{appearance:none;background:none;border:0;border-bottom:2px solid transparent;
+  padding:9px 14px;font:inherit;font-size:13.5px;font-weight:600;color:var(--muted);cursor:pointer;}
+nav.tabs button:hover{color:var(--ink);}
+nav.tabs button[aria-selected=true]{color:var(--accent);border-bottom-color:var(--accent);}
+.panel{display:none;}
+.panel.on{display:block;animation:f .18s ease;}
+@keyframes f{from{opacity:.3}to{opacity:1}}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:6px 0 4px;}
+.kpi{border:1px solid var(--line);border-radius:10px;padding:14px 15px;}
+.kpi .v{font-size:27px;font-weight:700;letter-spacing:-.02em;}
+.kpi .k{font-size:12px;color:var(--muted);margin-top:2px;}
+.kpi .d{font-size:11.5px;margin-top:6px;color:var(--ink-soft);}
+.kpi.flag .v{color:var(--flag);}
+.card{border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:14px 0;}
+.callout{border:1px solid #e3b7b2;background:var(--flag-soft);border-radius:10px;padding:14px 16px;margin:16px 0;}
+.callout h3{color:var(--flag);}
+.callout.warn{border-color:#e6cf9a;background:var(--warn-soft);}
+.callout.warn h3{color:var(--warn);}
+table{border-collapse:collapse;width:100%;font-size:13px;}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:10px;}
+th,td{padding:8px 11px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap;}
+th:first-child,td:first-child{text-align:left;position:sticky;left:0;background:#fff;}
+thead th{font-size:11.5px;font-weight:650;color:var(--muted);text-transform:none;border-bottom:1px solid var(--line-strong);}
+tbody tr:last-child td{border-bottom:0;}
+tr.tot td{font-weight:700;border-top:1px solid var(--line-strong);background:#fbfcfc;}
+td.flagcell{color:var(--flag);font-weight:650;}
+.bar{height:9px;border-radius:5px;background:var(--accent);display:inline-block;vertical-align:middle;}
+.bar.f{background:var(--flag);}
+.barwrap{display:flex;align-items:center;gap:9px;}
+.barwrap .lab{min-width:150px;font-size:12.5px;}
+.barwrap .val{min-width:30px;text-align:right;font-size:12.5px;}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:12px;color:var(--muted);margin:8px 0 2px;}
+.legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:5px;vertical-align:-1px;}
+svg{max-width:100%;height:auto;display:block;}
+.foot{margin-top:40px;padding-top:14px;border-top:1px solid var(--line);font-size:11.5px;color:var(--muted);}
+ul.clean{margin:8px 0;padding-left:18px;}
+ul.clean li{margin:5px 0;color:var(--ink-soft);}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;}
+.cov{display:grid;grid-template-columns:120px 1fr;gap:6px 12px;align-items:center;margin:4px 0;}
+.cells{display:flex;flex-wrap:wrap;gap:5px;}
+.cell{font-size:11px;font-weight:600;padding:3px 7px;border-radius:5px;border:1px solid var(--line-strong);color:var(--muted);}
+.cell.read{color:var(--ok);border-color:var(--accent);background:var(--accent-soft);}
+.cell.blocked{color:var(--warn);border-color:#e6cf9a;background:var(--warn-soft);}
+@media (max-width:720px){
+  .kpis{grid-template-columns:repeat(2,1fr);}
+  .barwrap .lab{min-width:110px;}
+  .cov{grid-template-columns:1fr;}
+}
+@media print{
+  nav.tabs{display:none;} .panel{display:block!important;}
+  body{font-size:12px;} .wrap{max-width:none;padding:0;}
+  .kpi,.card,.callout,.scroll{break-inside:avoid;}
+  .callout,.kpi.flag .v,td.flagcell,.callout h3{color:#222!important;}
+  .callout{background:#fff!important;border-color:#bbb!important;}
+  .cell.read,.cell.blocked,.tag.acc,.tag.flag,.tag.warn{background:#fff!important;}
+  :root{--muted:#222;--ink-soft:#222;}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<header class="top">
+  <h1>🏢 ECOPM Sitecheck — Điều hành</h1>
+  <p class="sub">Báo cáo Sitecheck tuần · KHỐI VẬN HÀNH · 8 bộ phận vận hành</p>
+  <div class="meta">
+    <span><b>Kỳ:</b> <span id="m_asof"></span></span>
+    <span><b>Dựng ngày:</b> <span id="m_gen"></span></span>
+    <span><b>Nguồn:</b> SharePoint (chỉ đọc)</span>
+    <span><b>Pages:</b> <span id="m_pages"></span></span>
+  </div>
+</header>
+
+<nav class="tabs" id="tabs" role="tablist"></nav>
+
+<section class="panel" id="p_over" role="tabpanel">
+  <div class="kpis" id="kpis"></div>
+  <div class="callout" id="backlog_call"></div>
+  <h2>Đầu việc &amp; tồn theo bộ phận — tuần mới nhất</h2>
+  <div class="legend"><span><i style="background:var(--accent)"></i>Đầu việc phát sinh</span><span><i style="background:var(--flag)"></i>Chưa hoàn thành (tồn)</span></div>
+  <div class="card" id="latest_bars"></div>
+</section>
+
+<section class="panel" id="p_trend" role="tabpanel">
+  <h2>Diễn biến đầu việc theo tuần</h2>
+  <p class="sub">Các tuần đọc được từ nguồn. Khoảng T02–T07/2026 không có dữ liệu (nguồn bị chặn — xem tab Nguồn dữ liệu).</p>
+  <div class="card" id="trend_raised"></div>
+  <h2>Diễn biến tồn đọng</h2>
+  <p class="sub">Chỉ các tuần có bảng đầy đủ. Gần như toàn bộ tồn nằm ở 2 đơn vị.</p>
+  <div class="legend"><span><i style="background:var(--flag)"></i>SAVILLS CT06</span><span><i style="background:#e08600"></i>CLB Tiện ích</span><span><i style="background:var(--muted)"></i>Còn lại</span></div>
+  <div class="card" id="trend_out"></div>
+</section>
+
+<section class="panel" id="p_dept" role="tabpanel">
+  <h2>Đầu việc phát sinh theo bộ phận × tuần</h2>
+  <p class="sub">Số đầu việc phát sinh mỗi tuần. Ô trống = tuần không có dữ liệu nguồn.</p>
+  <div class="scroll"><table id="tbl_raised"></table></div>
+  <h2>Tồn đọng đến kỳ báo cáo</h2>
+  <p class="sub">"SL chưa hoàn thành đến nay" tại mỗi kỳ có bảng đầy đủ.</p>
+  <div class="scroll"><table id="tbl_out"></table></div>
+</section>
+
+<section class="panel" id="p_src" role="tabpanel">
+  <h2>Độ phủ nguồn — 37 file tuần</h2>
+  <p class="sub">Nguyên tắc: không bịa "xanh". File không đọc được được đánh dấu rõ lý do.</p>
+  <div class="kpis" id="src_kpis"></div>
+  <div class="legend" style="margin:14px 0 4px">
+    <span><i style="background:var(--accent-soft);border:1px solid var(--accent)"></i>Đọc được (đầy đủ)</span>
+    <span><i style="background:var(--warn-soft);border:1px solid #e6cf9a"></i>Bị chặn (format / size / label)</span>
+  </div>
+  <div class="card" id="cov"></div>
+  <div class="callout warn">
+    <h3>Vì sao bị chặn &amp; cách gỡ tận gốc</h3>
+    <ul class="clean">
+      <li><b>format</b> — file <span class="mono">.xlsb</span> (Excel nhị phân) connector không đọc được. Toàn bộ T02–T06 và phần lớn T12/T01/T07 thuộc dạng này.</li>
+      <li><b>size</b> — file &gt; 100&nbsp;MB (ảnh nhúng làm phình file). Cả T07 và Aug W01 (343&nbsp;MB).</li>
+      <li><b>label</b> — file gắn nhãn mật Purview, Microsoft chặn trích xuất.</li>
+      <li><b>Gỡ tận gốc:</b> lưu file tuần dạng <span class="mono">.xlsx</span>, &lt;&nbsp;100&nbsp;MB (tách ảnh ra thư mục riêng), bỏ nhãn mật — hoặc giữ một bản chỉ có sheet TH không ảnh. Khi đó connector đọc toàn bộ và routine chạy tự động, không cần MacBook trong vòng lặp.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="panel" id="p_note" role="tabpanel">
+  <h2>Ghi chú KSNB</h2>
+  <div class="card">
+    <h3>Phát hiện chính (tuần T09·W01)</h3>
+    <ul class="clean">
+      <li><b>96% tồn đọng dồn vào 2 đơn vị:</b> SAVILLS CT06 (35) + CLB Tiện ích (40) = 75/78 đầu việc chưa hoàn thành. BQLVH 1 chỉ 3, còn lại bằng 0.</li>
+      <li><b>Đây là tồn tích lũy, không phải nghẽn luồng tuần.</b> Tỷ lệ đóng của lứa việc tuần T08·W04 đạt 128/129 = 99,2%. Vấn đề nằm ở lượng tồn cũ chưa dứt điểm ở 2 nhà thầu.</li>
+      <li><b>CLB Tiện ích biến động bất thường:</b> phát sinh 46 việc ở T08·W01 rồi tụt còn 1–5 các tuần sau, trong khi tồn giữ ở mức 40–51. Cần soát lại cách ghi nhận/đóng việc của đơn vị này.</li>
+      <li><b>SAVILLS CT06 là gánh nặng kinh niên:</b> phát sinh ~40–62 việc/tuần suốt kỳ, tồn luôn 33–52. Đơn vị có khối lượng lớn nhất và tồn dai dẳng nhất.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h3>Lưu ý dữ liệu &amp; đối soát</h3>
+    <ul class="clean">
+      <li>Mọi tổng cột trong 9 tuần đọc được đã <b>tính lại bằng code</b> và khớp 100% với ô TỔNG CỘNG của nguồn (✓ĐC).</li>
+      <li>Tên đơn vị CT21-22 đổi theo nhà thầu theo thời gian: <b>VISAHO</b> (T12) → <b>OSEN</b> (T01) → <b>không ghi tên</b> (T08–T09). Đã gộp về một dòng "BQL CT21-22".</li>
+      <li>Sheet tổng hợp đổi tên giữa các kỳ ("BC TỔNG" ở T12 vs "TH" ở T08–T09) và số bộ phận thay đổi (7–8 đơn vị). "Công viên Mùa hạ+Xuân" xuất hiện từ T01.</li>
+      <li>Chưa có site GitHub Pages để đối soát site-vs-source ở lần dựng đầu — đây <i>là</i> lần tạo site. Từ lần chạy sau, routine sẽ đối soát số trên site với nguồn.</li>
+      <li>Các tuần chỉ suy ra "đầu việc phát sinh" từ cột "tuần trước" của file kế tiếp (Dec W03, Jan W02, Aug W01, Aug W03): không có số hoàn thành/tồn riêng cho các tuần đó.</li>
+    </ul>
+  </div>
+</section>
+
+<div class="foot">
+  ECOPM Sitecheck — Điều hành · Nguồn: <span id="f_src"></span> · Bản ghi gốc là file .md/.json trên Drive; trang này là bề mặt đọc, cập nhật tại chỗ. · Chuẩn hiển thị: Ty Standard — Bright Professional.
+</div>
+</div>
+
+
+<script>
+const D = {"asof": "Tuần 01 tháng 09/2026", "generated": "12/09/2026", "source": "SharePoint · kienlt_omni_com_vn / ECOPM / ECOPM - SITECHECK / 1. Ecopm Sitecheck", "pages": "https://ttrng3.github.io/Ecopm-Sitecheck/", "depts": ["BQLVH 1", "BQLVH 2", "BQLVH 3", "BQL CT21-22", "BQL SAVILLS CT06", "CLB Tiện ích", "CV Hồ Thiên Nga", "Công viên Mùa hạ+Xuân"], "weeks": [{"id": "2025-12-W03", "lbl": "T12 · W03", "mode": "raised", "total": 142, "raised": {"BQLVH 1": 14, "BQLVH 2": 18, "BQLVH 3": 21, "BQL CT21-22": 19, "BQL SAVILLS CT06": 62, "CLB Tiện ích": 1, "CV Hồ Thiên Nga": 7}}, {"id": "2025-12-W04", "lbl": "T12 · W04", "mode": "full", "total": 154, "completed": 142, "outTotal": 12, "raised": {"BQLVH 1": 14, "BQLVH 2": 23, "BQLVH 3": 20, "BQL CT21-22": 28, "BQL SAVILLS CT06": 61, "CLB Tiện ích": 1, "CV Hồ Thiên Nga": 7}, "out": {"CLB Tiện ích": 12}}, {"id": "2026-01-W02", "lbl": "T01 · W02", "mode": "raised", "total": 131, "raised": {"BQLVH 1": 13, "Công viên Mùa hạ+Xuân": 0, "BQLVH 2": 18, "BQLVH 3": 23, "BQL CT21-22": 10, "BQL SAVILLS CT06": 58, "CLB Tiện ích": 2, "CV Hồ Thiên Nga": 7}}, {"id": "2026-01-W03", "lbl": "T01 · W03", "mode": "full", "total": 138, "completed": 138, "outTotal": 72, "raised": {"BQLVH 1": 14, "Công viên Mùa hạ+Xuân": 1, "BQLVH 2": 17, "BQLVH 3": 20, "BQL CT21-22": 20, "BQL SAVILLS CT06": 58, "CLB Tiện ích": 1, "CV Hồ Thiên Nga": 7}, "out": {"BQLVH 1": 1, "Công viên Mùa hạ+Xuân": 1, "BQLVH 3": 5, "BQL SAVILLS CT06": 52, "CLB Tiện ích": 13}}, {"id": "GAP", "lbl": "T02 – T07", "mode": "gap"}, {"id": "2026-08-W01", "lbl": "T08 · W01", "mode": "raised", "total": 173, "raised": {"BQLVH 1": 15, "Công viên Mùa hạ+Xuân": 3, "BQLVH 2": 15, "BQLVH 3": 19, "BQL CT21-22": 24, "BQL SAVILLS CT06": 44, "CLB Tiện ích": 46, "CV Hồ Thiên Nga": 7}}, {"id": "2026-08-W02", "lbl": "T08 · W02", "mode": "full", "total": 132, "completed": 135, "outTotal": 96, "raised": {"BQLVH 1": 15, "Công viên Mùa hạ+Xuân": 0, "BQLVH 2": 15, "BQLVH 3": 19, "BQL CT21-22": 26, "BQL SAVILLS CT06": 46, "CLB Tiện ích": 4, "CV Hồ Thiên Nga": 7}, "out": {"BQLVH 1": 6, "BQLVH 3": 5, "BQL SAVILLS CT06": 34, "CLB Tiện ích": 51}}, {"id": "2026-08-W03", "lbl": "T08 · W03", "mode": "raised", "total": 136, "raised": {"BQLVH 1": 14, "Công viên Mùa hạ+Xuân": 3, "BQLVH 2": 15, "BQLVH 3": 23, "BQL CT21-22": 27, "BQL SAVILLS CT06": 42, "CLB Tiện ích": 5, "CV Hồ Thiên Nga": 7}}, {"id": "2026-08-W04", "lbl": "T08 · W04", "mode": "full", "total": 129, "completed": 132, "outTotal": 87, "raised": {"BQLVH 1": 9, "Công viên Mùa hạ+Xuân": 8, "BQLVH 2": 15, "BQLVH 3": 23, "BQL CT21-22": 21, "BQL SAVILLS CT06": 43, "CLB Tiện ích": 3, "CV Hồ Thiên Nga": 7}, "out": {"BQLVH 1": 3, "BQL SAVILLS CT06": 33, "CLB Tiện ích": 51}}, {"id": "2026-09-W01", "lbl": "T09 · W01", "mode": "full", "total": 127, "completed": 128, "outTotal": 78, "raised": {"BQLVH 1": 19, "Công viên Mùa hạ+Xuân": 1, "BQLVH 2": 15, "BQLVH 3": 22, "BQL CT21-22": 22, "BQL SAVILLS CT06": 40, "CLB Tiện ích": 1, "CV Hồ Thiên Nga": 7}, "out": {"BQLVH 1": 3, "BQL SAVILLS CT06": 35, "CLB Tiện ích": 40}}], "coverage": [{"m": "THÁNG 12.25", "files": [["W01", "xlsb", "blocked", "format"], ["W02", "xlsb", "blocked", "format"], ["W03", "xlsx", "blocked", "label"], ["W04", "xlsx", "read", "full"]]}, {"m": "THÁNG 1", "files": [["W01", "xlsb", "blocked", "format"], ["W02", "xlsb", "blocked", "format+size"], ["W03", "xlsx", "read", "full"], ["W04", "xlsb", "blocked", "format"], ["W05", "xlsb", "blocked", "format"]]}, {"m": "THÁNG 2", "files": [["W01", "xlsb", "blocked", "format"], ["W04", "xlsb", "blocked", "format"]]}, {"m": "THÁNG 3", "files": [["W01", "xlsb", "blocked", "format"], ["W02", "xlsb", "blocked", "format"], ["W03", "xlsb", "blocked", "format"], ["W04", "xlsb", "blocked", "format"]]}, {"m": "THÁNG 4", "files": [["W01", "xlsb", "blocked", "format"], ["W02", "xlsb", "blocked", "format"], ["W03", "xlsb", "blocked", "format"], ["W04", "xlsb", "blocked", "format"]]}, {"m": "THÁNG 5", "files": [["W01", "xlsb", "blocked", "format"], ["W02", "xlsb", "blocked", "format"], ["W03", "xlsb", "blocked", "format"], ["W04", "xlsb", "blocked", "format"]]}, {"m": "THÁNG 6", "files": [["W01", "xlsb", "blocked", "format"], ["W02", "xlsb", "blocked", "format+size"], ["W03", "xlsb", "blocked", "format+size"], ["W04", "xlsb", "blocked", "format+size"]]}, {"m": "THÁNG 7", "files": [["W01", "xlsb", "blocked", "format"], ["W02", "xlsb", "blocked", "format"], ["W03", "xlsx", "blocked", "size"], ["W04", "xlsx", "blocked", "size"], ["W05", "xlsx", "blocked", "size"]]}, {"m": "THÁNG 8", "files": [["W01", "xlsx", "blocked", "size"], ["W02", "xlsx", "read", "full"], ["W03", "xlsx", "blocked", "label"], ["W04", "xlsx", "read", "full"]]}, {"m": "THÁNG 9", "files": [["W01", "xlsx", "read", "full"]]}]};
+const fmt = n => (n==null?"":(""+n));
+const sum = o => Object.values(o||{}).reduce((a,b)=>a+b,0);
+// meta
+m_asof.textContent=D.asof; m_gen.textContent=D.generated;
+m_pages.innerHTML='<a href="'+D.pages+'" style="color:var(--accent)">'+D.pages.replace('https://','')+'</a>';
+f_src.textContent=D.source;
+
+const full = D.weeks.filter(w=>w.mode==="full");
+const readW = D.weeks.filter(w=>w.mode!=="gap");
+const latest = full[full.length-1];
+const prev = full[full.length-2];
+
+// ---- tabs
+const TABS=[["p_over","Tổng quan"],["p_trend","Diễn biến"],["p_dept","Theo bộ phận"],["p_src","Nguồn dữ liệu"],["p_note","Ghi chú KSNB"]];
+const nav=document.getElementById("tabs");
+TABS.forEach(([id,lbl],i)=>{const b=document.createElement("button");b.textContent=lbl;b.setAttribute("role","tab");
+  b.setAttribute("aria-selected",i===0);b.onclick=()=>{document.querySelectorAll(".panel").forEach(p=>p.classList.remove("on"));
+  document.getElementById(id).classList.add("on");[...nav.children].forEach(c=>c.setAttribute("aria-selected","false"));b.setAttribute("aria-selected","true");};
+  nav.appendChild(b);});
+document.getElementById("p_over").classList.add("on");
+
+// ---- KPIs
+const openTot=latest.outTotal;
+const back2=(latest.out["BQL SAVILLS CT06"]||0)+(latest.out["CLB Tiện ích"]||0);
+const kdata=[
+ {v:latest.total,k:"Đầu việc phát sinh · tuần mới nhất",d:"kỳ trước: "+prev.total},
+ {v:"99,2%",k:"Tỷ lệ đóng lứa việc T08·W04",d:"128 / 129 hoàn thành"},
+ {v:openTot,k:"Tồn đọng đến nay",d:"kỳ trước: "+prev.outTotal,flag:openTot>=prev.outTotal},
+ {v:Math.round(back2/openTot*100)+"%",k:"Tồn dồn vào SAVILLS + CLB",d:back2+" / "+openTot+" đầu việc",flag:true},
+];
+kpis.innerHTML=kdata.map(x=>`<div class="kpi ${x.flag?'flag':''}"><div class="v num">${x.v}</div><div class="k">${x.k}</div><div class="d num">${x.d}</div></div>`).join("");
+
+backlog_call.innerHTML=`<h3>Điểm nóng KSNB — tồn đọng tập trung ở 2 nhà thầu</h3>
+<p style="color:var(--ink-soft);margin:6px 0 0">Tuần ${D.asof.toLowerCase()}: <b>${back2}/${openTot} (${Math.round(back2/openTot*100)}%)</b> đầu việc chưa hoàn thành nằm ở <b>SAVILLS CT06 (${latest.out["BQL SAVILLS CT06"]})</b> và <b>CLB Tiện ích (${latest.out["CLB Tiện ích"]})</b>. Luồng việc tuần vẫn đóng tốt (99,2%) — đây là tồn tích lũy cần dứt điểm, không phải nghẽn tuần.</p>`;
+
+// ---- latest by-dept bars
+(function(){
+ const rows=D.depts.map(dp=>({dp,r:latest.raised[dp]||0,o:(latest.out&&latest.out[dp])||0}))
+   .filter(x=>x.r>0||x.o>0).sort((a,b)=>(b.r+b.o)-(a.r+a.o));
+ const mx=Math.max(...rows.map(x=>Math.max(x.r,x.o)),1);
+ latest_bars.innerHTML=rows.map(x=>{
+   const wr=Math.round(x.r/mx*260),wo=Math.round(x.o/mx*260);
+   return `<div style="margin:9px 0"><div class="barwrap"><span class="lab">${x.dp}</span>
+     <span class="bar" style="width:${wr}px"></span><span class="val num">${x.r}</span></div>
+     ${x.o>0?`<div class="barwrap"><span class="lab" style="color:var(--flag)">↳ tồn</span>
+     <span class="bar f" style="width:${wo}px"></span><span class="val num" style="color:var(--flag)">${x.o}</span></div>`:``}</div>`;
+ }).join("");
+})();
+
+// ---- trend raised (bar chart w/ gap)
+(function(){
+ const W=readW, n=W.length, gapIdx=D.weeks.findIndex(w=>w.mode==="gap");
+ const H=190,padL=34,padB=44,padT=12,plotW=Math.max(560,n*62),plotH=H-padB-padT;
+ const mx=Math.max(...W.map(w=>w.total));
+ const step=plotW/(n); const bw=Math.min(34,step*0.6);
+ let bars="",labs="",grid="";
+ [0,50,100,150].forEach(g=>{const y=padT+plotH-g/mx*plotH; grid+=`<line x1="${padL}" y1="${y.toFixed(1)}" x2="${padL+plotW}" y2="${y.toFixed(1)}" stroke="var(--line)"/><text x="${padL-6}" y="${(y+3).toFixed(1)}" text-anchor="end" font-size="10" fill="var(--muted)">${g}</text>`;});
+ W.forEach((w,i)=>{const cx=padL+step*i+step/2;const h=w.total/mx*plotH;const y=padT+plotH-h;
+   bars+=`<rect x="${(cx-bw/2).toFixed(1)}" y="${y.toFixed(1)}" width="${bw}" height="${h.toFixed(1)}" rx="3" fill="${w.mode==='full'?'var(--accent)':'#a9cbbb'}"/>`;
+   bars+=`<text x="${cx.toFixed(1)}" y="${(y-4).toFixed(1)}" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--ink-soft)">${w.total}</text>`;
+   labs+=`<text x="${cx.toFixed(1)}" y="${(padT+plotH+14).toFixed(1)}" text-anchor="middle" font-size="9.5" fill="var(--muted)">${w.lbl.split(' · ')[0]}</text>`
+        +`<text x="${cx.toFixed(1)}" y="${(padT+plotH+25).toFixed(1)}" text-anchor="middle" font-size="9.5" fill="var(--muted)">${w.lbl.split(' · ')[1]||''}</text>`;
+ });
+ // gap shading
+ let gapRect="";
+ if(gapIdx>0){const gi=W.findIndex(w=>w.mode==="gap");const cx=padL+step*gi;
+   gapRect=`<rect x="${(cx+2).toFixed(1)}" y="${padT}" width="${(step-4).toFixed(1)}" height="${plotH}" fill="url(#hatch)" stroke="#e6cf9a" stroke-dasharray="3 3"/>`;
+ }
+ trend_raised.innerHTML=`<div class="scroll" style="border:0"><svg viewBox="0 0 ${padL+plotW+10} ${H}" width="${padL+plotW+10}">
+  <defs><pattern id="hatch" width="6" height="6" patternTransform="rotate(45)" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="var(--warn-soft)"/><line x1="0" y1="0" x2="0" y2="6" stroke="#e6cf9a" stroke-width="1"/></pattern></defs>
+  ${grid}${gapRect}${bars}${labs}
+  <text x="${padL+plotW/2}" y="${H-4}" text-anchor="middle" font-size="9.5" fill="var(--muted)"></text>
+ </svg></div>
+ <p class="sub" style="margin-top:4px">Cột đậm = tuần có bảng đầy đủ · cột nhạt = chỉ suy ra số phát sinh · vùng gạch = T02–T07 không có nguồn.</p>`;
+})();
+
+// ---- trend outstanding (stacked)
+(function(){
+ const W=full;const H=180,padL=30,padB=40,padT=12,plotW=Math.max(360,W.length*86),plotH=H-padB-padT;
+ const mx=Math.max(...W.map(w=>w.outTotal));const step=plotW/W.length;const bw=Math.min(46,step*0.55);
+ let g="",bars="",labs="";
+ [0,30,60,90].forEach(v=>{const y=padT+plotH-v/mx*plotH;g+=`<line x1="${padL}" y1="${y.toFixed(1)}" x2="${padL+plotW}" y2="${y.toFixed(1)}" stroke="var(--line)"/><text x="${padL-5}" y="${(y+3).toFixed(1)}" text-anchor="end" font-size="10" fill="var(--muted)">${v}</text>`;});
+ W.forEach((w,i)=>{const cx=padL+step*i+step/2;const sav=w.out["BQL SAVILLS CT06"]||0,clb=w.out["CLB Tiện ích"]||0,oth=w.outTotal-sav-clb;
+   let yb=padT+plotH;const segs=[[sav,'var(--flag)'],[clb,'#e08600'],[oth,'var(--muted)']];
+   segs.forEach(([val,col])=>{const h=val/mx*plotH;yb-=h;bars+=`<rect x="${(cx-bw/2).toFixed(1)}" y="${yb.toFixed(1)}" width="${bw}" height="${h.toFixed(1)}" fill="${col}"/>`;});
+   bars+=`<text x="${cx.toFixed(1)}" y="${(padT+plotH-w.outTotal/mx*plotH-4).toFixed(1)}" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--ink-soft)">${w.outTotal}</text>`;
+   labs+=`<text x="${cx.toFixed(1)}" y="${(padT+plotH+14).toFixed(1)}" text-anchor="middle" font-size="9.5" fill="var(--muted)">${w.lbl}</text>`;
+ });
+ trend_out.innerHTML=`<div class="scroll" style="border:0"><svg viewBox="0 0 ${padL+plotW+10} ${H}" width="${padL+plotW+10}">${g}${bars}${labs}</svg></div>`;
+})();
+
+// ---- dept table raised
+(function(){
+ const W=readW;
+ let h="<thead><tr><th>Bộ phận</th>"+W.map(w=>`<th>${w.lbl.replace(' · ','<br>')}</th>`).join("")+"</tr></thead><tbody>";
+ D.depts.forEach(dp=>{h+=`<tr><td>${dp}</td>`+W.map(w=>{const v=w.raised?w.raised[dp]:undefined;return `<td class="num">${v==null?'·':v}</td>`;}).join("")+"</tr>";});
+ h+=`<tr class="tot"><td>TỔNG CỘNG</td>`+W.map(w=>`<td class="num">${w.total??'·'}</td>`).join("")+"</tr></tbody>";
+ tbl_raised.innerHTML=h;
+})();
+// ---- dept table outstanding
+(function(){
+ const W=full;
+ let h="<thead><tr><th>Bộ phận</th>"+W.map(w=>`<th>${w.lbl.replace(' · ','<br>')}</th>`).join("")+"</tr></thead><tbody>";
+ D.depts.forEach(dp=>{h+=`<tr><td>${dp}</td>`+W.map(w=>{const v=(w.out&&w.out[dp])||0;return `<td class="num ${v>0?'flagcell':''}">${v||'–'}</td>`;}).join("")+"</tr>";});
+ h+=`<tr class="tot"><td>TỔNG TỒN</td>`+W.map(w=>`<td class="num">${w.outTotal}</td>`).join("")+"</tr></tbody>";
+ tbl_out.innerHTML=h;
+})();
+
+// ---- source coverage
+(function(){
+ let nread=0,ntot=0;
+ D.coverage.forEach(m=>m.files.forEach(f=>{ntot++;if(f[2]==="read")nread++;}));
+ src_kpis.innerHTML=[
+  {v:ntot,k:"Tổng số file tuần"},
+  {v:nread,k:"Đọc được đầy đủ",},
+  {v:ntot-nread,k:"Bị chặn (format/size/label)"},
+  {v:"T02–T07",k:"Khoảng không có dữ liệu",flag:true},
+ ].map(x=>`<div class="kpi ${x.flag?'flag':''}"><div class="v num">${x.v}</div><div class="k">${x.k}</div></div>`).join("");
+ cov.innerHTML=D.coverage.map(m=>`<div class="cov"><div style="font-weight:600;font-size:12.5px">${m.m}</div>
+   <div class="cells">${m.files.map(f=>{const ok=f[2]==="read";return `<span class="cell ${ok?'read':'blocked'}" title="${f[3]}">${f[0]} · ${f[1]}${ok?'':' · '+f[3]}</span>`;}).join("")}</div></div>`).join("");
+})();
+</script>
+
+</body>
+</html>
