@@ -1,0 +1,1292 @@
+{
+ "depts": [
+  "BQLVH 1",
+  "BQLVH 2",
+  "BQLVH 3",
+  "BQL CT21-22",
+  "BQL SAVILLS CT06",
+  "CLB Tiện ích",
+  "CV Hồ Thiên Nga",
+  "Công viên Mùa hạ+Xuân"
+ ],
+ "wk": [
+  {
+   "week": "Dec W01 ’25",
+   "id": "2025-12-W01",
+   "mode": "full",
+   "total": 97,
+   "completed": 89,
+   "outTotal": 15,
+   "raised": {
+    "BQLVH 1": 17,
+    "BQLVH 2": 15,
+    "BQLVH 3": 24,
+    "BQL CT21-22": 14,
+    "BQL SAVILLS CT06": 18,
+    "CLB Tiện ích": 1,
+    "CV Hồ Thiên Nga": 7,
+    "Công viên Mùa hạ+Xuân": 1
+   },
+   "out": {
+    "BQLVH 1": 3,
+    "CLB Tiện ích": 11,
+    "Công viên Mùa hạ+Xuân": 1
+   },
+   "src": "2025-12-W01_Sitecheck.xlsb",
+   "note": "Đọc trực tiếp từ file nguồn (OneDrive export 12/09/2026). Sheet 'TH'/'BC TỔNG', tính lại bằng code."
+  },
+  {
+   "week": "Dec W02 ’25",
+   "id": "2025-12-W02",
+   "mode": "full",
+   "total": 144,
+   "completed": 97,
+   "outTotal": 11,
+   "raised": {
+    "BQLVH 1": 16,
+    "BQLVH 2": 18,
+    "BQLVH 3": 24,
+    "BQL CT21-22": 18,
+    "BQL SAVILLS CT06": 58,
+    "CLB Tiện ích": 1,
+    "CV Hồ Thiên Nga": 7,
+    "Công viên Mùa hạ+Xuân": 2
+   },
+   "out": {
+    "CLB Tiện ích": 11
+   },
+   "src": "2025-12-W02_Sitecheck.xlsb",
+   "note": "Đọc trực tiếp từ file nguồn (OneDrive export 12/09/2026). Sheet 'TH'/'BC TỔNG', tính lại bằng code."
+  },
+  {
+   "week": "Dec W03 ’25",
+   "id": "2025-12-W03",
+   "mode": "full",
+   "total": 143,
+   "completed": 144,
+   "outTotal": 13,
+   "raised": {
+    "BQLVH 1": 14,
+    "BQLVH 2": 18,
+    "BQLVH 3": 21,
+    "BQL CT21-22": 19,
+    "BQL SAVILLS CT06": 62,
+    "CLB Tiện ích": 2,
+    "CV Hồ Thiên Nga": 7,
+    "Công viên Mùa hạ+Xuân": 0
+   },
+   "out": {
+    "CLB Tiện ích": 13
+   },
+   "src": "2025-12-W03_Sitecheck.xlsx",
+   "note": "Đọc trực tiếp từ file nguồn (OneDrive export 12/09/2026). Sheet 'TH'/'BC TỔNG', tính lại bằng code."
+  },
+  {
+   "week": "Dec W04 ’25",
+   "id": "2025-12-W04",
+   "mode": "full",
+   "total": 154,
+   "completed": 142,
+   "outTotal": 12,
+   "raised": {
+    "BQLVH 1": 14,
+    "BQLVH 2": 23,
+    "BQLVH 3": 20,
+    "BQL CT21-22": 28,
+    "BQL SAVILLS CT06": 61,
+    "CLB Tiện ích": 1,
+    "CV Hồ Thiên Nga": 7
+   },
+   "out": {
+    "CLB Tiện ích": 12
+   },
+   "src": "2025-12-W04_Sitecheck.xlsx",
+   "note": "Đọc trực tiếp từ file nguồn (OneDrive export 12/09/2026). Sheet 'TH'/'BC TỔNG', tính lại bằng code."
+  },
+  {
+   "week": "Jan W01 ’26",
+   "id": "2026-01-W01",
+   "mode": "full",
+   "total": 139,
+   "completed": 155,
+   "outTotal": 85,
+   "raised": {
+    "BQLVH 1": 16,
+    "BQLVH 2": 18,
+    "BQLVH 3": 19,
+    "BQL CT21-22": 19,
+    "BQL SAVILLS CT06": 58,
+    "CLB Tiện ích": 2,
+    "CV Hồ Thiên Nga": 7
+   },
+   "out": {
+    "BQLVH 1": 9,
+    "BQLVH 3": 5,
+    "BQL SAVILLS CT06": 52,
+    "CLB Tiện ích": 12,
+    "CV Hồ Thiên Nga": 7
+   },
+   "src": "2026-01-W01_Sitecheck.xlsb",
+   "note": "Đọc trực tiếp từ file nguồn (OneDrive export 12/09/2026). Sheet 'TH'/'BC TỔNG', tính lại bằng code."
+  },
+  {
+   "week": "Jan W02 ’26",
+   "id": "2026-01-W02",
+   "mode": "full",
+   "total": 136,
+   "completed": 79,
+   "outTotal": 65,
+   "raised": {
+    "BQLVH 1": 15,
+    "BQLVH 2": 20,
+    "BQLVH 3": 23,
+    "BQL CT21-22": 10,
+    "BQL SAVILLS CT06": 58,
+    "CLB Tiện ích": 2,
+    "CV Hồ Thiên Nga": 7,
+    "Công viên Mùa hạ+Xuân": 1
+   },
+   "out": {
+    "BQLVH 1": 1,
+    "BQL SAVILLS CT06": 50,
+    "CLB Tiện ích": 13,
+    "Công viên Mùa hạ+Xuân": 1
+   },
+   "src": "2026-01-W02_Sitecheck.xlsb",
+   "note": "Đọc trực tiếp từ file nguồn (OneDrive export 12/09/2026). Sheet 'TH'/'BC TỔNG', tính lại bằng code."
+  },
+  {
+   "week": "Jan W03 ’26",
+   "id": "2026-01-W03",
+   "mode": "full",
+   "total": 138,
+   "completed": 138,
+   "outTotal": 72,
+   "raised": {
+    "BQLVH 1": 14,
+    "BQLVH 2": 17,
+    "BQLVH 3": 20,
+    "BQL CT21-22": 20,
+    "BQL SAVILLS CT06": 58,
+    "CLB Tiện ích": 1,
+    "CV Hồ Thiên Nga": 7,
+    "Công viên Mùa hạ+Xuân": 1
+   },
+   "out": {
+    "BQLVH 1": 1,
+    "BQLVH 3": 5,
+    "BQL SAVILLS CT06": 52,
+    "CLB Tiện ích": 13,
+    "Công viên Mùa hạ+Xuân": 1
+   },
+   "src": "2026-01-W03_Sitecheck.xlsx",
+   "note": "Đọc trực tiếp từ file nguồn (OneDrive export 12/09/2026). Sheet 'TH'/'BC TỔNG', tính lại bằng code."
+  },
+  {
+   "week": "Jan W04 ’26",
+   "id": "2026-01-W04",
+   "mode": "full",
+   "total": 146,
+   "completed": 143,
+   "outTotal": 75,
+   "raised": {
+    "BQLVH 1": 19,
+    "BQLVH 2": 17,
+    "BQLVH 3": 21,
+    "BQL CT21-22": 19,
+    "BQL SAVILLS CT06": 62,
+    "CLB Tiện ích": 1,
+    "CV Hồ Thiên Nga": 7,
+    "Công viên Mùa hạ+Xuân": 0
+   },
+   "out": {
+    "BQLVH 1": 9,
+    "BQLVH 3": 5,
+    "BQL SAVILLS CT06": 48,
+    "CLB Tiện ích": 13
+   },
+   "src": "2026-01-W04_Sitecheck.xlsb",
+   "note": "Đọc trực tiếp từ file nguồn (OneDrive export 12/09/2026). Sheet 'TH'/'BC TỔNG', tính lại bằng code."
+  },
+  {
+   "week": "Jan W05 ’26",
+   "id": "2026-01-W05",
+   "mode": "full",
+   "total": 148,
+   "completed": 148,
+   "outTotal": 58,
+   "raised": {
+    "BQLVH 1": 17,
+    "BQLVH 2": 18,
+    "BQLVH 3": 22,
+    "BQL CT21-22": 26,
+    "BQL SAVILLS CT06": 56,
+    "CLB Tiện ích": 2,
+    "CV Hồ Thiên Nga": 7,
+    "Công viên Mùa hạ+Xuân": 0
+   },
+   "out": {
+    "BQL SAVILLS CT06": 46,
+    "CLB Tiện ích": 12
+   },
+   "src": "2026-01-W05_Sitecheck.xlsb",
+   "note": "Đọc trực tiếp từ file nguồn (OneDrive export 12/09/2026). Sheet 'TH'/'BC TỔNG', tính lại bằng code."
+  },
+  {
+   "week": "Feb W01 ’26",
+   "id": "2026-02-W01",
+   "mode": "full",
+   "total": 144,
+   "completed": 148,
+   "outTotal": 54,
+   "raised": {
+    "BQLVH 1": 22,
+    "BQLVH 2": 20,
+    "BQLVH 3": 20,
+    "BQL CT21-22": 20,
+    "BQL SAVILLS CT06": 54,
+    "CLB Tiện ích": 1,
+    "CV Hồ Thiên Nga": 7
+   },
+   "out": {
+    "BQL SAVILLS CT06": 42,
+    "CLB Tiện ích": 12
+   },
+   "src": "2026-02-W01_Sitecheck.xlsb",
+   "note": "Đọc trực tiếp từ file nguồn (OneDrive export 12/09/2026). Sheet 'TH'/'BC TỔNG', tính lại bằng code."
+  },
+  {
+   "week": "Feb W04 ’26",
+   "id": "2026-02-W04",
+   "mode": "full",
+   "total": 132,
+   "completed": 153,
+   "outTotal": 55,
+   "raised": {
+    "BQLVH 1": 11,
+    "BQLVH 2": 19,
+    "BQLVH 3": 18,
+    "BQL CT21-22": 26,
+    "BQL SAVILLS CT06": 50,
+    "CLB Tiện ích": 1,
+    "CV Hồ Thiên Nga": 7
+   },
+   "out": {
+    "BQL SAVILLS CT06": 42,
+    "CLB Tiện ích": 13
+   },
+   "src": "2026-02-W04_Sitecheck.xlsb",
+   "note": "Đọc trực tiếp từ file nguồn (OneDrive export 12/09/2026). Sheet 'TH'/'BC TỔNG', tính lại bằng code."
+  },
+  {
+   "week": "Mar W01 ’26",
+   "id": "2026-03-W01",
+   "mode": "full",
+   "total": 140,
+   "completed": 95,
+   "outTotal": 56,
+   "raised": {
+    "BQLVH 1": 12,
+    "BQLVH 2": 17,
+    "BQLVH 3": 23,
+    "BQL CT21-22": 26,
+    "BQL SAVILLS CT06": 50,
+    "CLB Tiện ích": 3,
+    "CV Hồ Thiên Nga": 7,
+    "Công viên Mùa hạ+Xuân": 2
+   },
+   "out": {
+    "BQL SAVILLS CT06": 42,
+    "CLB Tiện ích": 12,
+    "Công viên Mùa hạ+Xuân": 2
+   },
+   "src": "2026-03-W01_Sitecheck.xlsb",
+   "note": "Đọc trực tiếp từ file nguồn (OneDrive export 12/09/2026). Sheet 'TH'/'BC TỔNG', tính lại bằng code."
+  },
+  {
+   "week": "Mar W02 ’26",
+   "id": "2026-03-W02",
+   "mode": "full",
+   "total": 146,
+   "completed": 139,
+   "outTotal": 54,
+   "raised": {
+    "BQLVH 1": 17,
+    "BQLVH 2": 24,
+    "BQLVH 3": 22,
+    "BQL CT21-22": 26,
+    "BQL SAVILLS CT06": 49,
+    "CLB Tiện ích": 1,
+    "CV Hồ Thiên Nga": 7,
+    "Công viên Mùa hạ+Xuân": 0
+   },
+   "out": {
+    "BQL SAVILLS CT06": 42,
+    "CLB Tiện ích": 12
+   },
+   "src": "2026-03-W02_Sitecheck.xlsb",
+   "note": "Đọc trực tiếp từ file nguồn (OneDrive export 12/09/2026). Sheet 'TH'/'BC TỔNG', tính lại bằng code."
+  },
+  {
+   "week": "Mar W03 ’26",
+   "id": "2026-03-W03",
+   "mode": "full",
+   "total": 144,
+   "completed": 146,
+   "outTotal": 49,
+   "raised": {
+    "BQLVH 1": 16,
+    "BQLVH 2": 19,
+    "BQLVH 3": 20,
+    "BQL CT21-22": 31,
+    "BQL SAVILLS CT06": 50,
+    "CLB Tiện ích": 1,
+    "CV Hồ Thiên Nga": 7
+   },
+   "out": {
+    "BQL SAVILLS CT06": 37,
+    "CLB Tiện ích": 12
+   },
+   "src": "2026-03-W03_Sitecheck.xlsb",
+   "note": "Đọc trực tiếp từ file nguồn (OneDrive export 12/09/2026). Sheet 'TH'/'BC TỔNG', tính lại bằng code."
+  },
+  {
+   "week": "Mar W04 ’26",
+   "id": "2026-03-W04",
+   "mode": "full",
+   "total": 136,
+   "completed": 144,
+   "outTotal": 53,
+   "raised": {
+    "BQLVH 1": 17,
+    "BQLVH 2": 20,
+    "BQLVH 3": 17,
+    "BQL CT21-22": 23,
+    "BQL SAVILLS CT06": 50,
+    "CLB Tiện ích": 2,
+    "CV Hồ Thiên Nga": 7
+   },
+   "out": {
+    "BQL SAVILLS CT06": 40,
+    "CLB Tiện ích": 13
+   },
+   "src": "2026-03-W04_Sitecheck.xlsb",
+   "note": "Đọc trực tiếp từ file nguồn (OneDrive export 12/09/2026). Sheet 'TH'/'BC TỔNG', tính lại bằng code."
+  },
+  {
+   "week": "Apr W01 ’26",
+   "id": "2026-04-W01",
+   "mode": "full",
+   "total": 139,
+   "completed": 133,
+   "outTotal": 47,
+   "raised": {
+    "BQLVH 1": 19,
+    "BQLVH 2": 20,
+    "BQLVH 3": 19,
+    "BQL CT21-22": 25,
+    "BQL SAVILLS CT06": 48,
+    "CLB Tiện ích": 1,
+    "CV Hồ Thiên Nga": 7
+   },
+   "out": {
+    "BQLVH 1": 1,
+    "BQL SAVILLS CT06": 32,
+    "CLB Tiện ích": 14
+   },
+   "src": "2026-04-W01_Sitecheck.xlsb",
+   "note": "Đọc trực tiếp từ file nguồn (OneDrive export 12/09/2026). Sheet 'TH'/'BC TỔNG', tính lại bằng code."
+  },
+  {
+   "week": "Apr W02 ’26",
+   "id": "2026-04-W02",
+   "mode": "full",
+   "total": 133,
+   "completed": 137,
+   "outTotal": 44,
+   "raised": {
+    "BQLVH 1": 14,
+    "BQLVH 2": 15,
+    "BQLVH 3": 22,
+    "BQL CT21-22": 35,
+    "BQL SAVILLS CT06": 36,
+    "CLB Tiện ích": 3,
+    "CV Hồ Thiên Nga": 7,
+    "Công viên Mùa hạ+Xuân": 1
+   },
+   "out": {
+    "BQL SAVILLS CT06": 29,
+    "CLB Tiện ích": 14,
+    "Công viên Mùa hạ+Xuân": 1
+   },
+   "src": "2026-04-W02_Sitecheck.xlsb",
+   "note": "Đọc trực tiếp từ file nguồn (OneDrive export 12/09/2026). Sheet 'TH'/'BC TỔNG', tính lại bằng code."
+  },
+  {
+   "week": "Apr W03 ’26",
+   "id": "2026-04-W03",
+   "mode": "full",
+   "total": 135,
+   "completed": 125,
+   "outTotal": 43,
+   "raised": {
+    "BQLVH 1": 12,
+    "BQLVH 2": 15,
+    "BQLVH 3": 22,
+    "BQL CT21-22": 31,
+    "BQL SAVILLS CT06": 35,
+    "CLB Tiện ích": 11,
+    "CV Hồ Thiên Nga": 7,
+    "Công viên Mùa hạ+Xuân": 2
+   },
+   "out": {
+    "BQL SAVILLS CT06": 29,
+    "CLB Tiện ích": 13,
+    "Công viên Mùa hạ+Xuân": 1
+   },
+   "src": "2026-04-W03_Sitecheck.xlsb",
+   "note": "Đọc trực tiếp từ file nguồn (OneDrive export 12/09/2026). Sheet 'TH'/'BC TỔNG', tính lại bằng code."
+  },
+  {
+   "week": "Apr W04 ’26",
+   "id": "2026-04-W04",
+   "mode": "full",
+   "total": 133,
+   "completed": 139,
+   "outTotal": 46,
+   "raised": {
+    "BQLVH 1": 15,
+    "BQLVH 2": 20,
+    "BQLVH 3": 23,
+    "BQL CT21-22": 27,
+    "BQL SAVILLS CT06": 36,
+    "CLB Tiện ích": 4,
+    "CV Hồ Thiên Nga": 7,
+    "Công viên Mùa hạ+Xuân": 1
+   },
+   "out": {
+    "BQLVH 1": 1,
+    "BQL SAVILLS CT06": 29,
+    "CLB Tiện ích": 16
+   },
+   "src": "2026-04-W04_Sitecheck.xlsb",
+   "note": "Đọc trực tiếp từ file nguồn (OneDrive export 12/09/2026). Sheet 'TH'/'BC TỔNG', tính lại bằng code."
+  },
+  {
+   "week": "May W01 ’26",
+   "id": "2026-05-W01",
+   "mode": "full",
+   "total": 114,
+   "completed": 109,
+   "outTotal": 45,
+   "raised": {
+    "BQLVH 1": 15,
+    "BQLVH 3": 20,
+    "BQL CT21-22": 28,
+    "BQL SAVILLS CT06": 36,
+    "CLB Tiện ích": 8,
+    "CV Hồ Thiên Nga": 7,
+    "Công viên Mùa hạ+Xuân": 0
+   },
+   "out": {
+    "BQL SAVILLS CT06": 29,
+    "CLB Tiện ích": 15,
+    "Công viên Mùa hạ+Xuân": 1
+   },
+   "src": "2026-05-W01_Sitecheck.xlsb",
+   "note": "Đọc trực tiếp từ file nguồn (OneDrive export 12/09/2026). Sheet 'TH'/'BC TỔNG', tính lại bằng code."
+  },
+  {
+   "week": "May W02 ’26",
+   "id": "2026-05-W02",
+   "mode": "full",
+   "total": 127,
+   "completed": 123,
+   "outTotal": 49,
+   "raised": {
+    "BQLVH 1": 14,
+    "BQLVH 2": 16,
+    "BQLVH 3": 23,
+    "BQL CT21-22": 29,
+    "BQL SAVILLS CT06": 36,
+    "CLB Tiện ích": 1,
+    "CV Hồ Thiên Nga": 7,
+    "Công viên Mùa hạ+Xuân": 1
+   },
+   "out": {
+    "BQLVH 1": 8,
+    "BQL SAVILLS CT06": 28,
+    "CLB Tiện ích": 12,
+    "Công viên Mùa hạ+Xuân": 1
+   },
+   "src": "2026-05-W02_Sitecheck.xlsb",
+   "note": "Đọc trực tiếp từ file nguồn (OneDrive export 12/09/2026). Sheet 'TH'/'BC TỔNG', tính lại bằng code."
+  },
+  {
+   "week": "May W03 ’26",
+   "id": "2026-05-W03",
+   "mode": "full",
+   "total": 141,
+   "completed": 127,
+   "outTotal": 60,
+   "raised": {
+    "BQLVH 1": 16,
+    "BQLVH 2": 29,
+    "BQLVH 3": 23,
+    "BQL CT21-22": 25,
+    "BQL SAVILLS CT06": 38,
+    "CLB Tiện ích": 1,
+    "CV Hồ Thiên Nga": 7,
+    "Công viên Mùa hạ+Xuân": 2
+   },
+   "out": {
+    "BQLVH 1": 11,
+    "BQLVH 3": 5,
+    "BQL SAVILLS CT06": 29,
+    "CLB Tiện ích": 13,
+    "Công viên Mùa hạ+Xuân": 2
+   },
+   "src": "2026-05-W03_Sitecheck.xlsb",
+   "note": "Đọc trực tiếp từ file nguồn (OneDrive export 12/09/2026). Sheet 'TH'/'BC TỔNG', tính lại bằng code."
+  },
+  {
+   "week": "May W04 ’26",
+   "id": "2026-05-W04",
+   "mode": "full",
+   "total": 112,
+   "completed": 112,
+   "outTotal": 61,
+   "raised": {
+    "BQLVH 1": 17,
+    "BQLVH 3": 23,
+    "BQL CT21-22": 28,
+    "BQL SAVILLS CT06": 36,
+    "CLB Tiện ích": 1,
+    "CV Hồ Thiên Nga": 7,
+    "Công viên Mùa hạ+Xuân": 0
+   },
+   "out": {
+    "BQLVH 1": 11,
+    "BQL SAVILLS CT06": 28,
+    "CLB Tiện ích": 13,
+    "CV Hồ Thiên Nga": 7,
+    "Công viên Mùa hạ+Xuân": 2
+   },
+   "src": "2026-05-W04_Sitecheck.xlsb",
+   "note": "Đọc trực tiếp từ file nguồn (OneDrive export 12/09/2026). Sheet 'TH'/'BC TỔNG', tính lại bằng code."
+  },
+  {
+   "week": "Jun W01 ’26",
+   "id": "2026-06-W01",
+   "mode": "full",
+   "total": 132,
+   "completed": 142,
+   "outTotal": 54,
+   "raised": {
+    "BQLVH 1": 15,
+    "BQLVH 2": 15,
+    "BQLVH 3": 23,
+    "BQL CT21-22": 28,
+    "BQL SAVILLS CT06": 39,
+    "CLB Tiện ích": 5,
+    "CV Hồ Thiên Nga": 7,
+    "Công viên Mùa hạ+Xuân": 0
+   },
+   "out": {
+    "BQLVH 1": 7,
+    "BQL SAVILLS CT06": 29,
+    "CLB Tiện ích": 18
+   },
+   "src": "2026-06-W01_Sitecheck.xlsb",
+   "note": "Đọc trực tiếp từ file nguồn (OneDrive export 12/09/2026). Sheet 'TH'/'BC TỔNG', tính lại bằng code."
+  },
+  {
+   "week": "Jun W02 ’26",
+   "id": "2026-06-W02",
+   "mode": "full",
+   "total": 142,
+   "completed": 128,
+   "outTotal": 47,
+   "raised": {
+    "BQLVH 1": 19,
+    "BQLVH 2": 20,
+    "BQLVH 3": 23,
+    "BQL CT21-22": 30,
+    "BQL SAVILLS CT06": 41,
+    "CLB Tiện ích": 1,
+    "CV Hồ Thiên Nga": 7,
+    "Công viên Mùa hạ+Xuân": 1
+   },
+   "out": {
+    "BQLVH 1": 3,
+    "BQL SAVILLS CT06": 30,
+    "CLB Tiện ích": 14
+   },
+   "src": "2026-06-W02_Sitecheck.xlsb",
+   "note": "Đọc trực tiếp từ file nguồn (OneDrive export 12/09/2026). Sheet 'TH'/'BC TỔNG', tính lại bằng code."
+  },
+  {
+   "week": "Jun W03 ’26",
+   "id": "2026-06-W03",
+   "mode": "full",
+   "total": 120,
+   "completed": 137,
+   "outTotal": 52,
+   "raised": {
+    "BQLVH 1": 11,
+    "BQLVH 2": 15,
+    "BQLVH 3": 22,
+    "BQL CT21-22": 21,
+    "BQL SAVILLS CT06": 39,
+    "CLB Tiện ích": 1,
+    "CV Hồ Thiên Nga": 7,
+    "Công viên Mùa hạ+Xuân": 4
+   },
+   "out": {
+    "BQLVH 1": 8,
+    "BQL SAVILLS CT06": 29,
+    "CLB Tiện ích": 14,
+    "Công viên Mùa hạ+Xuân": 1
+   },
+   "src": "2026-06-W03_Sitecheck.xlsb",
+   "note": "Đọc trực tiếp từ file nguồn (OneDrive export 12/09/2026). Sheet 'TH'/'BC TỔNG', tính lại bằng code."
+  },
+  {
+   "week": "Jun W04 ’26",
+   "id": "2026-06-W04",
+   "mode": "full",
+   "total": 126,
+   "completed": 120,
+   "outTotal": 55,
+   "raised": {
+    "BQLVH 1": 19,
+    "BQLVH 2": 15,
+    "BQLVH 3": 23,
+    "BQL CT21-22": 23,
+    "BQL SAVILLS CT06": 37,
+    "CLB Tiện ích": 1,
+    "CV Hồ Thiên Nga": 7,
+    "Công viên Mùa hạ+Xuân": 1
+   },
+   "out": {
+    "BQLVH 1": 9,
+    "BQL SAVILLS CT06": 29,
+    "CLB Tiện ích": 14,
+    "Công viên Mùa hạ+Xuân": 3
+   },
+   "src": "2026-06-W04_Sitecheck.xlsb",
+   "note": "Đọc trực tiếp từ file nguồn (OneDrive export 12/09/2026). Sheet 'TH'/'BC TỔNG', tính lại bằng code."
+  },
+  {
+   "week": "Jul W01 ’26",
+   "id": "2026-07-W01",
+   "mode": "full",
+   "total": 136,
+   "completed": 125,
+   "outTotal": 62,
+   "raised": {
+    "BQLVH 1": 18,
+    "BQLVH 2": 15,
+    "BQLVH 3": 22,
+    "BQL CT21-22": 28,
+    "BQL SAVILLS CT06": 41,
+    "CLB Tiện ích": 1,
+    "CV Hồ Thiên Nga": 7,
+    "Công viên Mùa hạ+Xuân": 4
+   },
+   "out": {
+    "BQLVH 1": 11,
+    "BQLVH 3": 1,
+    "BQL SAVILLS CT06": 33,
+    "CLB Tiện ích": 14,
+    "Công viên Mùa hạ+Xuân": 3
+   },
+   "src": "2026-07-W01_Sitecheck.xlsb",
+   "note": "Đọc trực tiếp từ file nguồn (OneDrive export 12/09/2026). Sheet 'TH'/'BC TỔNG', tính lại bằng code."
+  },
+  {
+   "week": "Jul W02 ’26",
+   "id": "2026-07-W02",
+   "mode": "full",
+   "total": 137,
+   "completed": 136,
+   "outTotal": 65,
+   "raised": {
+    "BQLVH 1": 19,
+    "BQLVH 2": 15,
+    "BQLVH 3": 20,
+    "BQL CT21-22": 30,
+    "BQL SAVILLS CT06": 44,
+    "CLB Tiện ích": 1,
+    "CV Hồ Thiên Nga": 7,
+    "Công viên Mùa hạ+Xuân": 1
+   },
+   "out": {
+    "BQLVH 1": 13,
+    "BQL SAVILLS CT06": 31,
+    "CLB Tiện ích": 13,
+    "CV Hồ Thiên Nga": 7,
+    "Công viên Mùa hạ+Xuân": 1
+   },
+   "src": "2026-07-W02_Sitecheck.xlsb",
+   "note": "Đọc trực tiếp từ file nguồn (OneDrive export 12/09/2026). Sheet 'TH'/'BC TỔNG', tính lại bằng code."
+  },
+  {
+   "week": "Jul W03 ’26",
+   "id": "2026-07-W03",
+   "mode": "full",
+   "total": 130,
+   "completed": 138,
+   "outTotal": 57,
+   "raised": {
+    "BQLVH 1": 18,
+    "BQLVH 2": 15,
+    "BQLVH 3": 20,
+    "BQL CT21-22": 29,
+    "BQL SAVILLS CT06": 39,
+    "CLB Tiện ích": 2,
+    "CV Hồ Thiên Nga": 7,
+    "Công viên Mùa hạ+Xuân": 0
+   },
+   "out": {
+    "BQLVH 1": 13,
+    "BQLVH 3": 5,
+    "BQL SAVILLS CT06": 34,
+    "CLB Tiện ích": 4,
+    "Công viên Mùa hạ+Xuân": 1
+   },
+   "src": "2026-07-W03_Sitecheck.xlsx",
+   "note": "Đọc trực tiếp từ file nguồn (OneDrive export 12/09/2026). Sheet 'TH'/'BC TỔNG', tính lại bằng code."
+  },
+  {
+   "week": "Jul W04 ’26",
+   "id": "2026-07-W04",
+   "mode": "full",
+   "total": 130,
+   "completed": 129,
+   "outTotal": 52,
+   "raised": {
+    "BQLVH 1": 14,
+    "BQLVH 2": 17,
+    "BQLVH 3": 20,
+    "BQL CT21-22": 28,
+    "BQL SAVILLS CT06": 42,
+    "CLB Tiện ích": 1,
+    "CV Hồ Thiên Nga": 7,
+    "Công viên Mùa hạ+Xuân": 1
+   },
+   "out": {
+    "BQLVH 1": 12,
+    "BQL SAVILLS CT06": 38,
+    "CLB Tiện ích": 1,
+    "Công viên Mùa hạ+Xuân": 1
+   },
+   "src": "2026-07-W04_Sitecheck.xlsx",
+   "note": "Đọc trực tiếp từ file nguồn (OneDrive export 12/09/2026). Sheet 'TH'/'BC TỔNG', tính lại bằng code."
+  },
+  {
+   "week": "Jul W05 ’26",
+   "id": "2026-07-W05",
+   "mode": "full",
+   "total": 132,
+   "completed": 135,
+   "outTotal": 68,
+   "raised": {
+    "BQLVH 1": 15,
+    "BQLVH 2": 14,
+    "BQLVH 3": 19,
+    "BQL CT21-22": 28,
+    "BQL SAVILLS CT06": 44,
+    "CLB Tiện ích": 2,
+    "CV Hồ Thiên Nga": 7,
+    "Công viên Mùa hạ+Xuân": 3
+   },
+   "out": {
+    "BQLVH 1": 6,
+    "BQLVH 3": 5,
+    "BQL SAVILLS CT06": 40,
+    "CLB Tiện ích": 15,
+    "Công viên Mùa hạ+Xuân": 2
+   },
+   "src": "2026-07-W05_Sitecheck.xlsx",
+   "note": "Đọc trực tiếp từ file nguồn (OneDrive export 12/09/2026). Sheet 'TH'/'BC TỔNG', tính lại bằng code."
+  },
+  {
+   "week": "Aug W01 ’26",
+   "id": "2026-08-W01",
+   "mode": "full",
+   "total": 175,
+   "completed": 132,
+   "outTotal": 54,
+   "raised": {
+    "BQLVH 1": 15,
+    "BQLVH 2": 15,
+    "BQLVH 3": 19,
+    "BQL CT21-22": 24,
+    "BQL SAVILLS CT06": 46,
+    "CLB Tiện ích": 46,
+    "CV Hồ Thiên Nga": 7,
+    "Công viên Mùa hạ+Xuân": 3
+   },
+   "out": {
+    "BQLVH 1": 4,
+    "BQL SAVILLS CT06": 36,
+    "CLB Tiện ích": 11,
+    "Công viên Mùa hạ+Xuân": 3
+   },
+   "src": "2026-08-W01_Sitecheck.xlsx",
+   "note": "Đọc trực tiếp từ file nguồn (OneDrive export 12/09/2026). Sheet 'TH'/'BC TỔNG', tính lại bằng code. [Điều chỉnh: phát sinh 175 (đọc trực tiếp) — trước đây connector suy ra 173 từ cột tuần sau]."
+  },
+  {
+   "week": "Aug W02 ’26",
+   "id": "2026-08-W02",
+   "mode": "full",
+   "total": 132,
+   "completed": 135,
+   "outTotal": 96,
+   "raised": {
+    "BQLVH 1": 15,
+    "BQLVH 2": 15,
+    "BQLVH 3": 19,
+    "BQL CT21-22": 26,
+    "BQL SAVILLS CT06": 46,
+    "CLB Tiện ích": 4,
+    "CV Hồ Thiên Nga": 7,
+    "Công viên Mùa hạ+Xuân": 0
+   },
+   "out": {
+    "BQLVH 1": 6,
+    "BQLVH 3": 5,
+    "BQL SAVILLS CT06": 34,
+    "CLB Tiện ích": 51
+   },
+   "src": "2026-08-W02_Sitecheck.xlsx",
+   "note": "Đọc trực tiếp từ file nguồn (OneDrive export 12/09/2026). Sheet 'TH'/'BC TỔNG', tính lại bằng code."
+  },
+  {
+   "week": "Aug W03 ’26",
+   "id": "2026-08-W03",
+   "mode": "full",
+   "total": 134,
+   "completed": 138,
+   "outTotal": 92,
+   "raised": {
+    "BQLVH 1": 14,
+    "BQLVH 2": 15,
+    "BQLVH 3": 23,
+    "BQL CT21-22": 27,
+    "BQL SAVILLS CT06": 42,
+    "CLB Tiện ích": 3,
+    "CV Hồ Thiên Nga": 7,
+    "Công viên Mùa hạ+Xuân": 3
+   },
+   "out": {
+    "BQLVH 1": 1,
+    "BQLVH 3": 5,
+    "BQL SAVILLS CT06": 35,
+    "CLB Tiện ích": 51
+   },
+   "src": "2026-08-W03_Sitecheck.xlsx",
+   "note": "Đọc trực tiếp từ file nguồn (OneDrive export 12/09/2026). Sheet 'TH'/'BC TỔNG', tính lại bằng code. [Điều chỉnh: phát sinh 134 (đọc trực tiếp) — trước đây suy ra 136]."
+  },
+  {
+   "week": "Aug W04 ’26",
+   "id": "2026-08-W04",
+   "mode": "full",
+   "total": 129,
+   "completed": 132,
+   "outTotal": 87,
+   "raised": {
+    "BQLVH 1": 9,
+    "BQLVH 2": 15,
+    "BQLVH 3": 23,
+    "BQL CT21-22": 21,
+    "BQL SAVILLS CT06": 43,
+    "CLB Tiện ích": 3,
+    "CV Hồ Thiên Nga": 7,
+    "Công viên Mùa hạ+Xuân": 8
+   },
+   "out": {
+    "BQLVH 1": 3,
+    "BQL SAVILLS CT06": 33,
+    "CLB Tiện ích": 51
+   },
+   "src": "2026-08-W04_Sitecheck.xlsx",
+   "note": "Đọc trực tiếp từ file nguồn (OneDrive export 12/09/2026). Sheet 'TH'/'BC TỔNG', tính lại bằng code."
+  },
+  {
+   "week": "Sep W01 ’26",
+   "id": "2026-09-W01",
+   "mode": "full",
+   "total": 127,
+   "completed": 128,
+   "outTotal": 78,
+   "raised": {
+    "BQLVH 1": 19,
+    "BQLVH 2": 15,
+    "BQLVH 3": 22,
+    "BQL CT21-22": 22,
+    "BQL SAVILLS CT06": 40,
+    "CLB Tiện ích": 1,
+    "CV Hồ Thiên Nga": 7,
+    "Công viên Mùa hạ+Xuân": 1
+   },
+   "out": {
+    "BQLVH 1": 3,
+    "BQL SAVILLS CT06": 35,
+    "CLB Tiện ích": 40
+   },
+   "src": "2026-09-W01_Sitecheck.xlsx",
+   "note": "Đọc trực tiếp từ file nguồn (OneDrive export 12/09/2026). Sheet 'TH'/'BC TỔNG', tính lại bằng code."
+  },
+  {
+   "week": "Sep W02 ’26",
+   "id": "2026-09-W02",
+   "mode": "full",
+   "total": 120,
+   "completed": 133,
+   "outTotal": 84,
+   "raised": {
+    "BQLVH 1": 10,
+    "BQLVH 2": 15,
+    "BQLVH 3": 19,
+    "BQL CT21-22": 22,
+    "BQL SAVILLS CT06": 40,
+    "CLB Tiện ích": 3,
+    "CV Hồ Thiên Nga": 7,
+    "Công viên Mùa hạ+Xuân": 4
+   },
+   "out": {
+    "BQLVH 1": 3,
+    "BQL SAVILLS CT06": 35,
+    "CLB Tiện ích": 46
+   },
+   "src": "2026-09-W02_Sitecheck.xlsx",
+   "note": "Đọc trực tiếp qua M365 connector (workbook reader, sheet TH) 15/09/2026; tính lại bằng code khớp TỔNG CỘNG (phát sinh 120, hoàn thành 133, tồn 84). Cảnh báo CL dữ liệu: cột 'tuần 01/09' của file W02 ghi CLB Tiện ích = 41, lệch 40 so với file W01 (ghi 1)."
+  }
+ ],
+ "coverage": [
+  {
+   "m": "THÁNG 12.25",
+   "files": [
+    [
+     "W01",
+     "xlsb",
+     "read",
+     "Đọc từ OneDrive export"
+    ],
+    [
+     "W02",
+     "xlsb",
+     "read",
+     "Đọc từ OneDrive export"
+    ],
+    [
+     "W03",
+     "xlsx",
+     "read",
+     "Đọc từ OneDrive export"
+    ],
+    [
+     "W04",
+     "xlsx",
+     "read",
+     "Đọc từ OneDrive export"
+    ]
+   ]
+  },
+  {
+   "m": "THÁNG 1",
+   "files": [
+    [
+     "W01",
+     "xlsb",
+     "read",
+     "Đọc từ OneDrive export"
+    ],
+    [
+     "W02",
+     "xlsb",
+     "read",
+     "Đọc từ OneDrive export"
+    ],
+    [
+     "W03",
+     "xlsx",
+     "read",
+     "Đọc từ OneDrive export"
+    ],
+    [
+     "W04",
+     "xlsb",
+     "read",
+     "Đọc từ OneDrive export"
+    ],
+    [
+     "W05",
+     "xlsb",
+     "read",
+     "Đọc từ OneDrive export"
+    ]
+   ]
+  },
+  {
+   "m": "THÁNG 2",
+   "files": [
+    [
+     "W01",
+     "xlsb",
+     "read",
+     "Đọc từ OneDrive export"
+    ],
+    [
+     "W04",
+     "xlsb",
+     "read",
+     "Đọc từ OneDrive export"
+    ]
+   ]
+  },
+  {
+   "m": "THÁNG 3",
+   "files": [
+    [
+     "W01",
+     "xlsb",
+     "read",
+     "Đọc từ OneDrive export"
+    ],
+    [
+     "W02",
+     "xlsb",
+     "read",
+     "Đọc từ OneDrive export"
+    ],
+    [
+     "W03",
+     "xlsb",
+     "read",
+     "Đọc từ OneDrive export"
+    ],
+    [
+     "W04",
+     "xlsb",
+     "read",
+     "Đọc từ OneDrive export"
+    ]
+   ]
+  },
+  {
+   "m": "THÁNG 4",
+   "files": [
+    [
+     "W01",
+     "xlsb",
+     "read",
+     "Đọc từ OneDrive export"
+    ],
+    [
+     "W02",
+     "xlsb",
+     "read",
+     "Đọc từ OneDrive export"
+    ],
+    [
+     "W03",
+     "xlsb",
+     "read",
+     "Đọc từ OneDrive export"
+    ],
+    [
+     "W04",
+     "xlsb",
+     "read",
+     "Đọc từ OneDrive export"
+    ]
+   ]
+  },
+  {
+   "m": "THÁNG 5",
+   "files": [
+    [
+     "W01",
+     "xlsb",
+     "read",
+     "Đọc từ OneDrive export"
+    ],
+    [
+     "W02",
+     "xlsb",
+     "read",
+     "Đọc từ OneDrive export"
+    ],
+    [
+     "W03",
+     "xlsb",
+     "read",
+     "Đọc từ OneDrive export"
+    ],
+    [
+     "W04",
+     "xlsb",
+     "read",
+     "Đọc từ OneDrive export"
+    ]
+   ]
+  },
+  {
+   "m": "THÁNG 6",
+   "files": [
+    [
+     "W01",
+     "xlsb",
+     "read",
+     "Đọc từ OneDrive export"
+    ],
+    [
+     "W02",
+     "xlsb",
+     "read",
+     "Đọc từ OneDrive export"
+    ],
+    [
+     "W03",
+     "xlsb",
+     "read",
+     "Đọc từ OneDrive export"
+    ],
+    [
+     "W04",
+     "xlsb",
+     "read",
+     "Đọc từ OneDrive export"
+    ]
+   ]
+  },
+  {
+   "m": "THÁNG 7",
+   "files": [
+    [
+     "W01",
+     "xlsb",
+     "read",
+     "Đọc từ OneDrive export"
+    ],
+    [
+     "W02",
+     "xlsb",
+     "read",
+     "Đọc từ OneDrive export"
+    ],
+    [
+     "W03",
+     "xlsx",
+     "read",
+     "Đọc từ OneDrive export"
+    ],
+    [
+     "W04",
+     "xlsx",
+     "read",
+     "Đọc từ OneDrive export"
+    ],
+    [
+     "W05",
+     "xlsx",
+     "read",
+     "Đọc từ OneDrive export"
+    ]
+   ]
+  },
+  {
+   "m": "THÁNG 8",
+   "files": [
+    [
+     "W01",
+     "xlsx",
+     "read",
+     "Đọc từ OneDrive export"
+    ],
+    [
+     "W02",
+     "xlsx",
+     "read",
+     "Đọc từ OneDrive export"
+    ],
+    [
+     "W03",
+     "xlsx",
+     "read",
+     "Đọc từ OneDrive export"
+    ],
+    [
+     "W04",
+     "xlsx",
+     "read",
+     "Đọc từ OneDrive export"
+    ]
+   ]
+  },
+  {
+   "m": "THÁNG 9",
+   "files": [
+    [
+     "W01",
+     "xlsx",
+     "read",
+     "Đọc từ OneDrive export"
+    ],
+    [
+     "W02",
+     "xlsx",
+     "read",
+     "Đọc qua M365 connector 15/09 (workbook reader). Lỗi notSupported 14/09 là TẠM THỜI, không phải nhãn mật."
+    ]
+   ]
+  }
+ ],
+ "asof": "Tuần 02/09/2026",
+ "generated": "15/09/2026",
+ "pages": "https://ttrng3.github.io/Ecopm-Sitecheck/",
+ "repo": "https://github.com/ttrng3/Ecopm-Sitecheck",
+ "detail": {
+  "2025-12-W01": "2025-12-W01",
+  "2025-12-W02": "2025-12-W02",
+  "2025-12-W03": "2025-12-W03",
+  "2025-12-W04": "2025-12-W04",
+  "2026-01-W01": "2026-01-W01",
+  "2026-01-W02": "2026-01-W02",
+  "2026-01-W03": "2026-01-W03",
+  "2026-01-W04": "2026-01-W04",
+  "2026-01-W05": "2026-01-W05",
+  "2026-02-W01": "2026-02-W01",
+  "2026-02-W04": "2026-02-W04",
+  "2026-03-W01": "2026-03-W01",
+  "2026-03-W02": "2026-03-W02",
+  "2026-03-W03": "2026-03-W03",
+  "2026-03-W04": "2026-03-W04",
+  "2026-04-W01": "2026-04-W01",
+  "2026-04-W02": "2026-04-W02",
+  "2026-04-W03": "2026-04-W03",
+  "2026-04-W04": "2026-04-W04",
+  "2026-05-W01": "2026-05-W01",
+  "2026-05-W02": "2026-05-W02",
+  "2026-05-W03": "2026-05-W03",
+  "2026-05-W04": "2026-05-W04",
+  "2026-06-W01": "2026-06-W01",
+  "2026-06-W02": "2026-06-W02",
+  "2026-06-W03": "2026-06-W03",
+  "2026-06-W04": "2026-06-W04",
+  "2026-07-W01": "2026-07-W01",
+  "2026-07-W02": "2026-07-W02",
+  "2026-07-W03": "2026-07-W03",
+  "2026-07-W04": "2026-07-W04",
+  "2026-07-W05": "2026-07-W05",
+  "2026-08-W01": "2026-08-W01",
+  "2026-08-W02": "2026-08-W02",
+  "2026-08-W03": "2026-08-W03",
+  "2026-08-W04": "2026-08-W04",
+  "2026-09-W01": "2026-09-W01"
+ },
+ "generatedUtc": "2026-09-15T08:09:13Z"
+}
