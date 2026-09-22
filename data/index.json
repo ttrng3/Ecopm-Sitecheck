@@ -963,6 +963,30 @@
    },
    "src": "2026-09-W02_Sitecheck.xlsx",
    "note": "Đọc trực tiếp qua M365 connector (workbook reader, sheet TH) 15/09/2026; tính lại bằng code khớp TỔNG CỘNG (phát sinh 120, hoàn thành 133, tồn 84). Cảnh báo CL dữ liệu: cột 'tuần 01/09' của file W02 ghi CLB Tiện ích = 41, lệch 40 so với file W01 (ghi 1)."
+  },
+  {
+   "week": "Sep W03 ’26",
+   "id": "2026-09-W03",
+   "mode": "full",
+   "total": 131,
+   "completed": 123,
+   "outTotal": 79,
+   "raised": {
+    "BQLVH 1": 17,
+    "Công viên Mùa hạ+Xuân": 1,
+    "BQLVH 2": 15,
+    "BQLVH 3": 22,
+    "BQL CT21-22": 27,
+    "BQL SAVILLS CT06": 41,
+    "CLB Tiện ích": 1,
+    "CV Hồ Thiên Nga": 7
+   },
+   "out": {
+    "BQL SAVILLS CT06": 34,
+    "CLB Tiện ích": 45
+   },
+   "src": "2026-09-W03_Sitecheck.xlsx",
+   "note": "Đọc trực tiếp qua M365 connector 22/09/2026, sheet TH; tính lại bằng code khớp TỔNG CỘNG (phát sinh 131, tồn 79). Lỗi notSupported hai lần ngày 21/09 chỉ là TẠM THỜI — đọc bình thường hôm sau, giống hệt ca W02 (14/09 lỗi → 15/09 đọc được). Sheet chi tiết đầu việc (workbook 33,7MB nhiều ảnh) vẫn vượt giới hạn đọc của connector nên tuần này chưa có danh sách theo dòng — giống W02."
   }
  ],
  "coverage": [
@@ -1245,8 +1269,8 @@
    ]
   }
  ],
- "asof": "Tuần 02/09/2026",
- "generated": "15/09/2026",
+ "asof": "Tuần 03/09/2026",
+ "generated": "22/09/2026",
  "pages": "https://ttrng3.github.io/Ecopm-Sitecheck/",
  "repo": "https://github.com/ttrng3/Ecopm-Sitecheck",
  "detail": {
@@ -1288,5 +1312,8 @@
   "2026-08-W04": "2026-08-W04",
   "2026-09-W01": "2026-09-W01"
  },
- "generatedUtc": "2026-09-15T08:09:13Z"
+ "generatedUtc": "2026-09-22T08:10:12Z",
+ "verdict": "<div class=\"lead\">Tuần 03/09: <b>79 tồn</b>, vẫn dồn <b>100% vào 2 nhà thầu</b> — CLB Tiện ích 45 và SAVILLS CT06 34. Sáu bộ phận còn lại sạch tồn.</div><p>Phát sinh <b>131</b> (+11 vs tuần 02/09: 120), tồn <b>79</b> (-5 vs 84) — tồn giảm nhẹ nhưng cơ cấu không đổi: CLB Tiện ích 46→45, SAVILLS 35→34, cả hai gần như đứng yên. Đây là <b>backlog kinh niên ở nhà thầu</b>, không phải nghẽn luồng tuần — tuần trước đóng <b>123 việc</b>. Toàn bộ <b>39 tuần</b> (12/2025 → 09/2026) đọc trực tiếp từ file nguồn và tính lại bằng code.</p>",
+ "recon": "<b>Độ phủ nguồn &amp; đối chiếu:</b> <b>39/39 file tuần đọc được</b> — 37 tuần lịch sử (OneDrive 12/09) + Tuần 02/09 (M365 connector 15/09) + <b>Tuần 03/09 (M365 connector 22/09)</b>. Mọi tổng cột tính lại bằng code, khớp 100% ô TỔNG CỘNG (✓ĐC: 17+1+15+22+27+41+1+7 = 131; 34+45 = 79). <b>Lỗi notSupported là tạm thời, không phải nhãn mật:</b> W02 lỗi 14/09 rồi đọc được 15/09; W03 lỗi 21/09 (2 lần) rồi đọc được 22/09. Routine phải thử lại trước khi kết luận \"chặn\". <b style=\"color:var(--warning)\">Giới hạn còn lại:</b> sheet <b>chi tiết đầu việc</b> của W02 và W03 (workbook 30–40MB nhiều ảnh) vượt giới hạn đọc của connector — hai tuần này có số tổng hợp nhưng <b>chưa có danh sách theo dòng</b>. Gỡ tận gốc: tách ảnh khỏi sheet chi tiết.",
+ "detailRows": 5440
 }

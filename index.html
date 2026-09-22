@@ -94,17 +94,14 @@ h2.sec{font-family:var(--serif);font-weight:700;font-size:19px;margin:26px 0 12p
     <div class="subtitle">8 bộ phận vận hành · BQLVH 1/2/3, CV Mùa hạ+Xuân, BQL CT21-22, BQL SAVILLS CT06, CLB Tiện ích, CV Hồ Thiên Nga.<br>Bấm một tuần trong bảng để lọc biểu đồ chi tiết theo bộ phận.</div>
   </header>
 
-  <div class="verdict">
-    <div class="lead">Tồn đọng vẫn dồn ~96% vào 2 nhà thầu — nay <b>CLB Tiện ích (46) vượt SAVILLS CT06 (35)</b> thành backlog lớn nhất. Sáu bộ phận còn lại sạch tồn.</div>
-    <p>Tuần 02/09: <b>81/84 đầu việc chưa hoàn thành</b> nằm ở CLB Tiện ích (46) và SAVILLS CT06 (35); BQLVH 1 chỉ 3, năm đơn vị còn lại bằng 0. Tồn tăng <b>78 → 84 (+6), toàn bộ do CLB Tiện ích</b> (40→46) trong khi SAVILLS đi ngang. Tồn là <b>backlog kinh niên ở nhà thầu</b>, không phải nghẽn luồng tuần — lứa việc tuần trước đóng <b>133 việc</b>. Toàn bộ <b>38 tuần</b> (12/2025 → 09/2026) đọc trực tiếp từ file nguồn và tính lại bằng code.</p>
-  </div>
+  <div class="verdict" id="verdict"></div>
 
-  <div class="recon"><b>Độ phủ nguồn &amp; đối chiếu:</b> <b>38/38 file tuần đọc được</b> — 37 tuần lịch sử (OneDrive 12/09) + <b>Tuần 02/09 đọc trực tiếp qua M365 connector 15/09</b>. Mọi tổng cột đã tính lại bằng code, khớp 100% ô TỔNG CỘNG (✓ĐC). <b>2 số điều chỉnh</b> so với ước từ cột lân cận: phát sinh <b>T08·W01 = 175</b> (không phải 173) và <b>T08·W03 = 134</b> (không phải 136). <b>Tự động hoá:</b> routine tuần đọc sheet TH qua M365 connector, tự thêm tuần mới và tự đẩy GitHub Pages (xem ghi chú cuối trang). <b style="color:var(--warning)">Cảnh báo CL dữ liệu:</b> file W02 ghi CLB Tiện ích tuần 01/09 = 41, lệch 40 so với file W01 (ghi 1) — cần BQL xác nhận số đúng. (Lỗi <i>notSupported</i> khi đọc W02 hôm 14/09 chỉ là tạm thời, không phải nhãn mật.)</div>
+  <div class="recon" id="recon"></div>
 
   <section class="kpis" id="kpis"></section>
 
   <h2 class="sec">Bảng điểm 8 bộ phận vận hành — bức tranh tổng</h2>
-  <div class="subtitle" style="margin:-6px 0 10px">Tồn hiện tại (tuần 02/09) theo bộ phận, trung bình tồn 12 tuần và xu hướng tồn 12 tuần gần nhất. Sắp theo tồn hiện tại — nhìn một mắt thấy ngay ai gánh tồn.</div>
+  <div class="subtitle" style="margin:-6px 0 10px">Tồn hiện tại (<span id="scoreWeek"></span>) theo bộ phận, trung bình tồn 12 tuần và xu hướng tồn 12 tuần gần nhất. Sắp theo tồn hiện tại — nhìn một mắt thấy ngay ai gánh tồn.</div>
   <section>
     <div class="card" style="padding:0;overflow:hidden">
       <div style="overflow-x:auto">
@@ -127,12 +124,12 @@ h2.sec{font-family:var(--serif);font-weight:700;font-size:19px;margin:26px 0 12p
         <span class="view-toggle" id="tgCombined" role="tablist">
           <button data-view="4" type="button">4 tuần</button>
           <button data-view="12" type="button" class="active">12 tuần</button>
-          <button data-view="all" type="button">Tất cả (37)</button>
+          <button data-view="all" type="button">Tất cả</button>
         </span>
       </h3>
       <div class="chart-wrap" style="height:340px"><canvas id="combinedChart"></canvas></div>
       <details><summary>Cách đọc</summary>
-        Mỗi tuần một cột = tổng đầu việc phát sinh; phần <strong>còn tồn "đến nay"</strong> (đỏ) tách ở trên, phần đã xử lý/theo dõi (xanh) ở dưới. "Tồn" là ảnh chụp tại thời điểm báo cáo, không cộng dồn. Đủ 38 tuần liên tục 12/2025 → 09/2026 (không còn khoảng trống).
+        Mỗi tuần một cột = tổng đầu việc phát sinh; phần <strong>còn tồn "đến nay"</strong> (đỏ) tách ở trên, phần đã xử lý/theo dõi (xanh) ở dưới. "Tồn" là ảnh chụp tại thời điểm báo cáo, không cộng dồn. Đủ <span id="spanWeeks"></span> tuần liên tục 12/2025 → 09/2026 (không còn khoảng trống).
       </details>
     </div>
   </section>
@@ -160,7 +157,7 @@ h2.sec{font-family:var(--serif);font-weight:700;font-size:19px;margin:26px 0 12p
     </div>
   </section>
 
-  <div class="ref-banner"><strong>Bấm một dòng tuần ở trên</strong> để phân rã tuần đó theo 8 bộ phận và xem danh sách đầu việc chi tiết bên dưới. Chi tiết theo từng đầu việc có ở <strong>toàn bộ 37 tuần</strong> (5.440 dòng trích từ các sheet chi tiết của file nguồn).</div>
+  <div class="ref-banner"><strong>Bấm một dòng tuần ở trên</strong> để phân rã tuần đó theo 8 bộ phận và xem danh sách đầu việc chi tiết bên dưới. Chi tiết theo từng đầu việc có ở <strong id="detailCoverage"></strong> (<span id="detailRows"></span> dòng trích từ các sheet chi tiết của file nguồn).</div>
 
   <section class="grid-2" style="margin-top:14px">
     <div class="card">
@@ -260,7 +257,19 @@ const C = {accent:'#0F6E52', crit:'#B02418', grey:'#B8B8B0', warn:'#9A6B00', ink
   palette:['#0F6E52','#3C5A6B','#7FA99B','#9A6B00','#B02418','#6B6B64','#A6C5B8','#C9A24B']};
 const sum = o => Object.values(o||{}).reduce((a,b)=>a+(b||0),0);
 function renderHeader(){
+  // The verdict and reconciliation note are editorial and change every week.
+  // They live in data/index.json so the weekly routine updates data, never HTML.
+  if(META.verdict) document.getElementById('verdict').innerHTML=META.verdict;
+  if(META.recon) document.getElementById('recon').innerHTML=META.recon;
   document.getElementById('s_asof').textContent=META.asof;
+  // counts are facts about the data, not copy — derive them so they cannot drift
+  const sw=document.getElementById('scoreWeek'); if(sw) sw.textContent=META.asof||latest.week||'';
+  const spw=document.getElementById('spanWeeks'); if(spw) spw.textContent=WK.length;
+  const dc=document.getElementById('detailCoverage');
+  if(dc){ const n=Object.keys(DETAIL_MAP).length, miss=WK.length-n;
+    dc.textContent = miss===0 ? `toàn bộ ${n} tuần` : `${n}/${WK.length} tuần`; }
+  const dr=document.getElementById('detailRows'); if(dr) dr.textContent=(META.detailRows||0).toLocaleString('vi-VN');
+  document.querySelectorAll('button[data-view="all"]').forEach(b=>b.textContent=`Tất cả (${WK.length})`);
   document.getElementById('s_gen').textContent=META.generated;
   document.getElementById('repoLink').href=META.repo;
 }
@@ -455,7 +464,7 @@ function renderScore(){
 async function boot(){
   const d = await getJSON('index.json');
   DEPTS = d.depts; WK = d.wk; DETAIL_MAP = d.detail || {};
-  META = {asof:d.asof, generated:d.generated, repo:d.repo, coverage:d.coverage};
+  META = {asof:d.asof, generated:d.generated, repo:d.repo, coverage:d.coverage, verdict:d.verdict, recon:d.recon, detailRows:d.detailRows};
   computeDerived();
   renderHeader(); renderKpis(); renderCoverage();
   renderScore(); drawCombined(); renderWeekly();
