@@ -57,23 +57,3 @@ unattended run — the MCP calls are not, so they are the primary path.
 
 Confirm `main` moved using the sha the write returned. Say plainly if you could
 not reach the live site rather than claiming a success you did not observe.
-
-### 7. Mirror to the artifact
-
-The claude.ai artifact carries its **own** copy of `data/`, because an artifact
-cannot fetch across origins (measured: cross-origin `fetch` and jsdelivr `/gh/`
-both fail; relative fetch to its own supporting files works). Publish only the
-changed `data/` paths with `url` set — omitted files are kept.
-
-**Never republish the artifact's `index.html` here.** If you ever must, publish
-the *fragment* build starting at `<title>` with no doctype/html/head/body: the
-artifact service wraps what you give it, so a complete document nests inside
-another, the inner `<head>` is discarded, and the page renders **blank with no
-console error**.
-
-**Publish the page separately from the files.** Sending a changed `index.html`
-together with a large `files` payload in one call produced a version that
-rendered blank, even though the served bytes were byte-identical to a build
-that rendered fine elsewhere. Publishing the same page alone — `files` omitted,
-so the existing ones are kept — fixed it. Send data files in one call, then the
-page in its own. A blank artifact gives no console error, so check this first.

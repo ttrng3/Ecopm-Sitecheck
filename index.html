@@ -292,9 +292,9 @@ summary:focus-visible{outline:2px solid var(--blue);outline-offset:2px;border-ra
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js"></script>
 <script>
-// Data lives beside the page. When this file is opened from anywhere else
-// (a claude.ai artifact, a local copy) the relative path fails and we fall
-// back to the published copy — so one file works everywhere.
+// Data lives beside the page. When this file is opened from a local copy the
+// relative path fails and we fall back to the published copy — so one file
+// works everywhere.
 const DATA_ABS = 'https://ttrng3.github.io/Ecopm-Sitecheck/data/';
 let DATA_BASE = 'data/';
 let DEPTS = [], WK = [], DETAIL = {}, DETAIL_MAP = {}, META = {};
