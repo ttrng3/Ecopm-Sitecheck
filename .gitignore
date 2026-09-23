@@ -14,3 +14,7 @@ CHANGELOG.md
 SKILL.md.proposed
 sitecheck-history.json
 sitecheck-refresh-*.md
+
+# Build output. tools/build-fragment.py writes the artifact page here; it is
+# derived from index.html on demand and is never the record.
+build/
