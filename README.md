@@ -59,25 +59,19 @@ no mapping table to keep in sync.
 ## Visual standard
 
 The renderer follows **Apple HIG via the `apple-design` skill** (2026-09-24),
-which replaced the retired `ty-artifact-standard`. It is **light and dark**:
-the page follows the system appearance, and print is always light.
+which replaced the retired `ty-artifact-standard`. **Light only — Ty ruled 2026-09-24** (dark mode ran for one morning and was withdrawn): the page stays light whatever the viewer's system setting, and there is no dark theme. Do not add one back.
 
 The CSS has two layers in `index.html`, and both are hand-maintained (nothing
 generates this file):
 
 1. The **base sheet** — HIG light tokens and all layout. Its token names
    (`--bg`, `--paper`, `--ink`, `--blue-bg`, …) are what everything else uses.
-2. `<style id="apple-layer">` right after it — dark values for every token
-   (screen-only: under `@media screen`, both for `prefers-color-scheme:dark`
-   and for a forced `<html data-theme="dark">`), card/verdict shadows, press
+2. `<style id="apple-layer">` right after it — card/verdict shadows, press
    feedback, and the reduced-transparency / increased-contrast / reduced-motion
-   queries. Any new colour goes in as a token with a dark value, never as a raw
-   hex on screen.
+   queries. Any new colour goes in as a token, never as a raw hex on screen.
 
-- Light: page ground `#F2F2F7`, cards `#FFFFFF` at 12 px radius, hairlines
-  `1px solid #E5E5EA`. Dark: `#000` ground, `#1C1C1E` cards, `#38383A`
-  hairlines. Cards carry `--shadow-card`, the verdict `--shadow-float`; both
-  drop out in print (and cards go flat in dark).
+- Page ground `#F2F2F7`, cards `#FFFFFF` at 12 px radius, hairlines
+  `1px solid #E5E5EA`.
 - System font stack only. **Do not add a webfont link back.**
 - Ink in three tiers: `#1C1C1E` primary, `#3C3C43` body, `#8E8E93` muted.
 - Semantic accents: blue `#007AFF` active/info, green `#34C759` done, amber
@@ -88,10 +82,10 @@ generates this file):
   outstanding), `.flag` is red (critical) — they used to be the same colour.
 - Chart.js: colours are read at draw time from the `--chart-*` tokens in the
   apple layer (`--chart-1`…`--chart-8` plus accent/crit/grey/rule/text/gap),
-  and the charts redraw when the theme flips. The 8-slot order is fixed and
-  was validated on the light set; the dark set is Apple's dark system variant
-  of each same hue (slot 8 `#B08900` → `#D6A82A`) and has not been re-run
-  through the validator. Assign in order, never cycle or reorder, and keep
+  read at draw time. The 8-slot order is fixed and was re-validated on
+  2026-09-24 with the dataviz script (order `#007AFF #FF9500 #30B0C7 #B08900
+  #AF52DE #34C759 #5856D6 #FF2D55`, worst adjacent CVD ΔE 19.5, wrap-around
+  pair included). Assign in order, never cycle or reorder, and keep
   the 2px `--chart-gap` border (card colour) between doughnut segments — that
   gap is the second cue green and amber need.
 - `beforeprint` pins `data-theme="light"` and redraws the charts without
