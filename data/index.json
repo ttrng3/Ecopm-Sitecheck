@@ -1258,13 +1258,19 @@
      "W01",
      "xlsx",
      "read",
-     "Đọc từ OneDrive export"
+     "Chi tiết dựng lại 25/09 từ file nguồn (bản cũ thiếu sheet CV Hồ Thiên Nga, cột tình trạng ghi nhầm STT)."
     ],
     [
      "W02",
      "xlsx",
      "read",
-     "Đọc qua M365 connector 15/09 (workbook reader). Lỗi notSupported 14/09 là TẠM THỜI, không phải nhãn mật."
+     "Tổng hợp đọc qua M365 connector 15/09; chi tiết bổ sung 25/09 từ file nguồn tải về (connector chỉ trả sheet TH)."
+    ],
+    [
+     "W03",
+     "xlsx",
+     "read",
+     "Tổng hợp đọc qua M365 connector 22/09; chi tiết bổ sung 25/09 từ file nguồn tải về (connector chỉ trả sheet TH)."
     ]
    ]
   }
@@ -1310,10 +1316,12 @@
   "2026-08-W02": "2026-08-W02",
   "2026-08-W03": "2026-08-W03",
   "2026-08-W04": "2026-08-W04",
-  "2026-09-W01": "2026-09-W01"
+  "2026-09-W01": "2026-09-W01",
+  "2026-09-W02": "2026-09-W02",
+  "2026-09-W03": "2026-09-W03"
  },
- "generatedUtc": "2026-09-22T08:10:12Z",
+ "generatedUtc": "2026-09-25T08:54:10Z",
  "verdict": "<div class=\"lead\">Tuần 03/09: <b>79 tồn</b>, vẫn dồn <b>100% vào 2 nhà thầu</b> — CLB Tiện ích 45 và SAVILLS CT06 34. Sáu bộ phận còn lại sạch tồn.</div><p>Phát sinh <b>131</b> (+11 vs tuần 02/09: 120), tồn <b>79</b> (-5 vs 84) — tồn giảm nhẹ nhưng cơ cấu không đổi: CLB Tiện ích 46→45, SAVILLS 35→34, cả hai gần như đứng yên. Đây là <b>backlog kinh niên ở nhà thầu</b>, không phải nghẽn luồng tuần — tuần trước đóng <b>123 việc</b>. Toàn bộ <b>39 tuần</b> (12/2025 → 09/2026) đọc trực tiếp từ file nguồn và tính lại bằng code.</p>",
  "recon": "<b>Độ phủ nguồn &amp; đối chiếu:</b> <b>39/39 file tuần đọc được</b> — 37 tuần lịch sử (OneDrive 12/09) + Tuần 02/09 (M365 connector 15/09) + <b>Tuần 03/09 (M365 connector 22/09)</b>. Mọi tổng cột tính lại bằng code, khớp 100% ô TỔNG CỘNG (✓ĐC: 17+1+15+22+27+41+1+7 = 131; 34+45 = 79). <b>Lỗi notSupported là tạm thời, không phải nhãn mật:</b> W02 lỗi 14/09 rồi đọc được 15/09; W03 lỗi 21/09 (2 lần) rồi đọc được 22/09. Routine phải thử lại trước khi kết luận \"chặn\". <b style=\"color:var(--warning)\">Giới hạn còn lại:</b> sheet <b>chi tiết đầu việc</b> của W02 và W03 (workbook 30–40MB nhiều ảnh) vượt giới hạn đọc của connector — hai tuần này có số tổng hợp nhưng <b>chưa có danh sách theo dòng</b>. Gỡ tận gốc: tách ảnh khỏi sheet chi tiết.",
- "detailRows": 5440
+ "detailRows": 5794
 }

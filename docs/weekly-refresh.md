@@ -35,10 +35,20 @@ commit just the heartbeat, report "no new data", and stop.
 
 ### 4. Read the workbook
 
-`read_resource` on the file `uri` returns every sheet as tab-separated cell
-values, including row detail — no download, no openpyxl. The summary is the
-`TH` / `BC TỔNG` sheet; the eight operations units are the `depts` in
-`data/index.json`.
+`read_resource` on the file `uri` returns the **`TH` summary sheet only** for these
+workbooks. They are ~30 MB (embedded photos), and the connector stops with *"read budget
+exhausted"* before the eight detail sheets. Verified 2026-09-25 on W02 and W03. So:
+
+- **Summary (`wk[]`) comes from the connector**, as before. The eight operations units
+  are the `depts` in `data/index.json`.
+- **Detail (`data/weeks/<week>.json`) needs the file itself.** Run
+  `python3 tools/parse_sitecheck.py <workbook.xlsx> <YYYY-MM-Wnn>` on a copy of the
+  workbook. If no copy is reachable, **do not skip silently**: write `wk[]`, leave the
+  week out of `detail`, and say so in that month's `coverage` note and in your report.
+  The 22/09 run appended W02/W03 to `wk` with no detail and no note, and the gap was only
+  found by an audit.
+- A lighter weekly export (detail sheets without photos, or CSV) has been requested from
+  the source owner; when it exists, read that instead and update this step.
 
 ### 5. Write two files via the GitHub MCP file tools
 
