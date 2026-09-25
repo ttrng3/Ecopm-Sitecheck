@@ -962,7 +962,7 @@
     "CLB Tiện ích": 46
    },
    "src": "2026-09-W02_Sitecheck.xlsx",
-   "note": "Đọc trực tiếp qua M365 connector (workbook reader, sheet TH) 15/09/2026; tính lại bằng code khớp TỔNG CỘNG (phát sinh 120, hoàn thành 133, tồn 84). Cảnh báo CL dữ liệu: cột 'tuần 01/09' của file W02 ghi CLB Tiện ích = 41, lệch 40 so với file W01 (ghi 1)."
+   "note": "Đọc trực tiếp qua M365 connector (workbook reader, sheet TH) 15/09/2026; tính lại bằng code khớp TỔNG CỘNG (phát sinh 120, hoàn thành 133, tồn 84). Cảnh báo CL dữ liệu: cột 'tuần 01/09' của file W02 ghi CLB Tiện ích = 41, lệch 40 so với file W01 (ghi 1). Danh sách theo dòng (172 đầu việc) đã được bù ngày 25/09 bằng tools/parse_sitecheck.py."
   },
   {
    "week": "Sep W03 ’26",
@@ -986,7 +986,7 @@
     "CLB Tiện ích": 45
    },
    "src": "2026-09-W03_Sitecheck.xlsx",
-   "note": "Đọc trực tiếp qua M365 connector 22/09/2026, sheet TH; tính lại bằng code khớp TỔNG CỘNG (phát sinh 131, tồn 79). Lỗi notSupported hai lần ngày 21/09 chỉ là TẠM THỜI — đọc bình thường hôm sau, giống hệt ca W02 (14/09 lỗi → 15/09 đọc được). Sheet chi tiết đầu việc (workbook 33,7MB nhiều ảnh) vẫn vượt giới hạn đọc của connector nên tuần này chưa có danh sách theo dòng — giống W02."
+   "note": "Đọc trực tiếp qua M365 connector 22/09/2026, sheet TH; tính lại bằng code khớp TỔNG CỘNG (phát sinh 131, tồn 79). Lỗi notSupported hai lần ngày 21/09 chỉ là TẠM THỜI — đọc bình thường hôm sau, giống hệt ca W02 (14/09 lỗi → 15/09 đọc được). Danh sách theo dòng (175 đầu việc) đã được bù ngày 25/09 bằng tools/parse_sitecheck.py đọc thẳng file nguồn; connector vẫn không đọc được sheet chi tiết."
   }
  ],
  "coverage": [
@@ -1322,6 +1322,6 @@
  },
  "generatedUtc": "2026-09-25T08:54:10Z",
  "verdict": "<div class=\"lead\">Tuần 03/09: <b>79 tồn</b>, vẫn dồn <b>100% vào 2 nhà thầu</b> — CLB Tiện ích 45 và SAVILLS CT06 34. Sáu bộ phận còn lại sạch tồn.</div><p>Phát sinh <b>131</b> (+11 vs tuần 02/09: 120), tồn <b>79</b> (-5 vs 84) — tồn giảm nhẹ nhưng cơ cấu không đổi: CLB Tiện ích 46→45, SAVILLS 35→34, cả hai gần như đứng yên. Đây là <b>backlog kinh niên ở nhà thầu</b>, không phải nghẽn luồng tuần — tuần trước đóng <b>123 việc</b>. Toàn bộ <b>39 tuần</b> (12/2025 → 09/2026) đọc trực tiếp từ file nguồn và tính lại bằng code.</p>",
- "recon": "<b>Độ phủ nguồn &amp; đối chiếu:</b> <b>39/39 file tuần đọc được</b> — 37 tuần lịch sử (OneDrive 12/09) + Tuần 02/09 (M365 connector 15/09) + <b>Tuần 03/09 (M365 connector 22/09)</b>. Mọi tổng cột tính lại bằng code, khớp 100% ô TỔNG CỘNG (✓ĐC: 17+1+15+22+27+41+1+7 = 131; 34+45 = 79). <b>Lỗi notSupported là tạm thời, không phải nhãn mật:</b> W02 lỗi 14/09 rồi đọc được 15/09; W03 lỗi 21/09 (2 lần) rồi đọc được 22/09. Routine phải thử lại trước khi kết luận \"chặn\". <b style=\"color:var(--warning)\">Giới hạn còn lại:</b> sheet <b>chi tiết đầu việc</b> của W02 và W03 (workbook 30–40MB nhiều ảnh) vượt giới hạn đọc của connector — hai tuần này có số tổng hợp nhưng <b>chưa có danh sách theo dòng</b>. Gỡ tận gốc: tách ảnh khỏi sheet chi tiết.",
+ "recon": "<b>Độ phủ nguồn &amp; đối chiếu:</b> <b>39/39 file tuần đọc được</b> — 37 tuần lịch sử (OneDrive 12/09) + Tuần 02/09 (M365 connector 15/09) + <b>Tuần 03/09 (M365 connector 22/09)</b>. Mọi tổng cột tính lại bằng code, khớp 100% ô TỔNG CỘNG (✓ĐC: 17+1+15+22+27+41+1+7 = 131; 34+45 = 79). <b>Lỗi notSupported là tạm thời, không phải nhãn mật:</b> W02 lỗi 14/09 rồi đọc được 15/09; W03 lỗi 21/09 (2 lần) rồi đọc được 22/09. Routine phải thử lại trước khi kết luận \"chặn\". <b style=\"color:var(--ok,var(--accent))\">Chi tiết đã đủ:</b> cả <b>39/39 tuần</b> đều có danh sách theo dòng (<b>5.794 dòng</b>; riêng tháng 9: W01 182, W02 172, W03 175). W02 và W03 được bù ngày 25/09 bằng <code>tools/parse_sitecheck.py</code> đọc thẳng file nguồn. <b style=\"color:var(--warning)\">Giới hạn còn lại:</b> connector M365 vẫn không đọc nổi sheet chi tiết (workbook 30–40MB nhiều ảnh), nên <b>mỗi tuần vẫn phải chạy bước parse cục bộ đó</b> cho tới khi tách ảnh khỏi sheet chi tiết — nếu bỏ, tuần mới sẽ lại chỉ có số tổng hợp.",
  "detailRows": 5794
 }
