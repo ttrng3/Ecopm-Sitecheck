@@ -47,7 +47,7 @@ Now a weekly update writes **two small files**: one `data/weeks/<week>.json`
 | `.pages-allow` | What Pages publishes. Only the paths listed there are served. |
 | `.github/workflows/pages.yml` | Deploys the allowlisted files; fails "UNCOVERED" if the routine writes a file under `data/` that no `.pages-allow` line covers. |
 
-Pages runs from GitHub Actions (since 2026-09-29), so `README.md`, `tools/` and anything else not in `.pages-allow` is never served. A new kind of file under `data/` needs a `.pages-allow` line in the same commit, or the Pages run fails and the live site stays as it was.
+Pages runs from GitHub Actions (since 2026-09-29), so `README.md`, `tools/` and anything else not in `.pages-allow` is never served. A new kind of file under `data/` needs Ty's say-so and a `.pages-allow` line in its own PR; a refresh never edits `.pages-allow`. Until then the Pages run fails "UNCOVERED" and the live site stays as it was.
 
 Week ids are already slugs (`2026-09-W02`), so the id and the filename match —
 no mapping table to keep in sync.
