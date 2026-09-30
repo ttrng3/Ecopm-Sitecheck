@@ -987,6 +987,31 @@
    },
    "src": "2026-09-W03_Sitecheck.xlsx",
    "note": "Đọc trực tiếp qua M365 connector 22/09/2026, sheet TH; tính lại bằng code khớp TỔNG CỘNG (phát sinh 131, tồn 79). Lỗi notSupported hai lần ngày 21/09 chỉ là TẠM THỜI — đọc bình thường hôm sau, giống hệt ca W02 (14/09 lỗi → 15/09 đọc được). Danh sách theo dòng (175 đầu việc) đã được bù ngày 25/09 bằng tools/parse_sitecheck.py đọc thẳng file nguồn; connector vẫn không đọc được sheet chi tiết."
+  },
+  {
+   "week": "Sep W04 ’26",
+   "id": "2026-09-W04",
+   "mode": "full",
+   "total": 118,
+   "completed": 99,
+   "outTotal": 68,
+   "raised": {
+    "BQLVH 1": 14,
+    "BQLVH 2": 15,
+    "BQLVH 3": 22,
+    "BQL CT21-22": 16,
+    "BQL SAVILLS CT06": 40,
+    "CLB Tiện ích": 3,
+    "CV Hồ Thiên Nga": 7,
+    "Công viên Mùa hạ+Xuân": 1
+   },
+   "out": {
+    "BQL SAVILLS CT06": 34,
+    "CLB Tiện ích": 33,
+    "Công viên Mùa hạ+Xuân": 1
+   },
+   "src": "2026-09-W04_Sitecheck.xlsx",
+   "note": "Đọc qua M365 connector 30/09/2026, sheet TH; tính lại bằng code khớp ô TỔNG CỘNG (phát sinh 118, hoàn thành 99, tồn 68). Cột 'tuần 03 tháng 09' của file W04 trùng khớp 100% số liệu W03 đã công bố (17+1+15+22+27+41+1+7 = 131) — xác nhận đúng cây ECOPM. CHƯA CÓ DANH SÁCH THEO DÒNG: 8 sheet chi tiết vượt giới hạn đọc của connector (file 36,7 MB, nhiều ảnh) và bản sao file nguồn không tải được từ môi trường cloud. Nguồn đổi tên bộ phận 'BQL CT21-22' thành 'BQL OSEN' từ tuần này; giữ khóa gốc BQL CT21-22 theo bảng ánh xạ trong tools/parse_sitecheck.py để không đứt chuỗi 40 tuần."
   }
  ],
  "coverage": [
@@ -1271,12 +1296,18 @@
      "xlsx",
      "read",
      "Tổng hợp đọc qua M365 connector 22/09; chi tiết bổ sung 25/09 từ file nguồn tải về (connector chỉ trả sheet TH)."
+    ],
+    [
+     "W04",
+     "xlsx",
+     "read",
+     "Tổng hợp đọc qua M365 connector 30/09. Chi tiết theo dòng CHƯA trích được: sheet chi tiết vượt giới hạn đọc của connector, chưa có bản sao file nguồn. Nguồn đổi tên BQL CT21-22 → 'BQL OSEN'."
     ]
    ]
   }
  ],
- "asof": "Tuần 03/09/2026",
- "generated": "22/09/2026",
+ "asof": "Tuần 04/09/2026",
+ "generated": "30/09/2026",
  "pages": "https://ttrng3.github.io/Ecopm-Sitecheck/",
  "repo": "https://github.com/ttrng3/Ecopm-Sitecheck",
  "detail": {
@@ -1320,8 +1351,8 @@
   "2026-09-W02": "2026-09-W02",
   "2026-09-W03": "2026-09-W03"
  },
- "generatedUtc": "2026-09-25T08:54:10Z",
- "verdict": "<div class=\"lead\">Tuần 03/09: <b>79 tồn</b>, vẫn dồn <b>100% vào 2 nhà thầu</b> — CLB Tiện ích 45 và SAVILLS CT06 34. Sáu bộ phận còn lại sạch tồn.</div><p>Phát sinh <b>131</b> (+11 vs tuần 02/09: 120), tồn <b>79</b> (-5 vs 84) — tồn giảm nhẹ nhưng cơ cấu không đổi: CLB Tiện ích 46→45, SAVILLS 35→34, cả hai gần như đứng yên. Đây là <b>backlog kinh niên ở nhà thầu</b>, không phải nghẽn luồng tuần — tuần trước đóng <b>123 việc</b>. Toàn bộ <b>39 tuần</b> (12/2025 → 09/2026) đọc trực tiếp từ file nguồn và tính lại bằng code.</p>",
- "recon": "<b>Độ phủ nguồn &amp; đối chiếu:</b> <b>39/39 file tuần đọc được</b> — 37 tuần lịch sử (OneDrive 12/09) + Tuần 02/09 (M365 connector 15/09) + <b>Tuần 03/09 (M365 connector 22/09)</b>. Mọi tổng cột tính lại bằng code, khớp 100% ô TỔNG CỘNG (✓ĐC: 17+1+15+22+27+41+1+7 = 131; 34+45 = 79). <b>Lỗi notSupported là tạm thời, không phải nhãn mật:</b> W02 lỗi 14/09 rồi đọc được 15/09; W03 lỗi 21/09 (2 lần) rồi đọc được 22/09. Routine phải thử lại trước khi kết luận \"chặn\". <b style=\"color:var(--ok,var(--accent))\">Chi tiết đã đủ:</b> cả <b>39/39 tuần</b> đều có danh sách theo dòng (<b>5.794 dòng</b>; riêng tháng 9: W01 182, W02 172, W03 175). W02 và W03 được bù ngày 25/09 bằng <code>tools/parse_sitecheck.py</code> đọc thẳng file nguồn. <b style=\"color:var(--warning)\">Giới hạn còn lại:</b> connector M365 vẫn không đọc nổi sheet chi tiết (workbook 30–40MB nhiều ảnh), nên <b>mỗi tuần vẫn phải chạy bước parse cục bộ đó</b> cho tới khi tách ảnh khỏi sheet chi tiết — nếu bỏ, tuần mới sẽ lại chỉ có số tổng hợp.",
+ "generatedUtc": "2026-09-30T08:42:20Z",
+ "verdict": "<div class=\"lead\">Tuần 04/09: <b>68 tồn</b>, <b>67/68 (98,5%) nằm ở 2 nhà thầu</b> — SAVILLS CT06 34 và CLB Tiện ích 33. Sáu bộ phận còn lại gần như sạch tồn.</div><p>Phát sinh <b>118</b> (-13 vs tuần 03/09: 131, -9,9%), tồn <b>68</b> (-11 vs 79, -13,9%). Điểm cần xử lý: <b>SAVILLS CT06 chỉ đóng 8/41 đầu việc tuần 03 (19,5%)</b> trong khi sáu bộ phận đóng đủ 100%; tồn của SAVILLS đứng yên ba tuần liền (35 → 34 → 34). Ngược lại <b>CLB Tiện ích lần đầu giảm mạnh: 45 → 33 (-12)</b>, backlog kinh niên bắt đầu vỡ. Tuần này nguồn đổi tên <b>BQL CT21-22</b> thành <b>BQL OSEN</b>; giữ khóa gốc để không đứt chuỗi <b>40 tuần</b> (12/2025 → 09/2026).</p>",
+ "recon": "<b>Độ phủ nguồn &amp; đối chiếu:</b> <b>40/40 file tuần đọc được</b> — 37 tuần lịch sử (OneDrive 12/09) + Tuần 02/09 (connector 15/09) + Tuần 03/09 (connector 22/09) + <b>Tuần 04/09 (connector 30/09)</b>. Mọi tổng cột tính lại bằng code, khớp 100% ô TỔNG CỘNG (✓ĐC tuần 04: 14+1+15+22+16+40+3+7 = 118; 34+33+1 = 68). <b>Đối chiếu chéo:</b> cột 'tuần 03 tháng 09' trong file W04 tái lập đúng từng bộ phận của W03 đã công bố (tổng 131) — xác nhận đọc đúng cây ECOPM, không phải cây OMNI. <b style=\"color:var(--warning)\">Chi tiết còn thiếu 1 tuần:</b> <b>39/40 tuần</b> có danh sách theo dòng (<b>5.794 dòng</b>); <b>tuần 04/09 chưa trích được</b> vì 8 sheet chi tiết vượt giới hạn đọc của connector (file 36,7 MB, nhiều ảnh) và phiên cloud không tải được bản sao file nguồn để chạy <code>tools/parse_sitecheck.py</code>. Đây đúng là rủi ro đã cảnh báo tuần trước: <b>chừng nào ảnh chưa tách khỏi sheet chi tiết, tuần mới chỉ có số tổng hợp</b> trừ khi có người chạy bước parse cục bộ. Bấm 'Mở file nguồn' ở bảng chi tiết để xem trực tiếp trên SharePoint. <b>Đổi tên nguồn:</b> từ tuần 04/09 file ghi 'BQL OSEN' thay cho 'BQL CT21-22'; giữ khóa gốc theo bảng ánh xạ trong <code>tools/parse_sitecheck.py</code> để không đứt chuỗi 40 tuần.",
  "detailRows": 5794
 }
