@@ -45,7 +45,7 @@ Now a weekly update writes **two small files**: one `data/weeks/<week>.json`
 | `data/.last-check` | Heartbeat. Proves the job ran even when there was no new week. |
 | `.github/workflows/freshness-check.yml` | Opens an issue when the job stops, or when the source goes quiet. |
 | `.pages-allow` | What Pages publishes. Only its plain path and glob lines are served; `!` lines are known but not published, and `@` lines mark watched areas. |
-| `.github/workflows/pages.yml` | Deploys the allowlisted files; fails "UNCOVERED" if any tracked file under `data/` is on no `.pages-allow` line, or is a symlink (whoever wrote it). A symlink anywhere in a listed path stops the deploy. |
+| `.github/workflows/pages.yml` | Deploys the allowlisted files; fails "UNCOVERED" if any tracked file under `data/` is on no `.pages-allow` line, or is a symlink (whoever wrote it). Stops the deploy on anything its header lists: a symlink anywhere in a listed path, a backslash, a `[ ]` form other than a simple set, a wildcard on an `@` line. |
 
 Pages runs from GitHub Actions (since 2026-09-29), so `README.md`, `tools/` and anything else not in `.pages-allow` is never served. A new kind of file under `data/` needs Ty's say-so and a `.pages-allow` line in its own PR; a refresh never edits `.pages-allow`. Until then the Pages run fails "UNCOVERED": the unlisted file is never published, but the allowlisted files in that push still deploy.
 
