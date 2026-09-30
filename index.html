@@ -490,7 +490,6 @@ document.getElementById('tgCombined').addEventListener('click',e=>{const b=e.tar
 // ---- weekly table (sortable + clickable)
 let wsort={key:'ord',dir:1};
 const modePill={full:'<span class="pill full">Đầy đủ</span>',raised:'<span class="pill raised">Suy ra (chỉ phát sinh)</span>',gap:'<span class="pill gap">Không đọc được</span>'};
-function srcUrl(w){var m=w.id.slice(0,7),yr=m.slice(0,4),mo=parseInt(m.slice(5,7),10);var folder=(yr==='2025'&&mo===12)?'THÁNG 12.25':'THÁNG '+mo;return encodeURI('https://omnicomvn-my.sharepoint.com/personal/kienlt_omni_com_vn/Documents/ECOPM/ECOPM - SITECHECK/1. Ecopm Sitecheck/'+folder+'/'+w.src);}
 function renderWeekly(){
   const rows=WK.map((w,i)=>({...w,ord:i}));
   const k=wsort.key;
@@ -498,7 +497,7 @@ function renderWeekly(){
   const tb=document.getElementById('weeklyTbody');
   tb.innerHTML=rows.map(w=>{
     if(w.mode==='gap')return `<tr class="gaprow"><td>${w.week}</td><td colspan="4">${w.note}</td><td>${modePill.gap}</td></tr>`;
-    return `<tr class="clickable" data-id="${w.id}"><td>${w.week}</td><td style="font-size:11.5px"><a href="${srcUrl(w)}" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none">${w.src} ↗</a></td>
+    return `<tr class="clickable" data-id="${w.id}"><td>${w.week}</td><td style="font-size:11.5px">${esc(w.src)}</td>
       <td class="n">${w.total}</td><td class="n ${w.completed==null?'muted':''}">${w.completed==null?'—':w.completed}</td>
       <td class="n ${w.outTotal==null?'muted':''}">${w.outTotal==null?'—':w.outTotal}</td><td>${modePill[w.mode]}</td></tr>`;
   }).join('');
@@ -559,7 +558,7 @@ function renderTasks(){
   let rows=all.filter(r=>(!fdv||r.dept===fdv)&&(!fs||statusCat(r.status)===fs)&&(!q||((r.loc+' '+r.issue+' '+(r.action||'')).toLowerCase().includes(q))));
   rows.sort((a,b)=>dsort.dir*String(a[dsort.key]||'').localeCompare(String(b[dsort.key]||''),'vi'));
   const tb=document.getElementById('detailTbody');
-  if(!all.length){tb.innerHTML=`<tr><td colspan="5" style="padding:22px;text-align:center;color:var(--muted);font-style:italic">Chưa trích được danh sách đầu việc chi tiết cho tuần này (sheet chi tiết nhiều ảnh, vượt giới hạn đọc của connector). <a href="${srcUrl(w)}" target="_blank" rel="noopener" style="color:var(--accent);font-weight:600;text-decoration:none">Mở file nguồn để xem chi tiết ↗</a></td></tr>`;}
+  if(!all.length){tb.innerHTML=`<tr><td colspan="5" style="padding:22px;text-align:center;color:var(--muted);font-style:italic">Chưa trích được danh sách đầu việc chi tiết cho tuần này (sheet chi tiết nhiều ảnh, vượt giới hạn đọc của connector). Xem chi tiết trong file nguồn: ${esc(w.src)}.</td></tr>`;}
   else tb.innerHTML=rows.map(r=>`<tr><td style="white-space:nowrap">${esc(r.dept)}</td><td>${esc(r.loc)}</td><td>${esc(r.issue)}</td><td style="color:var(--muted)">${esc(r.action)}</td><td>${statusPill(r.status)}</td></tr>`).join('');
   document.getElementById('detStat').textContent=rows.length+' / '+all.length+' đầu việc';
 }
