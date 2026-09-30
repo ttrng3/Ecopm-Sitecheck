@@ -26,8 +26,9 @@ prompts say "call it directly" keep their previews in sync.)
 ### 1. Heartbeat, always, before anything else
 
 Write `data/.last-check` — one line, current UTC as `%Y-%m-%dT%H:%M:%SZ`, a
-space, then `newest-source=<week or filename>` — and commit it, even on a quiet
-run. It separates *"ran, nothing new"* from *"stopped running"* (which
+space, then `newest-source=<week label, e.g. 2026-09-W04>` — and commit it, even
+on a quiet run. The note is the week only: never a file name, person's name,
+Drive id or figure, because this repo is public. It separates *"ran, nothing new"* from *"stopped running"* (which
 `data/index.json` alone cannot express) and it exercises the write path every
 week, so a broken write surfaces on a quiet Monday rather than on the one
 Monday that has data.
