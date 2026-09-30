@@ -8,4 +8,4 @@ Status: approved by Ty 30/09 ("approve 7", in chat).
 - `tools/reconcile.py`: the docstring's shape table labels the other dashboards by shape, not by name. Docstring only.
 - Not changed, reported to Ty instead: `REVIEW.md` (the reviewer's entity-separation rule has to name what it screens for), the source-link host in `index.html` (a working link to the source files; changing it breaks the links), and one sentence in `data/index.json` (routine-written data; hand edits to `data/` are out of bounds).
 - Data files under `data/weeks/` contain "TMDV" as a Vietnamese site term (thương mại dịch vụ); that is this project's own data and stays.
-- Promise: `git grep -i` for the other entity's name returns only the three reported spots above; the page still renders (no behaviour change); `python3 tools/reconcile.py --help` still runs.
+- Promise: `git grep -i` for the other entity's name returns only the three reported spots above; the page still renders (no behaviour change); `python3 tools/reconcile.py --help` still prints its usage (it exits 1 by design when given no data trees).
