@@ -497,7 +497,7 @@ function renderWeekly(){
   const tb=document.getElementById('weeklyTbody');
   tb.innerHTML=rows.map(w=>{
     if(w.mode==='gap')return `<tr class="gaprow"><td>${w.week}</td><td colspan="4">${w.note}</td><td>${modePill.gap}</td></tr>`;
-    return `<tr class="clickable" data-id="${w.id}"><td>${w.week}</td><td style="font-size:11.5px">${w.src}</td>
+    return `<tr class="clickable" data-id="${w.id}"><td>${w.week}</td><td style="font-size:11.5px">${esc(w.src)}</td>
       <td class="n">${w.total}</td><td class="n ${w.completed==null?'muted':''}">${w.completed==null?'—':w.completed}</td>
       <td class="n ${w.outTotal==null?'muted':''}">${w.outTotal==null?'—':w.outTotal}</td><td>${modePill[w.mode]}</td></tr>`;
   }).join('');
@@ -558,7 +558,7 @@ function renderTasks(){
   let rows=all.filter(r=>(!fdv||r.dept===fdv)&&(!fs||statusCat(r.status)===fs)&&(!q||((r.loc+' '+r.issue+' '+(r.action||'')).toLowerCase().includes(q))));
   rows.sort((a,b)=>dsort.dir*String(a[dsort.key]||'').localeCompare(String(b[dsort.key]||''),'vi'));
   const tb=document.getElementById('detailTbody');
-  if(!all.length){tb.innerHTML=`<tr><td colspan="5" style="padding:22px;text-align:center;color:var(--muted);font-style:italic">Chưa trích được danh sách đầu việc chi tiết cho tuần này (sheet chi tiết nhiều ảnh, vượt giới hạn đọc của connector). Xem chi tiết trong file nguồn: ${w.src}.</td></tr>`;}
+  if(!all.length){tb.innerHTML=`<tr><td colspan="5" style="padding:22px;text-align:center;color:var(--muted);font-style:italic">Chưa trích được danh sách đầu việc chi tiết cho tuần này (sheet chi tiết nhiều ảnh, vượt giới hạn đọc của connector). Xem chi tiết trong file nguồn: ${esc(w.src)}.</td></tr>`;}
   else tb.innerHTML=rows.map(r=>`<tr><td style="white-space:nowrap">${esc(r.dept)}</td><td>${esc(r.loc)}</td><td>${esc(r.issue)}</td><td style="color:var(--muted)">${esc(r.action)}</td><td>${statusPill(r.status)}</td></tr>`).join('');
   document.getElementById('detStat').textContent=rows.length+' / '+all.length+' đầu việc';
 }
