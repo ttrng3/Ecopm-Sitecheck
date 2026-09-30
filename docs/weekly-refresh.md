@@ -29,7 +29,7 @@ Write `data/.last-check` — one line, current UTC as `%Y-%m-%dT%H:%M:%SZ`, a
 space, then `newest-source=<week label>` — and commit it, even on a quiet run.
 The label is a week id like `2026-09-W04`; this step runs before step 2's
 search, so write the last `wk[]` id from `data/index.json` (or `none` if there
-is none). The note is the week only: never a file name, person's name, Drive id
+is none): the newest week already published, not a week found this run. The note is the week only: never a file name, person's name, Drive id
 or figure, because this repo is public. It separates *"ran, nothing new"* from
 *"stopped running"* (which `data/index.json` alone cannot express) and it
 exercises the write path every week, so a broken write surfaces on a quiet
