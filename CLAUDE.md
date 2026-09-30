@@ -12,7 +12,7 @@ EcoPM's weekly site-check dashboard (the operations units in `data/index.json` `
 
 ## Layout
 - `index.html` is a renderer holding no data. A refresh never touches it or either of its `<style>` blocks.
-- Data: `data/index.json` (`depts`, `wk[]` with `mode` full/raised/gap, `coverage`, `detail{}`, `detailRows`, `recon`, `verdict`, `asof`, `generated`, `generatedUtc`), `data/weeks/<YYYY-MM-Wnn>.json` (row detail; the id is the file name), `data/.last-check` (heartbeat, not published).
+- Data: `data/index.json` (`depts`, `wk[]` with `mode` full/raised/gap, `coverage`, `detail{}`, `detailRows`, `recon`, `verdict`, `asof`, `generated`, `generatedUtc`; the README's key table predates the last three), `data/weeks/<YYYY-MM-Wnn>.json` (row detail; the id is the file name), `data/.last-check` (heartbeat, not published).
 - `tools/parse_sitecheck.py` pulls row detail from a copy of the workbook (runbook step 4); it needs the file itself, which the connector cannot supply.
 - `.pages-allow` lists what Pages publishes; `.github/workflows/pages.yml` deploys only that. A new kind of file under `data/` needs Ty's say-so and its own `.pages-allow` line in its own PR first.
 - `README.md` explains the data model and the visual standard; `REVIEW.md` holds the reviewer's rules.
@@ -26,10 +26,10 @@ EcoPM's weekly site-check dashboard (the operations units in `data/index.json` `
 
 ## Known mistakes
 - Two SharePoint trees hold identically named workbooks with different numbers. Only `ECOPM/ECOPM - SITECHECK/1. Ecopm Sitecheck/` is this project; the other tree belongs to another company and silently corrupts the series (2026-09-22).
-- The connector returns only the `TH` summary sheet of these workbooks, never the detail sheets (runbook step 4). The 22/09 run appended W02/W03 with no detail and no note; a week without detail must say so in `coverage` and the report (2026-09-25).
-- When detail was backfilled, `recon`, the week's `note` and a static banner still said it was missing, and a reader believes the sentence over the table. When detail lands, every sentence that described its absence changes in the same write, whether a PR or the routine's own data commit (2026-09-25).
+- The connector returns only the `TH` summary sheet of these workbooks, never the detail sheets (runbook step 4). The 2026-09-22 run appended W02/W03 with no detail and no note, so the page did not say the detail was missing (2026-09-25).
+- When detail was backfilled, `recon`, the week's `note` and a static banner still said it was missing, and a reader believes the sentence over the table (2026-09-25).
 - A preview that gets `index.json` without the matching `data/weeks/` files shows the week in the selector and an empty table, with no error (2026-09-25).
-- The preview once ran a whole renderer generation behind the repo while its data was current; the freshness check reads data only. Check the renderer too (2026-09-23).
-- Publishing `index.html` as the preview nests one document inside another and renders blank. Build the fragment, and send data files and the page in separate calls (2026-09-23).
+- The preview once ran a whole renderer generation behind the repo while its data was current; the freshness check reads data only, so it did not notice (2026-09-23).
+- Publishing `index.html` as the preview nests one document inside another and renders blank; the runbook's fragment build exists for this (2026-09-23).
 - From W04 the source calls unit `BQL CT21-22` "BQL OSEN"; the map in `tools/parse_sitecheck.py` keeps the original key so the series does not break (2026-09-30).
-- Calling a week "behind" from the file list alone was wrong once. Compare the files written with what `data/index.json` claims (2026-09-25).
+- Calling a week "behind" from the file list alone was wrong once: the manifest in `data/index.json` said otherwise (2026-09-25).
