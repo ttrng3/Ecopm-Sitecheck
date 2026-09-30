@@ -6,7 +6,7 @@ EcoPM's weekly site-check dashboard (the operations units in `data/index.json` `
 
 ## Commands
 - Check every `detail` entry has its week file (a quick check, not full validation): `python3 -c "import json,os;d=json.load(open('data/index.json'));m=[k for k,v in d['detail'].items() if k!=v or not os.path.exists('data/weeks/'+v+'.json')];assert not m,m"`
-- Build the Cowork preview page, only when `index.html` changed: `python3 tools/build-fragment.py` (writes `build/artifact.html`; never send `index.html` itself to the Cowork preview — Pages does serve it)
+- Build the Cowork preview page: `python3 tools/build-fragment.py` (writes `build/artifact.html`). When the routine refreshes the preview is set by its runbook, not here. Never send `index.html` itself to the preview; Pages does serve it.
 - Compare two `data/` trees: `python3 tools/reconcile.py <dir-a> <dir-b>` (exit 0 = same)
 - Freshness check, as the daily Action runs it: `python3 .github/scripts/freshness.py`
 
@@ -18,7 +18,7 @@ EcoPM's weekly site-check dashboard (the operations units in `data/index.json` `
 - `README.md` explains the data model and the visual standard; `REVIEW.md` holds the reviewer's rules.
 
 ## Rules
-- Changes reach `main` through a PR and Ty's ship. The routine's data writes are the only direct writes.
+- Changes reach `main` through a PR and Ty's ship. The only direct writes are the ones a routine's prompt and runbook allow.
 - The runbook and README win over this file and any memory note.
 - Never write a Cowork preview URL or artifact id, a person's details or a secret into this public repo.
 - Entity separation: this is EcoPM. Never take figures from another company's site-check tree, and never mix the two series.
