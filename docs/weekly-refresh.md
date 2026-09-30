@@ -17,7 +17,7 @@ never shows up in ToolSearch, which finds only deferred tools, so a ToolSearch
 miss is exactly what an attached tool looks like. It is not evidence that the
 tool is absent. Call it directly for the mirror step. Only an error returned by
 the tool itself means it is unavailable, and then the mirror step reports that
-error and stops, as the prompt says. (2026-09-27: the TMDV routine searched,
+error and stops, as the prompt says. (2026-09-27: another dashboard's routine searched,
 missed, reported "no Artifact tool" and skipped its mirror. The routines whose
 prompts say "call it directly" keep their previews in sync.)
 
@@ -41,10 +41,10 @@ Monday that has data.
 `sharepoint_search`, `fileType: "xlsx"`. Use **only** the tree whose `webUrl`
 contains `ECOPM/ECOPM - SITECHECK/1. Ecopm Sitecheck/`.
 
-**The trap:** the `OMNI - CÁC TÀI LIỆU/OMNI - SITECHECK/` tree holds files with
-**identical names** and different numbers — that is the OMNI project, with its
-own repo (`ttrng3/Omni-sitecheck`). Taking its figures corrupts this series
-silently, because the filenames look right.
+**The trap:** another tree on the same tenant holds files with **identical
+names** and different numbers. It is another entity's sitecheck data, not this
+project: never read it or mix it in. Taking its figures corrupts this series
+silently, because the filenames look right. The path above is the only test.
 
 ### 3. Stop if nothing is new
 
