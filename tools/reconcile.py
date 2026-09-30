@@ -7,10 +7,10 @@ says whether they have, and which way to sync.
 
 It is deliberately shape-agnostic. These dashboards do not share a schema:
 
-    OMNI         history[].week   + ISO `generated`      slices in data/weeks/
+    (history)    history[].week   + ISO `generated`      slices in data/weeks/
     ECOPM        wk[].id          + `generatedUtc`       slices in data/weeks/
-    ECP x ELA    weeks{} manifest + `generatedUtc`       slices in data/weeks/
-    TMDV         panels{} manifest+ `generatedUtc`       slices in data/panels/
+    (weeks)      weeks{} manifest + `generatedUtc`       slices in data/weeks/
+    (panels)     panels{} manifest+ `generatedUtc`       slices in data/panels/
 
 Earlier versions hardcoded one shape at a time, and each new dashboard was
 silently read as "zero slices" — which reports IN SYNC no matter what drifted.

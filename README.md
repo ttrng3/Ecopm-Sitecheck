@@ -115,7 +115,7 @@ sight, never that the artifact goes.
 **This replaces the 2026-09-23 rule** that stood here ("there is no claude.ai
 artifact copy … do not recreate one"). That text is withdrawn, not a conflict
 to weigh: the routine prompt says this repo's files win, and on 2026-09-27 the
-TMDV routine read the same old text and skipped its mirror step.
+routine of another dashboard read the same old text and skipped its mirror step.
 
 `tools/build-fragment.py` derives the fragment the preview needs from
 `index.html`; the routine uses it only when the renderer itself changes.
