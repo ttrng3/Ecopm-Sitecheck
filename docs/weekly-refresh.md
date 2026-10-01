@@ -45,6 +45,8 @@ contains `ECOPM/ECOPM - SITECHECK/1. Ecopm Sitecheck/`.
 names** and different numbers. It is another entity's sitecheck data, not this
 project: never read it or mix it in. Taking its figures corrupts this series
 silently, because the filenames look right. The path above is the only test.
+Never name that other entity in anything you write: `recon`, `verdict` and every
+note say only that the ECOPM tree was read (the 30/09 run named it in `recon`).
 
 ### 3. Stop if nothing is new
 
