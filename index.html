@@ -238,7 +238,7 @@ summary{display:list-item;transform-origin:left center}
       </h3>
       <div class="chart-wrap" style="height:340px"><canvas id="combinedChart"></canvas></div>
       <details><summary>Cách đọc</summary>
-        Mỗi tuần một cột = tổng đầu việc phát sinh; phần <strong>còn tồn "đến nay"</strong> (đỏ) tách ở trên, phần đã xử lý/theo dõi (xanh) ở dưới. "Tồn" là ảnh chụp tại thời điểm báo cáo, không cộng dồn. <span id="spanRange"></span>.
+        Mỗi tuần một cột = tổng đầu việc phát sinh; phần <strong>còn tồn "đến nay"</strong> (đỏ) tách ở trên, phần đã xử lý/theo dõi (xanh) ở dưới. "Tồn" là ảnh chụp tại thời điểm báo cáo, không cộng dồn. <span id="spanRange"></span>
       </details>
     </div>
   </section>
@@ -393,7 +393,7 @@ function renderHeader(){
   // counts are facts about the data, not copy — derive them so they cannot drift
   const sw=document.getElementById('scoreWeek'); if(sw) sw.textContent=META.asof||latest.week||'';
   const spr=document.getElementById('spanRange'), mm=id=>id.slice(5,7)+'/'+id.slice(0,4), gaps=WK.filter(w=>w.mode==='gap').length;
-  if(spr&&WK.length) spr.textContent=(gaps?`${WK.length} tuần, ${gaps} tuần trống, `:`Đủ ${WK.length} tuần liên tục `)+mm(WK[0].id)+' → '+mm(WK[WK.length-1].id)+(gaps?'':' (không còn khoảng trống)');
+  if(spr&&WK.length) spr.textContent=(gaps?`${WK.length} tuần, ${gaps} tuần trống, `:`Đủ ${WK.length} tuần liên tục `)+mm(WK[0].id)+' → '+mm(WK[WK.length-1].id)+(gaps?'':' (không còn khoảng trống)')+'.';
   const dc=document.getElementById('detailCoverage');
   if(dc){ const n=Object.keys(DETAIL_MAP).length, miss=WK.length-n;
     dc.textContent = miss===0 ? `toàn bộ ${n} tuần` : `${n}/${WK.length} tuần`; }
@@ -448,8 +448,8 @@ let nread=0,ntot=0; COV.forEach(m=>m.files.forEach(f=>{ntot++; if(f[2]==='read')
 document.getElementById('covCount').textContent=ntot;
 document.getElementById('covKpis').innerHTML=[
  kpi('Tổng file tuần', ntot,COV.length?COV[0].m+' → '+COV[COV.length-1].m:''),
- kpi('Đã đọc & tính lại', nread,'toàn bộ, từ file gốc'),
- kpi('Đối chiếu TỔNG CỘNG', nread+'/'+nread,'khớp 100% (✓ĐC)'),
+ kpi('Đã đọc & tính lại', nread, nread===ntot?'toàn bộ, từ file gốc':nread+'/'+ntot+' file, từ file gốc'),
+ kpi('Đối chiếu TỔNG CỘNG', nread+'/'+ntot, nread===ntot?'khớp 100% (✓ĐC)':(ntot-nread)+' file chưa đọc được'),
  kpi('Nguồn', 'OneDrive + M365','lịch sử trích tay, các tuần sau qua connector'),
 ].join('');
 document.getElementById('cov').innerHTML=COV.map(m=>`<div class="cov"><div style="font-weight:600;font-size:12.5px">${m.m}</div><div class="cells">${m.files.map(f=>{const ok=f[2]==='read';return `<span class="cell ${ok?'read':'blocked'}" title="${f[3]}">${f[0]} · ${f[1]}${ok?'':' · '+f[3]}</span>`;}).join('')}</div></div>`).join('');
