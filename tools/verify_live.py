@@ -17,7 +17,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 LIVE = "https://ttrng3.github.io/Ecopm-Sitecheck/"
 # Tracked but never served (.pages-allow); each must answer 404.
 PRIVATE = ["README.md", "CLAUDE.md", "REVIEW.md", "docs/weekly-refresh.md", "data/.last-check",
-           "tools/parse_sitecheck.py", "tools/build-fragment.py", "tools/verify_live.py",
+           "tools/parse_sitecheck.py", "tools/build-fragment.py", "tools/reconcile.py", "tools/verify_live.py",
            "verification/weekly-page.md", "work/261001-weekly-page-protocol/intent.md",
            ".github/scripts/freshness.py", ".pages-allow"]
 TRACES = re.compile(r"/personal/|sharepoint\.com|1drv\.ms|[\w.+-]+@[A-Za-z0-9-]+\.[A-Za-z]{2,}", re.I)
@@ -25,7 +25,8 @@ HEARTBEAT_MAX = 9  # the watchdog pipeline-wiring's collect_status.py sets for t
 DATA_MAX = 24      # MAX_DATA_AGE_DAYS default in .github/scripts/freshness.py
 
 
-def get(path):
+def get(path, tries=2):
+    """One retry on a network error: a blip must not read as a mismatch (first full run, 01/10)."""
     url = f"{LIVE}{path}?v={int(time.time())}"
     try:
         with urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": "verify-live"}), timeout=30) as r:
@@ -33,12 +34,17 @@ def get(path):
     except urllib.error.HTTPError as e:
         return e.code, b""
     except Exception as e:
-        return str(e), b""
+        return get(path, tries - 1) if tries > 1 else (str(e), b"")
 
 
 def age_days(stamp):
-    t = dt.datetime.strptime(stamp, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=dt.timezone.utc)
-    return round((dt.datetime.now(dt.timezone.utc) - t).total_seconds() / 86400, 1)
+    """Days since an ISO stamp ('...Z', '+00:00', fractions all fine); None if unreadable."""
+    try:
+        t = dt.datetime.fromisoformat(stamp.strip().replace("Z", "+00:00"))
+        t = t if t.tzinfo else t.replace(tzinfo=dt.timezone.utc)
+        return round((dt.datetime.now(dt.timezone.utc) - t).total_seconds() / 86400, 1)
+    except (ValueError, AttributeError):
+        return None
 
 
 def month_labels(week_id):
@@ -59,7 +65,7 @@ def main():
 
     v, info, live = {}, {}, {}
     v["has_weeks"] = bool(wk) and bool(files)
-    served = ["index.html", "data/index.json"] + ([f"data/weeks/{files[-1]}.json"] if files else [])
+    served = ["index.html", "data/index.json"] + [f"data/weeks/{x}.json" for x in files]
     for p in served:
         st, body = get(p)
         live[p] = body
@@ -91,20 +97,20 @@ def main():
             return True
         wnn = w["id"][-3:]
         return any(m["m"] in month_labels(w["id"]) and
-                   any(f[0] == wnn and "chi tiết" in str(f[3]).lower() for f in m["files"])
+                   any(f[0] == wnn and "chi tiết" in str(f[-1]).lower() for f in m["files"] if f)
                    for m in d.get("coverage", []))
     v["missing_detail_declared"] = all(declared(w) for w in missing)
     info["weeks"] = {"count": len(wk), "newest": ids[-1] if ids else None,
                      "without_detail": [w["id"] for w in missing], "rows": rows}
 
-    beat = (ROOT / "data/.last-check").read_text(encoding="utf-8").split()[0]
-    info["heartbeat_age_days"], info["data_age_days"] = age_days(beat), age_days(d["generatedUtc"])
-    v["heartbeat_fresh"] = info["heartbeat_age_days"] <= HEARTBEAT_MAX
-    v["data_fresh"] = info["data_age_days"] <= DATA_MAX
+    beat = ((ROOT / "data/.last-check").read_text(encoding="utf-8").split() or [""])[0]
+    info["heartbeat_age_days"], info["data_age_days"] = age_days(beat), age_days(str(d.get("generatedUtc", "")))
+    v["heartbeat_fresh"] = info["heartbeat_age_days"] is not None and info["heartbeat_age_days"] <= HEARTBEAT_MAX
+    v["data_fresh"] = info["data_age_days"] is not None and info["data_age_days"] <= DATA_MAX
 
     # Everything Pages serves: the live copies fetched above plus every tracked week file.
     texts = {p: b.decode("utf-8", "replace") for p, b in live.items()}
-    texts.update({f"data/weeks/{x}.json": t for x, t in week_text.items()})
+    texts.update({f"data/weeks/{x}.json": t for x, t in week_text.items() if f"data/weeks/{x}.json" not in texts})
     hits = {p: len(TRACES.findall(t)) for p, t in texts.items()}
     info["traces"] = {p: n for p, n in hits.items() if n}
     v["no_personal_traces"] = not info["traces"]

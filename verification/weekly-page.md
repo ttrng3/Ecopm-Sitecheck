@@ -2,7 +2,7 @@
 
 ## Promise
 
-What https://ttrng3.github.io/Ecopm-Sitecheck/ serves is byte-identical to `main`. `main`'s data adds up: every week's units sum to its totals, every claimed detail file exists, and a week without detail says so. The page renders every week and every detail row with no console error. Nothing private, personal or from another entity is served. The Cowork preview carries either `main`'s data or the last weekly run's.
+Every file https://ttrng3.github.io/Ecopm-Sitecheck/ serves (the page, `index.json`, every week file) is byte-identical to `main`. `main`'s data adds up: every week's units sum to its totals, every claimed detail file exists, and a week without detail says so. The page renders every week and every detail row with no console error. Nothing private, personal or from another entity is served. The Cowork preview carries either `main`'s data or the last weekly run's.
 
 ## Clean state
 
@@ -16,7 +16,7 @@ Run after a weekly run (Mondays, 14:00 UTC) or after any merge. Wait for the mer
 1. **Repo and live site.** `python3 tools/verify_live.py --forbid <other entity's name>` → exit 0 and `"pass": true`. The name comes from the runner's own notes (entity separation). It is never written into this repo. Without `--forbid` the entity verdict fails on purpose.
 2. **Live page in Chrome.** Open https://ttrng3.github.io/Ecopm-Sitecheck/. Stub dialogs, then run the invariants below. Expected: one row per `wk` entry; the heading number equals the `coverage` file count; clicking the newest week with detail renders as many rows as its week file holds; clicking the newest week without detail (if any) renders the "Chưa trích được" row.
 3. **Console.** Reload, then read errors for `TypeError|ReferenceError|Uncaught|SyntaxError`. Expected: none.
-4. **Preview.** Get the preview link from the ECOPM Sitecheck routine's prompt (`RemoteTrigger get`). Never write it here. `Artifact list` its files, then `Artifact read` `data/index.json` and the newest week file. Expected files: `index.html` (the fragment the runbook builds), `data/index.json`, and one `data/weeks/<id>.json` per `detail` entry; nothing else. The newest week file's sha256 equals `main`'s. `index.json`'s sha256 equals either `main`'s (`shasum -a 256 data/index.json`) or the last weekly run's: `c=$(git log -1 --format=%h --grep '^data:' -- data/index.json); git show $c:data/index.json | shasum -a 256`. If only PRs (`(#N)` titles) changed it since, it is behind by design until the next run.
+4. **Preview.** Get the preview link from the ECOPM Sitecheck routine's prompt (`RemoteTrigger get`). Never write it here. `Artifact list` its files, then `Artifact read` `data/index.json` and the newest week file. Expected files: `index.html` (the fragment the runbook builds), `data/index.json`, and one `data/weeks/<id>.json` per `detail` entry; nothing else. The newest week file's sha256 equals `main`'s. `index.json`'s sha256 equals either `main`'s (`shasum -a 256 data/index.json`) or the last weekly run's: `c=$(git log -1 --format=%h -- data/.last-check); git show $c:data/index.json | shasum -a 256`. Every run writes the heartbeat and no PR does, so the last heartbeat commit is the last run. If only PRs (`(#N)` titles) changed it since, it is behind by design until the next run.
 
 ## Invariants
 
@@ -43,7 +43,7 @@ All of them must be true.
 
 ## Adversary
 
-- **A stranger on the public page.** `private_not_served`: README, CLAUDE.md, REVIEW.md, the runbook, the heartbeat, three `tools/` scripts, this protocol, a `work/` file, `.github/scripts/freshness.py` and `.pages-allow` all answer 404. `no_personal_traces`: no OneDrive `/personal/` path, SharePoint or 1drv link, or email address in the page, `index.json` or any week file (the 30/09 source links held a person's path). Matches are reported by count and file, never by value.
+- **A stranger on the public page.** `private_not_served`: README, CLAUDE.md, REVIEW.md, the runbook, the heartbeat, the four `tools/` scripts, this protocol, a `work/` file, `.github/scripts/freshness.py` and `.pages-allow` all answer 404. `no_personal_traces`: no OneDrive `/personal/` path, SharePoint or 1drv link, or email address in the page, `index.json` or any week file (the 30/09 source links held a person's path). Matches are reported by count and file, never by value.
 - **The other entity's tree read by mistake** (identical file names, different numbers). `no_forbidden_words` keeps its name off the page. The numbers themselves cannot be told apart by a script: see Not covered.
 - **A half-finished run** that appends a week to `wk` without its detail, or claims detail it never wrote. Caught by `detail_files_match`, `detail_rows_match` and `missing_detail_declared`, which looks where runbook step 4 says to write it: that month's `coverage` note (or the week's own note). The 22/09 run said nothing anywhere.
 - **A source that renames a unit** (W04: "BQL OSEN"). An unmapped key fails `dept_keys_known`.
@@ -74,4 +74,7 @@ All of them must be true.
 - Read the console after a reload. Tracking starts on the first read, so errors from the first load are missed.
 - The week file loads after the click, slower on Pages than on a local serve. A fixed 1.2s wait read the table before it filled on the first live run (01/10); `pick` now empties the table, clicks, and waits until any row appears (max 8s), so it never reads the previous week's rows.
 - `detailTbody` renders every row (no paging). If paging is ever added, `detail_rows_render` must count the "N / N đầu việc" label instead.
-- The preview's `index.json` lags `main` after any PR that touches data. That is by design: the runbook refreshes the preview on the next weekly run. Judge it against the last `data:` commit, not `main`.
+- `generatedUtc` and the heartbeat parse with Python 3.9's `fromisoformat` (`Z`, `+00:00`, 3- or 6-digit fractions). Anything else reads as unparseable and fails `data_fresh` / `heartbeat_fresh`, never a crash.
+- Fetching all 39+ week files takes about two minutes; each request retries once on a network error, because one blip failed `served_equals_main` on the first full run (01/10).
+- Weekly-run commit titles vary (only one ever began `data:`), so step 4 finds the last run by its heartbeat commit, not by title.
+- The preview's `index.json` lags `main` after any PR that touches data. That is by design: the runbook refreshes the preview on the next weekly run. Judge it against the last heartbeat commit, not `main`.
