@@ -11,7 +11,7 @@ entity check fails rather than passing unchecked.
 Prints one JSON object of verdicts and exits 0 only when every verdict is true.
 Matches of personal traces are reported by count and file, never by value.
 """
-import argparse, datetime as dt, glob, hashlib, json, pathlib, re, sys, time, urllib.request, urllib.error
+import argparse, datetime as dt, glob, hashlib, json, pathlib, re, sys, time, unicodedata, urllib.request, urllib.error
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 LIVE = "https://ttrng3.github.io/Ecopm-Sitecheck/"
@@ -47,10 +47,15 @@ def age_days(stamp):
         return None
 
 
+def norm(t):
+    """Compare Vietnamese text NFC-normalised and case-folded, so 'Tháng 9' and 'THÁNG 9' match."""
+    return unicodedata.normalize("NFC", str(t or "")).casefold()
+
+
 def month_labels(week_id):
     """Coverage month labels a week id can sit under: 'THÁNG 9' or 'THÁNG 12.25'."""
     y, m = week_id[:4], int(week_id[5:7])
-    return {f"THÁNG {m}", f"THÁNG {m}.{y[2:]}"}
+    return {norm(f"THÁNG {m}"), norm(f"THÁNG {m}.{y[2:]}")}
 
 
 def main():
@@ -93,11 +98,11 @@ def main():
     # coverage note. The week's own note counts too. The 22/09 run said nothing anywhere.
     missing = [w for w in wk if w["id"] not in detail]
     def declared(w):
-        if "chi tiết" in w.get("note", "").lower():
+        if norm("chi tiết") in norm(w.get("note")):
             return True
         wnn = w["id"][-3:]
-        return any(m["m"] in month_labels(w["id"]) and
-                   any(f[0] == wnn and "chi tiết" in str(f[-1]).lower() for f in m["files"] if f)
+        return any(norm(m["m"]) in month_labels(w["id"]) and
+                   any(f[0] == wnn and norm("chi tiết") in norm(f[-1]) for f in m["files"] if f)
                    for m in d.get("coverage", []))
     v["missing_detail_declared"] = all(declared(w) for w in missing)
     info["weeks"] = {"count": len(wk), "newest": ids[-1] if ids else None,

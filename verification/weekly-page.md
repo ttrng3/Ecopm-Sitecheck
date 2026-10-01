@@ -2,14 +2,14 @@
 
 ## Promise
 
-Every file https://ttrng3.github.io/Ecopm-Sitecheck/ serves (the page, `index.json`, every week file) is byte-identical to `main`. `main`'s data adds up: every week's units sum to its totals, every claimed detail file exists, and a week without detail says so. The page renders every week and every detail row with no console error. Nothing private, personal or from another entity is served. The Cowork preview carries either `main`'s data or the last weekly run's.
+Every file https://ttrng3.github.io/Ecopm-Sitecheck/ serves (the page, `index.json`, every week file) is byte-identical to `main`. `main`'s data adds up: every week's units sum to its totals, every claimed detail file exists, and a week without detail says so. The page renders a row for every week, and the newest week with detail renders every one of its rows, with no console error. Nothing private, personal or from another entity is served. The Cowork preview carries either `main`'s data or the last weekly run's.
 
 ## Clean state
 
 ```bash
 cd ~/Projects/Ecopm-Sitecheck && git checkout main && git pull --ff-only
 ```
-Run after a weekly run (Mondays, 14:00 UTC) or after any merge. Wait for the merge's Pages run to go green first (`gh run list -w "Pages (allowlist)" -L1`).
+Run after a weekly run (the ECOPM Sitecheck routine's cron, `0 14 * * 1`, read with `RemoteTrigger get` on 01/10) or after any merge. Wait for the merge's Pages run to go green first (`gh run list -w "Pages (allowlist)" -L1`).
 
 ## Steps
 
