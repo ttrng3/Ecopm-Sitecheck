@@ -110,8 +110,9 @@ def main():
 
     beat = ((ROOT / "data/.last-check").read_text(encoding="utf-8").split() or [""])[0]
     info["heartbeat_age_days"], info["data_age_days"] = age_days(beat), age_days(str(d.get("generatedUtc", "")))
-    v["heartbeat_fresh"] = info["heartbeat_age_days"] is not None and info["heartbeat_age_days"] <= HEARTBEAT_MAX
-    v["data_fresh"] = info["data_age_days"] is not None and info["data_age_days"] <= DATA_MAX
+    # -1 allows clock skew; a stamp further in the future (a wrong year) would otherwise pass forever.
+    v["heartbeat_fresh"] = info["heartbeat_age_days"] is not None and -1 <= info["heartbeat_age_days"] <= HEARTBEAT_MAX
+    v["data_fresh"] = info["data_age_days"] is not None and -1 <= info["data_age_days"] <= DATA_MAX
 
     # Every served path, both as Pages serves it and as main holds it (main may not be deployed yet).
     texts = {f"live:{p}": b.decode("utf-8", "replace") for p, b in live.items()}
