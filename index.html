@@ -238,7 +238,7 @@ summary{display:list-item;transform-origin:left center}
       </h3>
       <div class="chart-wrap" style="height:340px"><canvas id="combinedChart"></canvas></div>
       <details><summary>Cách đọc</summary>
-        Mỗi tuần một cột = tổng đầu việc phát sinh; phần <strong>còn tồn "đến nay"</strong> (đỏ) tách ở trên, phần đã xử lý/theo dõi (xanh) ở dưới. "Tồn" là ảnh chụp tại thời điểm báo cáo, không cộng dồn. Đủ <span id="spanWeeks"></span> tuần liên tục 12/2025 → 09/2026 (không còn khoảng trống).
+        Mỗi tuần một cột = tổng đầu việc phát sinh; phần <strong>còn tồn "đến nay"</strong> (đỏ) tách ở trên, phần đã xử lý/theo dõi (xanh) ở dưới. "Tồn" là ảnh chụp tại thời điểm báo cáo, không cộng dồn. <span id="spanRange"></span>
       </details>
     </div>
   </section>
@@ -320,7 +320,7 @@ summary{display:list-item;transform-origin:left center}
     </div>
   </section>
 
-  <h2 class="sec">Độ phủ nguồn — 38 file tuần</h2>
+  <h2 class="sec">Độ phủ nguồn — <span id="covCount">—</span> file tuần</h2>
   <div class="subtitle" style="margin:-6px 0 12px">Nguyên tắc: không bịa "xanh". File không đọc được đánh dấu rõ lý do (format / size / label).</div>
   <section class="kpis" id="covKpis"></section>
   <div style="display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin:6px 0 10px">
@@ -392,7 +392,8 @@ function renderHeader(){
   document.getElementById('s_asof').textContent=META.asof;
   // counts are facts about the data, not copy — derive them so they cannot drift
   const sw=document.getElementById('scoreWeek'); if(sw) sw.textContent=META.asof||latest.week||'';
-  const spw=document.getElementById('spanWeeks'); if(spw) spw.textContent=WK.length;
+  const spr=document.getElementById('spanRange'), mm=id=>id.slice(5,7)+'/'+id.slice(0,4), gaps=WK.filter(w=>w.mode==='gap').length;
+  if(spr&&WK.length) spr.textContent=(gaps?`${WK.length} tuần, ${gaps} tuần trống, `:`Đủ ${WK.length} tuần liên tục `)+mm(WK[0].id)+' → '+mm(WK[WK.length-1].id)+(gaps?'':' (không còn khoảng trống)')+'.';
   const dc=document.getElementById('detailCoverage');
   if(dc){ const n=Object.keys(DETAIL_MAP).length, miss=WK.length-n;
     dc.textContent = miss===0 ? `toàn bộ ${n} tuần` : `${n}/${WK.length} tuần`; }
@@ -421,13 +422,14 @@ function kpi(label,val,delta,cls,dcls){return `<div class="kpi"><div class="labe
 function renderKpis(){
   const b2 = (latest.out['BQL SAVILLS CT06']||0)+(latest.out['CLB Tiện ích']||0);
   const dTot=latest.total-prevFull.total, dOut=latest.outTotal-prevFull.outTotal;
+  const l12=fullWk.slice(-12), avg12=k=>l12.length?Math.round(l12.reduce((s,w)=>s+((w.out||{})[k]||0),0)/l12.length):0;
   const compPct = prevFull.total? Math.round(latest.completed/prevFull.total*1000)/10 : 0;
 document.getElementById('kpis').innerHTML=[
  kpi('Đầu việc tuần mới nhất', latest.total, sgn(dTot)+' vs tuần trước ('+prevFull.total+')','', dTot<0?'down':(dTot>0?'up':'flat')),
  kpi('Tồn đến nay', latest.outTotal, sgn(dOut)+' vs '+prevFull.outTotal+' tuần trước','crit', dOut<0?'down':(dOut>0?'up':'flat')),
  kpi('Các mục hoàn thành tuần trước', String(compPct).replace('.',',')+'%', latest.completed+' / '+prevFull.total+' đầu việc','','flat'),
- kpi('SAVILLS CT06 — tồn', latest.out['BQL SAVILLS CT06']||0, 'tồn kinh niên · TB ~34 việc/tuần','crit','up'),
- kpi('CLB Tiện ích — tồn', latest.out['CLB Tiện ích']||0, 'tồn kinh niên · TB ~23 việc/tuần','crit','up'),
+ kpi('SAVILLS CT06 — tồn', latest.out['BQL SAVILLS CT06']||0, 'tồn kinh niên · TB '+l12.length+' tuần ~'+avg12('BQL SAVILLS CT06')+' việc/tuần','crit','up'),
+ kpi('CLB Tiện ích — tồn', latest.out['CLB Tiện ích']||0, 'tồn kinh niên · TB '+l12.length+' tuần ~'+avg12('CLB Tiện ích')+' việc/tuần','crit','up'),
  kpi('Tồn dồn 2 nhà thầu', Math.round(b2/latest.outTotal*100)+'%', b2+' / '+latest.outTotal+' đầu việc','crit','up'),
 ].join('');
 }
@@ -443,11 +445,12 @@ document.getElementById('kpis').innerHTML=[
 function renderCoverage(){
   const COV = META.coverage||[];
 let nread=0,ntot=0; COV.forEach(m=>m.files.forEach(f=>{ntot++; if(f[2]==='read')nread++;}));
+document.getElementById('covCount').textContent=ntot;
 document.getElementById('covKpis').innerHTML=[
- kpi('Tổng file tuần', ntot,'THÁNG 12.25 → THÁNG 9'),
- kpi('Đã đọc & tính lại', nread,'toàn bộ, từ file gốc'),
- kpi('Đối chiếu TỔNG CỘNG', nread+'/'+nread,'khớp 100% (✓ĐC)'),
- kpi('Nguồn', 'OneDrive + M365','37 tuần trích tay + W02 qua connector'),
+ kpi('Tổng file tuần', ntot,COV.length?COV[0].m+' → '+COV[COV.length-1].m:''),
+ kpi('Đã đọc & tính lại', nread, nread===ntot?'toàn bộ, từ file gốc':nread+'/'+ntot+' file, từ file gốc'),
+ kpi('Đối chiếu TỔNG CỘNG', nread+'/'+ntot, nread===ntot?'khớp 100% (✓ĐC)':(ntot-nread)+' file chưa đọc được'),
+ kpi('Nguồn', 'OneDrive + M365','lịch sử trích tay, các tuần sau qua connector'),
 ].join('');
 document.getElementById('cov').innerHTML=COV.map(m=>`<div class="cov"><div style="font-weight:600;font-size:12.5px">${m.m}</div><div class="cells">${m.files.map(f=>{const ok=f[2]==='read';return `<span class="cell ${ok?'read':'blocked'}" title="${f[3]}">${f[0]} · ${f[1]}${ok?'':' · '+f[3]}</span>`;}).join('')}</div></div>`).join('');
 }
