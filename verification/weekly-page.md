@@ -2,7 +2,7 @@
 
 ## Promise
 
-Every file https://ttrng3.github.io/Ecopm-Sitecheck/ serves (the page, `index.json`, every week file) is byte-identical to `main`. `main`'s data adds up: every week's units sum to its totals, every claimed detail file exists, and a week without detail says so. The page renders a row for every week, and the newest week with detail renders every one of its rows, with no console error. Nothing private, personal or from another entity is served. The Cowork preview carries either `main`'s data or the last weekly run's.
+Every file https://ttrng3.github.io/Ecopm-Sitecheck/ serves (the page, `index.json`, every week file) is byte-identical to `main`. `main`'s data adds up: every week's units sum to its totals, every claimed detail file exists, and a week without detail says so. The page renders a row for every week, and the newest week with detail renders every one of its rows, with no console error. No private file, personal link or email address, and no word from another entity, is served. The Cowork preview carries either `main`'s data or the last weekly run's.
 
 ## Clean state
 
@@ -16,7 +16,7 @@ Run after a weekly run (the ECOPM Sitecheck routine's cron, `0 14 * * 1` UTC = 2
 1. **Repo and live site.** `python3 tools/verify_live.py --forbid <other entity's name>` → exit 0 and `"pass": true`. The name comes from the runner's own notes (entity separation). It is never written into this repo. Without `--forbid` the entity verdict fails on purpose.
 2. **Live page in Chrome.** Open https://ttrng3.github.io/Ecopm-Sitecheck/. Stub dialogs, then run the invariants below. Expected: one row per `wk` entry; the heading number equals the `coverage` file count; clicking the newest week with detail renders as many rows as its week file holds; clicking the newest week without detail (if any) renders the "Chưa trích được" row.
 3. **Console.** Reload, then read errors for `TypeError|ReferenceError|Uncaught|SyntaxError`. Expected: none.
-4. **Preview.** Get the preview link from the ECOPM Sitecheck routine's prompt (`RemoteTrigger get`). Never write it here. Find the last weekly run: `c=$(git log --format='%h %s' -- data/index.json | grep -v ' (#[0-9]*)$' | head -1 | cut -d' ' -f1)`, the last commit to `index.json` that is not a squash-merged PR (their titles end `(#N)`); routine runs commit directly. `Artifact list` the preview's files, then `Artifact read` `data/index.json` and the newest week file. Expected: the files are `index.html` (the fragment the runbook builds), `data/index.json`, and one `data/weeks/<id>.json` per `detail` entry of either `main` or `$c` (`git show $c:data/index.json`); nothing else. Each file read has the sha256 of either `main`'s copy (`shasum -a 256 <path>`) or `$c`'s (`git show $c:<path> | shasum -a 256`). Matching `$c` and not `main` means PRs changed data since the run: behind by design until the next run.
+4. **Preview.** Get the preview link from the ECOPM Sitecheck routine's prompt (`RemoteTrigger get`). Never write it here. Find the last weekly run: `c=$(git log --format='%h %s' -- data/index.json | grep -v ' (#[0-9]*)$' | head -1 | cut -d' ' -f1)`, the last commit to `index.json` that is not a squash-merged PR (their titles end `(#N)`); routine runs commit directly. `Artifact list` the preview's files, then `Artifact read` `data/index.json` and the newest week file. Expected: the files are `index.html` (the page fragment the routine's mirror step publishes; README "One address, one preview"), `data/index.json`, and one `data/weeks/<id>.json` per `detail` entry of either `main` or `$c` (`git show $c:data/index.json`); nothing else. Each file read has the sha256 of either `main`'s copy (`shasum -a 256 <path>`) or `$c`'s (`git show $c:<path> | shasum -a 256`). Matching `$c` and not `main` means PRs changed data since the run: behind by design until the next run.
 
 ## Invariants
 
@@ -66,6 +66,7 @@ All of them must be true.
 ## Not covered
 
 - Whether the numbers came from the ECOPM tree and not the other entity's. Only the runbook's path rule guards this. The cross-check is manual: compare the previous-week column of the new file with the published previous week.
+- Personal data inside verbatim row text: a person's name in `resp`, a phone or an ID number. The script catches only personal links and email addresses; rows are read by eye if in doubt.
 - Whether the totals equal the workbook's TỔNG CỘNG cell. The workbook is not reachable from here.
 
 ## Traps
@@ -78,4 +79,4 @@ All of them must be true.
 - `generatedUtc` and the heartbeat parse with Python 3.9's `fromisoformat` (`Z`, `+00:00`, 3- or 6-digit fractions). Anything else reads as unparseable and fails `data_fresh` / `heartbeat_fresh`, never a crash.
 - Fetching every served file (41 on 01/10) took 20 s to 4 min from the Mac on 01/10 (network-bound); each request retries once on a network error or a 5xx, because one blip failed `served_equals_main` on the first full run (01/10).
 - Weekly-run commit titles vary (only one ever began `data:`), and the heartbeat is committed before the data (30/09: heartbeat ceb210a, then data a64ced5), so neither a title prefix nor the heartbeat commit finds the run's data. Step 4 takes the last `index.json` commit that is not a `(#N)` PR merge.
-- The preview's `index.json` lags `main` after any PR that touches data. That is by design: the runbook refreshes the preview on the next weekly run. Judge it against the last non-PR `index.json` commit, not `main`.
+- The preview's `index.json` lags `main` after any PR that touches data. That is by design: the routine's mirror step refreshes the preview on its next run (README "One address, one preview"). Judge it against the last non-PR `index.json` commit, not `main`.

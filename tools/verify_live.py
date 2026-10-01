@@ -80,7 +80,9 @@ def main():
 
     priv = {p: get(p)[0] for p in PRIVATE}
     info["private_status"] = priv
-    v["private_not_served"] = all(s == 404 for s in priv.values())
+    info["private_missing_on_main"] = [p for p in PRIVATE if not (ROOT / p).exists()]
+    # A renamed private file would still 404 under its old name; the list must name real files.
+    v["private_not_served"] = all(s == 404 for s in priv.values()) and not info["private_missing_on_main"]
 
     ids = [w["id"] for w in wk]
     v["weeks_ordered_unique"] = ids == sorted(ids) and len(set(ids)) == len(ids)
@@ -88,7 +90,7 @@ def main():
     v["sums_match"] = all(sum(w.get("raised", {}).values()) == w.get("total", 0) and
                           ("outTotal" not in w or sum(w.get("out", {}).values()) == w["outTotal"]) for w in wk)
     # The coverage map and heading count `coverage` files; a run that appends to `wk` only leaves them behind.
-    v["coverage_matches_weeks"] = sum(len(m["files"]) for m in d.get("coverage", [])) == len(wk)
+    v["coverage_matches_weeks"] = sum(1 for m in d.get("coverage", []) for f in m["files"] if f) == len(wk)
     v["dept_keys_known"] = all(set(w.get("raised", {})) <= depts and set(w.get("out", {})) <= depts for w in wk)
 
     rows = sum(len(json.loads(t)) for t in week_text.values())
