@@ -9,7 +9,7 @@ Every file https://ttrng3.github.io/Ecopm-Sitecheck/ serves (the page, `index.js
 ```bash
 cd ~/Projects/Ecopm-Sitecheck && git checkout main && git pull --ff-only
 ```
-Run after a weekly run (the ECOPM Sitecheck routine's cron, `0 14 * * 1`, read with `RemoteTrigger get` on 01/10) or after any merge. Wait for the merge's Pages run to go green first (`gh run list -w "Pages (allowlist)" -L1`).
+Run after a weekly run (the ECOPM Sitecheck routine's cron, `0 14 * * 1` UTC = 21:00 Monday Hanoi, read with `RemoteTrigger get` on 01/10) or after any merge. Wait for the merge's Pages run to go green first (`gh run list -w "Pages (allowlist)" -L1`).
 
 ## Steps
 
@@ -75,6 +75,6 @@ All of them must be true.
 - The week file loads after the click, slower on Pages than on a local serve. A fixed 1.2s wait read the table before it filled on the first live run (01/10); `pick` now empties the table, clicks, and waits until any row appears (max 8s), so it never reads the previous week's rows.
 - `detailTbody` renders every row (no paging). If paging is ever added, `detail_rows_render` must count the "N / N đầu việc" label instead.
 - `generatedUtc` and the heartbeat parse with Python 3.9's `fromisoformat` (`Z`, `+00:00`, 3- or 6-digit fractions). Anything else reads as unparseable and fails `data_fresh` / `heartbeat_fresh`, never a crash.
-- Fetching all 39+ week files takes about two minutes; each request retries once on a network error, because one blip failed `served_equals_main` on the first full run (01/10).
+- Fetching all 39+ week files takes about two minutes; each request retries once on a network error or a 5xx, because one blip failed `served_equals_main` on the first full run (01/10).
 - Weekly-run commit titles vary (only one ever began `data:`), and the heartbeat is committed before the data (30/09: heartbeat ceb210a, then data a64ced5), so neither a title prefix nor the heartbeat commit finds the run's data. Step 4 takes the last `index.json` commit that is not a `(#N)` PR merge.
 - The preview's `index.json` lags `main` after any PR that touches data. That is by design: the runbook refreshes the preview on the next weekly run. Judge it against the last non-PR `index.json` commit, not `main`.

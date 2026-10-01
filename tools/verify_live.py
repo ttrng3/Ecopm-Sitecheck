@@ -32,7 +32,7 @@ def get(path, tries=2):
         with urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": "verify-live"}), timeout=30) as r:
             return r.status, r.read()
     except urllib.error.HTTPError as e:
-        return e.code, b""
+        return get(path, tries - 1) if e.code >= 500 and tries > 1 else (e.code, b"")
     except Exception as e:
         return get(path, tries - 1) if tries > 1 else (str(e), b"")
 
@@ -61,7 +61,7 @@ def month_labels(week_id):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--forbid", nargs="*", default=[])
-    forbid = [w.lower() for w in ap.parse_args().forbid if w.strip()]
+    forbid = [norm(w) for w in ap.parse_args().forbid if w.strip()]
 
     d = json.loads((ROOT / "data/index.json").read_text(encoding="utf-8"))
     wk, depts, detail = d.get("wk", []), set(d["depts"]), d.get("detail", {})
@@ -113,14 +113,14 @@ def main():
     v["heartbeat_fresh"] = info["heartbeat_age_days"] is not None and info["heartbeat_age_days"] <= HEARTBEAT_MAX
     v["data_fresh"] = info["data_age_days"] is not None and info["data_age_days"] <= DATA_MAX
 
-    # Everything Pages serves: the live copies fetched above plus every tracked week file.
-    texts = {p: b.decode("utf-8", "replace") for p, b in live.items()}
-    texts.update({f"data/weeks/{x}.json": t for x, t in week_text.items() if f"data/weeks/{x}.json" not in texts})
+    # Every served path, both as Pages serves it and as main holds it (main may not be deployed yet).
+    texts = {f"live:{p}": b.decode("utf-8", "replace") for p, b in live.items()}
+    texts.update({f"main:{p}": (ROOT / p).read_text(encoding="utf-8") for p in served})
     hits = {p: len(TRACES.findall(t)) for p, t in texts.items()}
     info["traces"] = {p: n for p, n in hits.items() if n}
     v["no_personal_traces"] = not info["traces"]
     info["forbid_checked"] = len(forbid)
-    v["no_forbidden_words"] = bool(forbid) and not any(w in t.lower() for w in forbid for t in texts.values())
+    v["no_forbidden_words"] = bool(forbid) and not any(w in norm(t) for w in forbid for t in texts.values())
 
     print(json.dumps({"pass": all(v.values()), "verdicts": v, "info": info}, ensure_ascii=False, indent=1))
     sys.exit(0 if all(v.values()) else 1)
