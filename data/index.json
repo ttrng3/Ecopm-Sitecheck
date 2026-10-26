@@ -1016,26 +1016,99 @@
   {
    "week": "Oct W01 ’26",
    "id": "2026-10-W01",
-   "mode": "gap",
-   "total": null,
-   "completed": null,
-   "outTotal": null,
-   "raised": {},
-   "out": {},
+   "mode": "full",
+   "total": 124,
+   "completed": 86,
+   "outTotal": 77,
+   "raised": {
+    "BQLVH 1": 16,
+    "Công viên Mùa hạ+Xuân": 2,
+    "BQLVH 2": 15,
+    "BQLVH 3": 20,
+    "BQL CT21-22": 24,
+    "BQL SAVILLS CT06": 38,
+    "CLB Tiện ích": 2,
+    "CV Hồ Thiên Nga": 7
+   },
+   "out": {
+    "BQL SAVILLS CT06": 32,
+    "CLB Tiện ích": 45
+   },
    "src": "2026-10-W01_Sitecheck.xlsx",
-   "note": "Nguồn tuần 01/10 ĐÃ có trên cây ECOPM (cập nhật 05/10/2026, 37,1 MB) nhưng KHÔNG đọc được: Microsoft Graph từ chối chuyển đổi để trích text (lỗi 406) — không lấy được cả sheet TH. Không có số tổng hợp, không suy ra, không lấy số từ cây nguồn khác. Chỉ số KPI phía trên vẫn là tuần 04/09."
+   "note": "Đọc qua M365 connector 26/10/2026, sheet TH; tính lại bằng code khớp ô TỔNG CỘNG (phát sinh 124, hoàn thành 86, tồn 77). ✓ĐC: cột 'tuần 04 tháng 09' của file này khớp 100% số liệu tuần 04/09 đã công bố (14+1+15+22+16+40+3+7 = 118) — xác nhận đúng cây ECOPM. GỠ TRẠNG THÁI 'KHÔNG ĐỌC ĐƯỢC': lỗi Graph 406 của hai ca 05/10 và 12/10 đã tự hết, file đọc bình thường ngày 26/10 — nên tuần này chuyển từ 'gap' sang 'full'. CHƯA CÓ DANH SÁCH THEO DÒNG (chi tiết): connector có trả text của các sheet chi tiết, nhưng text chuyển đổi không giữ được ranh giới từng dòng/từng cột đủ tin để dựng danh sách (đã ghi nhận 05/10), nên vẫn cần chạy tools/parse_sitecheck.py trên bản sao file gốc — phiên cloud không tải được bản sao."
   },
   {
    "week": "Oct W02 ’26",
    "id": "2026-10-W02",
-   "mode": "gap",
-   "total": null,
-   "completed": null,
-   "outTotal": null,
-   "raised": {},
-   "out": {},
+   "mode": "full",
+   "total": 155,
+   "completed": 134,
+   "outTotal": 57,
+   "raised": {
+    "BQLVH 1": 15,
+    "Công viên Mùa hạ+Xuân": 1,
+    "BQLVH 2": 15,
+    "BQLVH 3": 21,
+    "BQL CT21-22": 21,
+    "BQL SAVILLS CT06": 41,
+    "CLB Tiện ích": 34,
+    "CV Hồ Thiên Nga": 7
+   },
+   "out": {
+    "Công viên Mùa hạ+Xuân": 1,
+    "BQL SAVILLS CT06": 32,
+    "CLB Tiện ích": 24
+   },
    "src": "2026-10-W02_Sitecheck.xlsx",
-   "note": "Nguồn tuần 02/10 ĐÃ có trên cây ECOPM (cập nhật 12/10/2026) nhưng KHÔNG đọc được: Microsoft Graph từ chối chuyển đổi để trích text (lỗi 406) — không lấy được cả sheet TH. Đây là tuần thứ HAI liên tiếp bị từ chối y hệt tuần 01/10; thông báo của connector cho biết nguyên nhân thường gặp là file bị gắn nhãn bảo mật có mã hoá (Purview), và việc đọc lại không giải quyết được cho tới khi file hoặc nhãn thay đổi. Các file tháng 9 trên cùng cây vẫn đọc được, nên chặn này thuộc về bản thân hai file tháng 10, không phải connector. Không có số tổng hợp, không suy ra, không lấy số từ cây nguồn khác. Chỉ số KPI phía trên vẫn là tuần 04/09."
+   "note": "Đọc qua M365 connector 26/10/2026, sheet TH; tính lại bằng code khớp ô TỔNG CỘNG (phát sinh 155, hoàn thành 134, tồn 57). GỠ TRẠNG THÁI 'KHÔNG ĐỌC ĐƯỢC' cùng ca với tuần 01/10. Lệch nhỏ khi đối chiếu: cột 'tuần 01 tháng 10' của file này ghi 127, trong khi cột cùng tuần của file tuần 01/10 ghi 124 (BQLVH 3 22/20, SAVILLS CT06 39/38) — nguồn tự điều chỉnh lại, không suy ra số. Phát sinh 155 là mức cao nhất 10 tuần, do CLB Tiện ích khai 34 đầu việc (các tuần liền kề chỉ 1–2). CHƯA CÓ DANH SÁCH THEO DÒNG (chi tiết): connector có trả text của các sheet chi tiết, nhưng text chuyển đổi không giữ được ranh giới từng dòng/từng cột đủ tin để dựng danh sách (đã ghi nhận 05/10), nên vẫn cần chạy tools/parse_sitecheck.py trên bản sao file gốc — phiên cloud không tải được bản sao."
+  },
+  {
+   "week": "Oct W03 ’26",
+   "id": "2026-10-W03",
+   "mode": "full",
+   "total": 123,
+   "completed": 123,
+   "outTotal": 69,
+   "raised": {
+    "BQLVH 1": 15,
+    "Công viên Mùa hạ+Xuân": 2,
+    "BQLVH 2": 15,
+    "BQLVH 3": 21,
+    "BQL CT21-22": 24,
+    "BQL SAVILLS CT06": 38,
+    "CLB Tiện ích": 1,
+    "CV Hồ Thiên Nga": 7
+   },
+   "out": {
+    "BQL SAVILLS CT06": 34,
+    "CLB Tiện ích": 35
+   },
+   "src": "2026-10-W03_Sitecheck.xlsx",
+   "note": "Đọc qua M365 connector 26/10/2026, sheet TH; tính lại bằng code khớp ô TỔNG CỘNG (phát sinh 123, hoàn thành 123, tồn 69). CẢNH BÁO NHÃN TUẦN SAI TRONG NGUỒN: dòng tiêu đề của file này ghi 'tuần 01 tháng 10' / 'tuần 02 tháng 10', chậm một tuần so với tên file. Lấy theo tên file vì ba căn cứ: (1) file cập nhật thứ Hai 19/10 — đúng mốc chốt tuần 03; (2) cột 'tuần 03 tháng 10' của file tuần 04/10 khớp 7/8 bộ phận với cột tuần của file này (chỉ CLB Tiện ích lệch 26/1); (3) số liệu cột này KHÔNG trùng cột tuần 02 của file tuần 02/10 (lệch 5/8 bộ phận), nên không phải dữ liệu tuần 02 bị nhân bản. CHƯA CÓ DANH SÁCH THEO DÒNG (chi tiết): connector có trả text của các sheet chi tiết, nhưng text chuyển đổi không giữ được ranh giới từng dòng/từng cột đủ tin để dựng danh sách (đã ghi nhận 05/10), nên vẫn cần chạy tools/parse_sitecheck.py trên bản sao file gốc — phiên cloud không tải được bản sao."
+  },
+  {
+   "week": "Oct W04 ’26",
+   "id": "2026-10-W04",
+   "mode": "full",
+   "total": 122,
+   "completed": 130,
+   "outTotal": 61,
+   "raised": {
+    "BQLVH 1": 15,
+    "Công viên Mùa hạ+Xuân": 2,
+    "BQLVH 2": 15,
+    "BQLVH 3": 21,
+    "BQL CT21-22": 23,
+    "BQL SAVILLS CT06": 37,
+    "CLB Tiện ích": 2,
+    "CV Hồ Thiên Nga": 7
+   },
+   "out": {
+    "BQL SAVILLS CT06": 32,
+    "CLB Tiện ích": 29
+   },
+   "src": "2026-10-W04_Sitecheck.xlsx",
+   "note": "Đọc qua M365 connector 26/10/2026, sheet TH; tính lại bằng code khớp ô TỔNG CỘNG (phát sinh 122, hoàn thành 130, tồn 61). ✓ĐC: 15+2+15+21+23+37+2+7 = 122; 32+29 = 61. Ô tồn của CLB Tiện ích là công thức =18+11 (11 đầu việc 'TỒN THÁNG 4 ĐẾN NAY'). Nhãn tuần trong nguồn vẫn lệch: sheet BQLKV1 ghi ngày 23/10/2026 (thuộc tuần 04) nhưng mục bên trong đề 'TUẦN 3 THÁNG 10'. CHƯA CÓ DANH SÁCH THEO DÒNG (chi tiết): connector có trả text của các sheet chi tiết, nhưng text chuyển đổi không giữ được ranh giới từng dòng/từng cột đủ tin để dựng danh sách (đã ghi nhận 05/10), nên vẫn cần chạy tools/parse_sitecheck.py trên bản sao file gốc — phiên cloud không tải được bản sao."
   }
  ],
  "coverage": [
@@ -1335,20 +1408,32 @@
     [
      "W01",
      "xlsx",
-     "blocked",
-     "Graph từ chối chuyển đổi để trích text (lỗi 406), file 37,1 MB — chưa đọc được sheet TH nên chưa có số liệu tuần 01/10."
+     "read",
+     "Tổng hợp đọc qua M365 connector 26/10 (lỗi 406 ngày 05/10 và 12/10 đã tự hết). Chi tiết theo dòng CHƯA trích được: chưa có bản sao file nguồn."
     ],
     [
      "W02",
      "xlsx",
-     "blocked",
-     "Graph từ chối chuyển đổi để trích text (lỗi 406) — tuần thứ hai liên tiếp, chưa đọc được sheet TH nên chưa có số liệu tuần 02/10."
+     "read",
+     "Tổng hợp đọc qua M365 connector 26/10 (lỗi 406 đã tự hết). Chi tiết theo dòng CHƯA trích được: chưa có bản sao file nguồn."
+    ],
+    [
+     "W03",
+     "xlsx",
+     "read",
+     "Tổng hợp đọc qua M365 connector 26/10. Nhãn tuần trong file chậm một tuần, lấy theo tên file (đối chiếu 7/8 bộ phận với file tuần 04). Chi tiết theo dòng CHƯA trích được."
+    ],
+    [
+     "W04",
+     "xlsx",
+     "read",
+     "Tổng hợp đọc qua M365 connector 26/10. Chi tiết theo dòng CHƯA trích được: chưa có bản sao file nguồn."
     ]
    ]
   }
  ],
- "asof": "Tuần 04/09/2026",
- "generated": "12/10/2026",
+ "asof": "Tuần 04/10/2026",
+ "generated": "26/10/2026",
  "pages": "https://ttrng3.github.io/Ecopm-Sitecheck/",
  "repo": "https://github.com/ttrng3/Ecopm-Sitecheck",
  "detail": {
@@ -1392,8 +1477,8 @@
   "2026-09-W02": "2026-09-W02",
   "2026-09-W03": "2026-09-W03"
  },
- "generatedUtc": "2026-10-12T14:08:27Z",
- "verdict": "<div class=\"lead\">Tuần mới nhất <b>đọc được</b> vẫn là tuần 04/09: <b>68 tồn</b>, <b>67/68 (98,5%) nằm ở 2 nhà thầu</b> — SAVILLS CT06 34 và CLB Tiện ích 33. Sáu bộ phận còn lại gần như sạch tồn. <b style=\"color:var(--warning)\">Hai tuần liên tiếp (01/10 và 02/10) đã có file nguồn nhưng không đọc được (lỗi 406), nên số liệu trên trang đang chậm 3 tuần: mọi con số dưới đây là tuần 04/09.</b></div><p>Phát sinh <b>118</b> (-13 vs tuần 03/09: 131, -9,9%), tồn <b>68</b> (-11 vs 79, -13,9%). Điểm cần xử lý: <b>SAVILLS CT06 chỉ đóng 8/41 đầu việc tuần 03 (19,5%)</b> trong khi sáu bộ phận đóng đủ 100%; tồn của SAVILLS đứng yên ba tuần liền (35 → 34 → 34). Ngược lại <b>CLB Tiện ích lần đầu giảm mạnh: 45 → 33 (-12)</b>, backlog kinh niên bắt đầu vỡ. <b>Việc cần làm ngoài dữ liệu:</b> hai file tháng 10 bị chặn trích text ở mức nhãn bảo mật của file, nên chuỗi sẽ tiếp tục đứng yên tới khi chủ nguồn bỏ nhãn mã hoá hoặc phát hành bản xuất nhẹ (không ảnh). Nguồn đổi tên <b>BQL CT21-22</b> thành <b>BQL OSEN</b> từ tuần 04/09; giữ khóa gốc để không đứt chuỗi <b>42 tuần</b> (12/2025 → 10/2026).</p>",
- "recon": "<b>Độ phủ nguồn &amp; đối chiếu:</b> <b>40/42 file tuần đọc được</b> — 37 tuần lịch sử (OneDrive 12/09) + Tuần 02/09 (connector 15/09) + Tuần 03/09 (connector 22/09) + Tuần 04/09 (connector 30/09). Mọi tổng cột tính lại bằng code, khớp 100% ô TỔNG CỘNG (✓ĐC tuần 04: 14+1+15+22+16+40+3+7 = 118; 34+33+1 = 68). <b style=\"color:var(--warning)\">Hai tuần tháng 10 chưa đọc được:</b> cả file tuần 01/10 (05/10/2026) và tuần 02/10 (12/10/2026) đã có trên cây ECOPM nhưng Graph trả lỗi 406 khi chuyển đổi để trích text, nên <b>không có cả sheet TH</b>; hai tuần này vào bảng ở trạng thái <b>Không đọc được</b> và <b>mọi chỉ số KPI vẫn là tuần 04/09</b> — không suy ra số, không lấy số từ cây nguồn khác. <b>Khoanh vùng nguyên nhân (12/10):</b> các file tháng 9 trên cùng cây ECOPM vẫn đọc được bình thường, nên lỗi 406 thuộc về hai file tháng 10 chứ không phải connector; thông báo của Graph chỉ tới nhãn bảo mật có mã hoá (Purview) gắn trên file, và theo thông báo đó đọc lại sẽ không hết cho tới khi file hoặc nhãn thay đổi. <b>Đối chiếu chéo (tuần 04/09):</b> cột 'tuần 03 tháng 09' trong file W04 tái lập đúng từng bộ phận của W03 đã công bố (tổng 131) — xác nhận đọc đúng cây ECOPM; lần đọc lại ngày 05/10 cho đúng các số đã công bố (131 → 118, hoàn thành 99, tồn 68). <b style=\"color:var(--warning)\">Chi tiết còn thiếu 3 tuần:</b> <b>39/42 tuần</b> có danh sách theo dòng (<b>5.794 dòng</b>); thiếu <b>tuần 04/09</b>, <b>tuần 01/10</b> và <b>tuần 02/10</b>. <b>Ghi nhận 05/10:</b> lần đọc lại file tuần 04/09 qua connector có trả về text của các sheet chi tiết (trước đây chỉ trả sheet TH) — nhưng text đã chuyển đổi không giữ được ranh giới từng dòng/từng cột đủ tin để dựng danh sách, nên <b>vẫn cần chạy <code>tools/parse_sitecheck.py</code> trên bản sao file gốc</b>; phiên cloud không tải được bản sao nên chưa bù. <b>Đổi tên nguồn:</b> từ tuần 04/09 file ghi 'BQL OSEN' thay cho 'BQL CT21-22'; giữ khóa gốc theo bảng ánh xạ trong <code>tools/parse_sitecheck.py</code> để không đứt chuỗi 42 tuần.",
+ "generatedUtc": "2026-10-26T14:21:28Z",
+ "verdict": "<div class=\"lead\">Tuần 04/10: phát sinh <b>122</b> đầu việc, <b>tồn 61</b> — và <b>61/61 (100%) nằm ở 2 nhà thầu</b>: SAVILLS CT06 <b>32</b> và CLB Tiện ích <b>29</b>. Sáu bộ phận còn lại sạch tồn. <b>Trang đã bắt kịp nguồn:</b> bốn tuần tháng 10 được công bố cùng lúc hôm nay sau khi lỗi đọc file 406 tự hết, nên số liệu không còn chậm ba tuần.</div><p>Phát sinh <b>122</b> (-1 vs tuần 03/10: 123, -0,8%), tồn <b>61</b> (-8 vs 69, -11,6%). Chuỗi tồn tháng 10: <b>77 → 57 → 69 → 61</b>. <b>Điểm cần xử lý: tồn của SAVILLS CT06 đứng yên suốt 7 tuần</b> (35 → 34 → 34 → 32 → 32 → 34 → 32) <b>trong khi tỷ lệ đóng việc tuần của chính họ đã lên 38/38 = 100%</b> ở tuần 04/10 (tuần 01/10 chỉ 8/40 = 20%). Hai con số này cùng tồn tại chỉ khi 32 đầu việc tồn là một khối riêng, không nằm trong luồng việc tuần và không ai chạm tới — đóng 100% việc mới mỗi tuần vẫn không làm nó giảm. <b>CLB Tiện ích: 29 tồn = 18 + 11</b>, trong đó <b>11 đầu việc mang nhãn 'TỒN THÁNG 4 ĐẾN NAY'</b> và cả 11 cùng một trạng thái: 'CLB đã trình đề xuất tổng, chờ phê duyệt' — tắc ở phê duyệt ngân sách, không phải ở thi công, suốt 6 tháng. <b>Việc cần làm ngoài dữ liệu:</b> (1) yêu cầu SAVILLS CT06 bóc tách danh sách 32 đầu việc tồn kèm lý do và mốc cam kết; (2) chốt phê duyệt đề xuất tổng của CLB để giải phóng 11 đầu việc tồn từ tháng 4; (3) yêu cầu nguồn sửa nhãn tuần trong file và xin bản xuất chi tiết nhẹ (không ảnh) để trang có lại danh sách theo dòng.</p><p>Chuỗi dữ liệu nay liền mạch <b>44 tuần</b> (12/2025 → 10/2026), không còn tuần nào ở trạng thái &quot;Không đọc được&quot;. Nguồn vẫn ghi <b>BQL OSEN</b> thay cho <b>BQL CT21-22</b>; giữ khóa gốc theo bảng ánh xạ trong <code>tools/parse_sitecheck.py</code> để không đứt chuỗi.</p>",
+ "recon": "<b>Độ phủ nguồn &amp; đối chiếu:</b> <b>46/46 file tuần đọc được</b> — 37 tuần lịch sử (OneDrive 12/09) + 4 tuần tháng 9 (connector) + <b>cả 4 tuần tháng 10 đọc được ngày 26/10</b>. Mọi tổng cột tính lại bằng code, khớp 100% ô TỔNG CỘNG (✓ĐC tuần 04/10: 15+2+15+21+23+37+2+7 = 122; 32+29 = 61). <b>Hai tuần 01/10 và 02/10 đã được gỡ trạng thái &quot;Không đọc được&quot;:</b> lỗi Graph 406 chặn hai ca 05/10 và 12/10 đã tự hết, không cần đổi file hay nhãn bảo mật; số liệu hai tuần này nay là số đọc từ chính file nguồn trên cây ECOPM, không suy ra. <b>Neo đối chiếu cây nguồn:</b> cột 'tuần 04 tháng 09' của file tuần 01/10 khớp 100% số liệu tuần 04/09 đã công bố (14+1+15+22+16+40+3+7 = 118) — xác nhận đúng cây ECOPM. <b style=\"color:var(--warning)\">Cảnh báo chất lượng nhãn tuần trong nguồn:</b> file tuần 03/10 ghi tiêu đề 'tuần 01/tuần 02 tháng 10' (chậm một tuần so với tên file), và trong file tuần 04/10 sheet BQLKV1 ghi ngày 23/10/2026 nhưng mục bên trong đề 'TUẦN 3 THÁNG 10'. Đã lấy theo tên file và mốc cập nhật thứ Hai, có đối chiếu chéo 7/8 bộ phận. <b style=\"color:var(--warning)\">Còn thiếu:</b> 5 tuần (04/09 và cả 4 tuần tháng 10) <b>chưa có danh sách theo dòng</b> — connector trả được sheet TH, còn bản sao file nguồn (~37 MB, nhiều ảnh) không tải được từ môi trường cloud. Mọi chỉ số KPI phía trên là tuần 04/10.",
  "detailRows": 5794
 }
