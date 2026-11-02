@@ -1109,6 +1109,31 @@
    },
    "src": "2026-10-W04_Sitecheck.xlsx",
    "note": "Đọc qua M365 connector 26/10/2026, sheet TH; tính lại bằng code khớp ô TỔNG CỘNG (phát sinh 122, hoàn thành 130, tồn 61). ✓ĐC: 15+2+15+21+23+37+2+7 = 122; 32+29 = 61. Ô tồn của CLB Tiện ích là công thức =18+11 (11 đầu việc 'TỒN THÁNG 4 ĐẾN NAY'). Nhãn tuần trong nguồn vẫn lệch: sheet BQLKV1 ghi ngày 23/10/2026 (thuộc tuần 04) nhưng mục bên trong đề 'TUẦN 3 THÁNG 10'. CHƯA CÓ DANH SÁCH THEO DÒNG (chi tiết): connector có trả text của các sheet chi tiết, nhưng text chuyển đổi không giữ được ranh giới từng dòng/từng cột đủ tin để dựng danh sách (đã ghi nhận 05/10), nên vẫn cần chạy tools/parse_sitecheck.py trên bản sao file gốc — phiên cloud không tải được bản sao."
+  },
+  {
+   "week": "Oct W05 ’26",
+   "id": "2026-10-W05",
+   "mode": "full",
+   "total": 116,
+   "completed": 120,
+   "outTotal": 68,
+   "raised": {
+    "BQLVH 1": 17,
+    "Công viên Mùa hạ+Xuân": 0,
+    "BQLVH 2": 15,
+    "BQLVH 3": 19,
+    "BQL CT21-22": 25,
+    "BQL SAVILLS CT06": 32,
+    "CLB Tiện ích": 1,
+    "CV Hồ Thiên Nga": 7
+   },
+   "out": {
+    "BQLVH 3": 21,
+    "BQL SAVILLS CT06": 29,
+    "CLB Tiện ích": 18
+   },
+   "src": "2026-10-W05_Sitecheck.xlsx",
+   "note": "Đọc qua M365 connector 02/11/2026, sheet TH; tính lại bằng code khớp ô TỔNG CỘNG (phát sinh tuần 05/10 = 116, hoàn thành 120, tồn 68). ✓ĐC: 17+0+15+19+25+32+1+7 = 116; 21+29+18 = 68. Cột 'SL hoàn thành' của file này ghi cho TUẦN 04/10 (hoàn thành 120), lệch một tuần so với cột phát sinh — giữ đúng quy ước đã dùng các tuần trước (tuần 04/10 công bố hoàn thành 130 cũng là số của tuần 03/10). Neo đối chiếu cây nguồn: cột 'tuần 04 tháng 10' của file này khớp CHÍNH XÁC 7/8 bộ phận với số tuần 04/10 đã công bố (15, 2, 15, 21, 23, 37, 7) — xác nhận đúng cây ECOPM; toàn bộ chênh lệch 138 vs 122 nằm ở một bộ phận duy nhất là CLB Tiện ích (18 vs 2), tức nguồn tự điều chỉnh lại số tuần 04 của chính họ, KHÔNG suy ra số. ⚠ HAI SỐ TỒN KHÔNG ĐƯỢC SHEET CHI TIẾT XÁC NHẬN — giữ nguyên số của nguồn, không tự sửa: (1) BQLVH 3 ghi tồn 21, nhưng sheet BQLKV3 chỉ có 19 dòng và CẢ 19 đều 'Đã hoàn thành', không có dòng nào còn mở; số 21 trùng khít cả với phát sinh tuần 04 (21) lẫn hoàn thành tuần 04 (21) của chính bộ phận này. (2) CLB Tiện ích giảm 29 → 18 KHÔNG phải do đóng 11 đầu việc: ô tồn tuần 04 là công thức =18+11, tuần này là số cứng 18, tức khối 11 dòng 'TỒN THÁNG 4 ĐẾN NAY' bị bỏ ra khỏi phép tính, trong khi sheet CLB TIỆN ÍCH cho thấy 6/11 dòng đó VẪN mở ('CLB đã trình đề xuất tổng, chờ phê duyệt'), chỉ 5/11 đã 'Hoàn thành' — mức giảm thực tế nhiều nhất là 5. Ngược lại, tồn 29 của SAVILLS CT06 CÓ được chi tiết xác nhận: sheet CT6 có 26 dòng 'Chưa xử lý' + 1 dòng xử lý dở, trách nhiệm ghi 'Tổng thầu bảo hành', dòng cũ nhất ghi nhận từ 12/7/2025, đã báo CĐT, hạn 5/11/2026. CV Hồ Thiên Nga ghi tồn 0 nhưng cả 7 dòng đều trống trạng thái và hạn 3/11/2026 (sau ngày chốt báo cáo 31/10). CHƯA CÓ DANH SÁCH THEO DÒNG: lần này connector ĐỌC ĐƯỢC cả 8 sheet chi tiết (file 30,1 MB — nhỏ nhất của tháng 10), khác với ghi nhận ngày 05/10; số dòng từng bộ phận khớp 100% cột phát sinh (17/15/19/25/32/1/7 = 116). Vẫn KHÔNG công bố danh sách vì trình phân tích chuẩn tools/parse_sitecheck.py lấy cột theo VỊ TRÍ (loc=cột 3, issue=cột 4) và cần chính file nguồn để chạy, mà môi trường cloud không tải được bản sao; thêm nữa một số dòng trong sheet BQLKV3 bị lệch cột ngay trong nguồn. Không chép tay để tránh dòng sai nguyên văn. Nhãn tuần trong nguồn vẫn lệch: BQLKV1 đề 'TUẦN 5 THÁNG 10', BQL Osen đề 'TUẦN 4 -Tháng 10/2026 Ngày (24/10-30/10)', BQLKV3 đề 'Từ 23/10/2026 đến 29/10/2026' — lấy theo tên file. Nguồn vẫn ghi 'BQL OSEN' thay cho 'BQL CT21-22'; giữ khóa gốc."
   }
  ],
  "coverage": [
@@ -1428,12 +1453,18 @@
      "xlsx",
      "read",
      "Tổng hợp đọc qua M365 connector 26/10. Chi tiết theo dòng CHƯA trích được: chưa có bản sao file nguồn."
+    ],
+    [
+     "W05",
+     "xlsx",
+     "read",
+     "Tổng hợp đọc qua M365 connector 02/11. Connector đọc được cả 8 sheet chi tiết (file 30,1 MB) nhưng danh sách theo dòng CHƯA công bố: trình phân tích chuẩn lấy cột theo vị trí và cần chính file nguồn. ⚠ Tồn của BQLVH 3 (21) và CLB Tiện ích (18) không được sheet chi tiết xác nhận — xem ghi chú tuần."
     ]
    ]
   }
  ],
- "asof": "Tuần 04/10/2026",
- "generated": "26/10/2026",
+ "asof": "Tuần 05/10/2026",
+ "generated": "02/11/2026",
  "pages": "https://ttrng3.github.io/Ecopm-Sitecheck/",
  "repo": "https://github.com/ttrng3/Ecopm-Sitecheck",
  "detail": {
@@ -1477,8 +1508,8 @@
   "2026-09-W02": "2026-09-W02",
   "2026-09-W03": "2026-09-W03"
  },
- "generatedUtc": "2026-10-26T14:21:28Z",
- "verdict": "<div class=\"lead\">Tuần 04/10: phát sinh <b>122</b> đầu việc, <b>tồn 61</b> — và <b>61/61 (100%) nằm ở 2 nhà thầu</b>: SAVILLS CT06 <b>32</b> và CLB Tiện ích <b>29</b>. Sáu bộ phận còn lại sạch tồn. <b>Trang đã bắt kịp nguồn:</b> bốn tuần tháng 10 được công bố cùng lúc hôm nay sau khi lỗi đọc file 406 tự hết, nên số liệu không còn chậm ba tuần.</div><p>Phát sinh <b>122</b> (-1 vs tuần 03/10: 123, -0,8%), tồn <b>61</b> (-8 vs 69, -11,6%). Chuỗi tồn tháng 10: <b>77 → 57 → 69 → 61</b>. <b>Điểm cần xử lý: tồn của SAVILLS CT06 đứng yên suốt 7 tuần</b> (35 → 34 → 34 → 32 → 32 → 34 → 32) <b>trong khi tỷ lệ đóng việc tuần của chính họ đã lên 38/38 = 100%</b> ở tuần 04/10 (tuần 01/10 chỉ 8/40 = 20%). Hai con số này cùng tồn tại chỉ khi 32 đầu việc tồn là một khối riêng, không nằm trong luồng việc tuần và không ai chạm tới — đóng 100% việc mới mỗi tuần vẫn không làm nó giảm. <b>CLB Tiện ích: 29 tồn = 18 + 11</b>, trong đó <b>11 đầu việc mang nhãn 'TỒN THÁNG 4 ĐẾN NAY'</b> và cả 11 cùng một trạng thái: 'CLB đã trình đề xuất tổng, chờ phê duyệt' — tắc ở phê duyệt ngân sách, không phải ở thi công, suốt 6 tháng. <b>Việc cần làm ngoài dữ liệu:</b> (1) yêu cầu SAVILLS CT06 bóc tách danh sách 32 đầu việc tồn kèm lý do và mốc cam kết; (2) chốt phê duyệt đề xuất tổng của CLB để giải phóng 11 đầu việc tồn từ tháng 4; (3) yêu cầu nguồn sửa nhãn tuần trong file và xin bản xuất chi tiết nhẹ (không ảnh) để trang có lại danh sách theo dòng.</p><p>Chuỗi dữ liệu nay liền mạch <b>44 tuần</b> (12/2025 → 10/2026), không còn tuần nào ở trạng thái &quot;Không đọc được&quot;. Nguồn vẫn ghi <b>BQL OSEN</b> thay cho <b>BQL CT21-22</b>; giữ khóa gốc theo bảng ánh xạ trong <code>tools/parse_sitecheck.py</code> để không đứt chuỗi.</p>",
- "recon": "<b>Độ phủ nguồn &amp; đối chiếu:</b> <b>46/46 file tuần đọc được</b> — 37 tuần lịch sử (OneDrive 12/09) + 4 tuần tháng 9 (connector) + <b>cả 4 tuần tháng 10 đọc được ngày 26/10</b>. Mọi tổng cột tính lại bằng code, khớp 100% ô TỔNG CỘNG (✓ĐC tuần 04/10: 15+2+15+21+23+37+2+7 = 122; 32+29 = 61). <b>Hai tuần 01/10 và 02/10 đã được gỡ trạng thái &quot;Không đọc được&quot;:</b> lỗi Graph 406 chặn hai ca 05/10 và 12/10 đã tự hết, không cần đổi file hay nhãn bảo mật; số liệu hai tuần này nay là số đọc từ chính file nguồn trên cây ECOPM, không suy ra. <b>Neo đối chiếu cây nguồn:</b> cột 'tuần 04 tháng 09' của file tuần 01/10 khớp 100% số liệu tuần 04/09 đã công bố (14+1+15+22+16+40+3+7 = 118) — xác nhận đúng cây ECOPM. <b style=\"color:var(--warning)\">Cảnh báo chất lượng nhãn tuần trong nguồn:</b> file tuần 03/10 ghi tiêu đề 'tuần 01/tuần 02 tháng 10' (chậm một tuần so với tên file), và trong file tuần 04/10 sheet BQLKV1 ghi ngày 23/10/2026 nhưng mục bên trong đề 'TUẦN 3 THÁNG 10'. Đã lấy theo tên file và mốc cập nhật thứ Hai, có đối chiếu chéo 7/8 bộ phận. <b style=\"color:var(--warning)\">Còn thiếu:</b> 5 tuần (04/09 và cả 4 tuần tháng 10) <b>chưa có danh sách theo dòng</b> — connector trả được sheet TH, còn bản sao file nguồn (~37 MB, nhiều ảnh) không tải được từ môi trường cloud. Mọi chỉ số KPI phía trên là tuần 04/10.",
+ "generatedUtc": "2026-11-02T14:33:20Z",
+ "verdict": "<div class=\"lead\">Tuần 05/10: phát sinh <b>116</b> đầu việc, <b>tồn 68</b> (+7 vs tuần 04/10, +11,5%) — và tồn nay nằm ở <b>3 bộ phận</b>: SAVILLS CT06 <b>29</b>, BQLVH 3 <b>21</b>, CLB Tiện ích <b>18</b>. <b>Nhưng 39/68 đầu việc tồn (57%) không được sheet chi tiết xác nhận</b> — đọc phần đối chiếu trước khi dùng số tồn tuần này.</div><p><b>Điểm cần xử lý số 1 — BQLVH 3 từ 0 lên 21 tồn sau 9 tuần sạch:</b> đây là lần đầu bộ phận này có tồn kể từ tuần 04/08, nhưng sheet BQLKV3 không có dòng nào còn mở: 19/19 dòng ghi 'Đã hoàn thành'. Con số 21 trùng khít cả phát sinh (21) lẫn hoàn thành (21) của chính bộ phận này ở tuần 04/10 — dấu hiệu rất rõ của một ô bị chép sai cột, chứ không phải 21 đầu việc thật. <b>Chưa tự sửa</b>: cần nguồn xác nhận. Nếu đúng là lỗi ô, tồn thực của khối vận hành tuần 05/10 là <b>47</b>, không phải 68.</p><p><b>Điểm cần xử lý số 2 — mức giảm của CLB Tiện ích là ảo:</b> 29 → 18 trông như đóng được 11 đầu việc, thực chất ô tồn đổi từ công thức <code>=18+11</code> sang số cứng <b>18</b>, tức khối 11 dòng 'TỒN THÁNG 4 ĐẾN NAY' bị bỏ ra khỏi phép tính. Sheet chi tiết cho thấy <b>6/11 dòng đó vẫn mở</b> ('CLB đã trình đề xuất tổng, chờ phê duyệt' — nay đã sang tháng thứ 7), chỉ 5/11 đã 'Hoàn thành'. Mức giảm thực tế nhiều nhất là 5.</p><p><b>Tin tốt, và lần này có bằng chứng theo dòng: tồn của SAVILLS CT06 cuối cùng đã nhúc nhích</b> (32 → 29, lần giảm đầu sau 7 tuần đứng yên ở 32–35). Chi tiết giải thích đúng giả thuyết tuần trước: 26 dòng 'Chưa xử lý' + 1 dòng xử lý dở đều mang trách nhiệm <b>'Tổng thầu bảo hành'</b>, dòng cũ nhất ghi nhận từ <b>12/7/2025</b> — khối tồn này là việc bảo hành của tổng thầu, không nằm trong luồng việc tuần của BQL, nên đóng 100% việc mới hàng tuần vẫn không làm nó giảm. BQL đã gửi email báo CĐT, hạn yêu cầu <b>5/11/2026</b>.</p><p><b>Việc cần làm ngoài dữ liệu:</b> (1) yêu cầu nguồn xác nhận hoặc sửa ô tồn 21 của BQLVH 3 — đây là sai số lớn nhất trên trang tuần này; (2) yêu cầu nguồn khôi phục 6 dòng 'TỒN THÁNG 4' của CLB vào phép tính tồn và chốt phê duyệt đề xuất tổng, đã sang tháng thứ 7; (3) theo mốc 5/11/2026 với tổng thầu cho 27 đầu việc bảo hành của CT06; (4) xin bản xuất chi tiết nhẹ (không ảnh) hoặc một bản sao file nguồn tải được, để trang có lại danh sách theo dòng — tuần này connector đã đọc được cả 8 sheet chi tiết và số dòng khớp 100% cột phát sinh, nên chỉ còn thiếu đường chạy trình phân tích chuẩn.</p><p>Chuỗi dữ liệu nay liền mạch <b>45 tuần</b> (12/2025 → 10/2026). CV Hồ Thiên Nga ghi tồn 0 nhưng cả 7 dòng đều trống trạng thái và hạn 3/11/2026, tức sau ngày chốt báo cáo 31/10. Nguồn vẫn ghi <b>BQL OSEN</b> thay cho <b>BQL CT21-22</b>; giữ khóa gốc theo bảng ánh xạ trong <code>tools/parse_sitecheck.py</code> để không đứt chuỗi.</p>",
+ "recon": "<b>Độ phủ nguồn &amp; đối chiếu:</b> <b>47/47 file tuần đọc được</b> — 37 tuần lịch sử (OneDrive 12/09) + 4 tuần tháng 9 (connector) + <b>cả 5 tuần tháng 10</b>. Mọi tổng cột tính lại bằng code, khớp 100% ô TỔNG CỘNG (✓ĐC tuần 05/10: 17+0+15+19+25+32+1+7 = 116; 21+29+18 = 68). <b>Neo đối chiếu cây nguồn:</b> cột 'tuần 04 tháng 10' của file tuần 05/10 khớp chính xác 7/8 bộ phận với số tuần 04/10 đã công bố — xác nhận đúng cây ECOPM; chênh lệch duy nhất là CLB Tiện ích (nguồn tự điều chỉnh số tuần 04 của chính họ từ 2 lên 18). <b style=\"color:var(--warning)\">Cảnh báo: hai trong ba số tồn tuần 05/10 không được sheet chi tiết xác nhận.</b> BQLVH 3 ghi tồn <b>21</b> nhưng sheet BQLKV3 chỉ có 19 dòng và cả 19 đều 'Đã hoàn thành'; số 21 trùng khít phát sinh và hoàn thành tuần 04 của bộ phận này. CLB Tiện ích giảm 29 → <b>18</b> là do ô tồn đổi từ công thức <code>=18+11</code> sang số cứng 18, tức khối 11 dòng 'TỒN THÁNG 4 ĐẾN NAY' bị bỏ ra khỏi phép tính — mà 6/11 dòng đó vẫn đang mở; mức giảm thực tế nhiều nhất là 5, không phải 11. Riêng tồn <b>29</b> của SAVILLS CT06 CÓ được chi tiết xác nhận (26 dòng 'Chưa xử lý' + 1 dòng xử lý dở, trách nhiệm 'Tổng thầu bảo hành', dòng cũ nhất từ 12/7/2025). Các số trên giữ nguyên theo nguồn, không tự sửa. <b style=\"color:var(--warning)\">Cảnh báo chất lượng nhãn tuần trong nguồn</b> vẫn còn: trong cùng file tuần 05/10, sheet BQLKV1 đề 'TUẦN 5 THÁNG 10', sheet BQL Osen đề 'TUẦN 4 -Tháng 10/2026 Ngày (24/10-30/10)', sheet BQLKV3 đề 'Từ 23/10/2026 đến 29/10/2026'. Đã lấy theo tên file. <b style=\"color:var(--warning)\">Còn thiếu:</b> 6 tuần (04/09 và cả 5 tuần tháng 10) <b>chưa có danh sách theo dòng</b>. Tuần 05/10 là lần đầu connector đọc được cả 8 sheet chi tiết (file 30,1 MB), và số dòng từng bộ phận khớp 100% cột phát sinh — nhưng trình phân tích chuẩn lấy cột theo vị trí và cần chính file nguồn, nên vẫn chờ bản xuất chi tiết nhẹ (không ảnh). Mọi chỉ số KPI phía trên là tuần 05/10.",
  "detailRows": 5794
 }
